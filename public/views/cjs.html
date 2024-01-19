@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head></head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/public/css/styles.css">
+  <title>Node renovado</title>
+  <script src="../../public/js/scroll-linked-nav.js" defer> </script>
+  <body>       
+    <main class="layout">
+      <div>
+        <div class="sidebar"><a href="/"><img class="logo" src="/public/assets/icons/nodejs.png" alt="logo"></a>
+          <nav class="nav">
+                        <ul class="menu">
+                          <li class="menu__item"><a class="menu__link" href="/public/views/que-es-node.html">¿Qué es node?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/primeros-pasos.html">Primeros pasos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/package-json.html">¿Qué es el package-json?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/global-vs-window.html">Global vs window</a></li>
+                          <li class="menu__item"><a class="active menu__link" href="/public/views/cjs.html">Sistema de módulos CJS</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/esm.html">Sistema de módulos ESM</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/modulos-nativos.html">Modúlos nativos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/dependencias.html">¿Qué son las dependencias?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/node-modules.html">¿Qué es node modules?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/servidor-web.html">Primer servidor web</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/url.html">¿URL?, parámetros de ruta, módulo URL</a></li>
+                        </ul>
+          </nav>
+        </div>
+      </div>
+      <section class="container-content">
+        <div class="container-title title-sticky">       
+          <h1>Sistema de módulos CJS</h1>
+        </div>
+        <section class="content">       
+          <nav class="container-submenu">
+            <ul class="submenu"> 
+              <li class="submenu__item"><a class="submenu__link" href="#1">¿Qué es un módulo?</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#2">¿Qué es CJS?</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#3">Exportación e Importación de módulos locales</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#4">Importación de módulos nativos</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#5">Importación de módulos externos</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#6">Variables globales en CJS </a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#7">Lectura de JSON</a></li>
+            </ul>
+          </nav>
+          <article id="1">
+            <h2>¿Qué es un módulo?</h2>
+            <p>En <span class="ts-1">Node.js</span>, un módulo es básicamente un archivo JavaScript que encapsula cierta funcionalidad y puede ser reutilizado en otras partes de una aplicación. El sistema de módulos en Node.js permite organizar el código en archivos separados, lo que facilita el mantenimiento y la modularidad del código.</p>
+            <p>Existen dos tipos principales de módulos en Node.js: </p>
+            <h3>Módulos integrados (Core Modules) o Módulos Nativos</h3>
+            <p> <strong class="ts-3">Módulos integrados (Core Modules)</strong>: Estos son módulos que están incluidos en la instalación de Node.js y se pueden utilizar directamente sin necesidad de instalar nada adicional. Algunos ejemplos son el módulo  <code>fs </code>  para operaciones de sistema de archivos, el módulo  <code>http </code>  para crear servidores web, y muchos otros.</p>
+            <p>Aquí una lista de Core Modules: </p>
+            <ul> 
+              <li> <span class="ts-1">fs (File System)</span>: Proporciona funciones para interactuar con el sistema de archivos, como leer y escribir archivos.</li>
+              <li> <span class="ts-1">http</span>: Permite la creación de servidores web y la realización de solicitudes HTTP.</li>
+              <li> <span class="ts-1">path</span>: Proporciona utilidades para trabajar con rutas de archivos y directorios.</li>
+              <li> <span class="ts-1">events</span>: Proporciona una implementación simple de patrón de eventos que permite la emisión y escucha de eventos.</li>
+              <li> <span class="ts-1">util</span>: Proporciona funciones de utilidad para facilitar el desarrollo, como util.promisify para convertir funciones basadas en devoluciones de llamada en promesas.</li>
+              <li> <span class="ts-1">os (Operating System)</span>: Proporciona información sobre el sistema operativo, como la arquitectura y la carga de la CPU.</li>
+              <li> <span class="ts-1">querystring</span>: Ofrece utilidades para trabajar con cadenas de consulta en URLs.</li>
+              <li> <span class="ts-1">crypto</span>: Proporciona funciones criptográficas, como la creación de hash y la generación de números aleatorios.</li>
+              <li> <span class="ts-1">url</span>: Facilita el análisis y la formación de componentes de URL.</li>
+              <li> <span class="ts-1">zlib</span>: Proporciona funciones para comprimir y descomprimir datos utilizando el formato zlib.</li>
+            </ul>
+            <h3>Módulos externos</h3>
+            <p>
+               Estos son módulos creados por la comunidad de desarrolladores y se pueden instalar utilizando el sistema de gestión de paquetes de Node.js, que es npm <span class="ts-1">(Node Package Manager)</span>. Los módulos externos permiten extender la funcionalidad de Node.js con bibliotecas y herramientas adicionales.</p>
+            <p>Aquí una lista de Modules externos:         
+              <ul>
+                <li> <span class="ts-1">dotenv</span>: Carga variables de entorno desde un archivo .env en el proceso de Node.js.</li>
+                <li> <span class="ts-1">express</span>: Framework web minimalista para construir aplicaciones web y APIs.    </li>
+                <li> <span class="ts-1">axios</span>: Cliente HTTP basado en promesas para realizar solicitudes HTTP.     </li>
+                <li> <span class="ts-1">mongoose</span>: ODM (Object Data Modeling) para MongoDB, facilita la interacción con bases de datos MongoDB.     </li>
+                <li> <span class="ts-1">jsonwebtoken</span>: Implementa la generación y verificación de JSON Web Tokens (JWT).    </li>
+                <li> <span class="ts-1">body-parser</span>: Middleware para analizar el cuerpo de las solicitudes HTTP en Express.      </li>
+                <li> <span class="ts-1">lodash</span>: Biblioteca de utilidades que facilita la manipulación y manipulación de datos.     </li>
+                <li> <span class="ts-1">socket.io</span>: Biblioteca para la comunicación en tiempo real mediante WebSockets.    </li>
+                <li> <span class="ts-1">request-promise</span>: Versión basada en promesas del módulo request para realizar solicitudes HTTP.     </li>
+                <li> <span class="ts-1">nodemailer</span>: Biblioteca para enviar correos electrónicos desde aplicaciones Node.js.     </li>
+              </ul>
+            </p>
+            <p>Cuando creamos nuestros propios archivos JavaScript en Node.js, cada archivo se trata como un módulo independiente. Podemos exportar funciones, variables u objetos desde un módulo y luego importarlos en otro utilizando la palabra clave require en caso de CJS.</p>
+          </article>
+          <article id="2">
+            <h2>¿Qué es CJS?</h2>
+            <p> <span class="ts-1">Módulos comunes (CommonJS)</span>: Es un sistema de módulos que fue popularizado por Node.js. <span class="ts-2">En CommonJS, los módulos se cargan de forma <strong class="ts-3">sincrónica</strong>, y la estructura del módulo incluye             </span><code>module.exports</code>  para exportar valores como objetos, funciones y variables desde un módulo y luego importarlos y utilizarlos en otros módulos utilizando la función <code>require().</code></p>
+            <p>CJS es nativo de Node.js por lo que no se requiere instalar nada ya que vienen incluido en node.js.</p>
+            <p class="note">Si en nuestra aplicacion Node.js utilizaremos CJS como sistema de módulos no es necesario especificar el tipo de módulo en el package-json, ya que por defecto Node.js trabaja con CJS, cualquier archivo.js por defecto trabaja con CJS.</p>
+            <p>Veamos nuestro packaje-json.</p>
+            <figure> <img src="../../public/assets/images/cjs/1.png" alt="example"/>
+            </figure>
+            <p>Si en nuestro proyecto estamos utilizando otro sistema de módulos como <span class="ts-1">ESM </span>que es el más recomendado actualmente y necesitamos utilizar <span class="ts-1">CJS </span>podemos crear un archivo con la extención <code>.cjs </code>  y de esta manera podremos utilizar CJS cuando nuestro sistema de modulos es ESM, aunque hay otras técnicas como crear nuestra propia función require. </p>
+            <figure> <img src="../../public/assets/images/cjs/2.png" alt="example"/>
+            </figure>
+            <p>Nosotros en esta sección trabajaremos con el sistema de módulos por defecto CJS</p>
+            <p>Hasta este punto ya sabemos que para exportar valores utilizamos <code>module.exports = {funcion,variable,clase,etc} </code>  y para importar ocupamos la función <code>require().</code></p>
+            <p>Si en la consola imprimimos <span class="ts-1">module </span>  podemos ver lo que contiene, hay que saber que <strong>module </strong>  solo existe en el sistema de módulos CJS.</p>
+            <figure> <img src="../../public/assets/images/cjs/3.png" alt="example"/>
+            </figure>
+          </article>
+          <article id="3"> 
+            <h2>Exportación e Importación de módulos locales</h2>
+            <p>
+               Crearemos un archivo llamado <span class="ts-1">operaciones </span>  donde tendremos funciónes que hacen una operación aritmetica y exportaremos esas funciones para poder reutilizarlas en otra parte de nuestra aplicación.</p>
+            <figure> <img src="../../public/assets/images/cjs/4.png" alt="example"/>
+            </figure>
+            <p class="note">Cuando importamos con CJS no es necesario poner la extención del archivo.</p>
+            <figure> <img src="../../public/assets/images/cjs/5.png" alt="example"/>
+            </figure>
+            <p>Tambien podemos utilizar destructuración</p>
+            <figure> <img src="../../public/assets/images/cjs/6.png" alt="example"/>
+            </figure>
+          </article>
+          <article id="4"> 
+            <h2>Importación de módulos nativos </h2>
+            <p>Como se explicó al inicio de la sección existen módulos nativos, veremos como importarlos.</p>
+            <p>Lo primero es que cuando importamos módulos nativos como externos de Node.js, no es necesario especificar una ruta, basta con poner el nombre del módulo. Esto es posible porque <code>require </code>  sigue un algoritmo donde puede detectar si ese módulo pertenece tanto a un módulo nativo de node y si no lo encuentra pasa a buscar a node_modules.     </p>
+            <p>Lo segundo es que a partir de <span class="ts-1">Node 16 tanto en CJS como ESM</span>  cuando importamos módulos nativos debemos poner antes del nombre del módulo la palabra  <span class="ts-3">node:</span>.    </p>
+            <figure> <img src="../../public/assets/images/cjs/7.png" alt="example"/>
+            </figure>
+          </article>
+          <article id="5"> 
+            <h2>Importación de módulos externos </h2>
+            <p>Como vimos al inicio de la sección cuando trabajamos con Node.js tenemos acceso a una paqueteria de módulos <code>NPM(Node Package Manager)</code>  desarrollados por la comunidad.</p>
+            <p>Para poder importar estos módulos primero es necesario haberlos instalados en nuestro proyecto, ya sea como dependencia de desarrollo o de producción que lo veremos más adelante en otra sección.</p>
+            <p>Una vez instalado el módulo ya podemos importarlo.</p>
+            <p>Para importar no es necesario especificar la ruta, basta con solo poner el nombre del módulo externo.     </p>
+            <p>En la sección anterior ya habiamos instalado un módulo externo llamado <code>dotenv</code>  que nos sirve para leer variables de entorno desde un fichero .env, entonces importaremos ese módulo.</p>
+            <figure> <img src="../../public/assets/images/cjs/8.png" alt="example"/>
+            </figure>
+          </article>
+          <article id="6"> 
+            <h2>Variables globales en CJS </h2>
+            <p>Cuando trabajamos con el sistema de módulos CJS, node nos brinda un par de variables globales que nos devuelve una cadena de texto sobre la <span class="ts-1">ruta absoluta de nuestro módulo</span>.</p>
+            <ul> 
+              <li> <code>filename</code>:  Devuelve la ruta absoluta del módulo es decir nuestro archivo, hasta llegar al archivo.
+                <figure> <img src="../../public/assets/images/cjs/9.png" alt="example"/>
+                </figure>
+              </li>
+              <li> <code>dirname</code>:  Devuelve la ruta absoluta del módulo pero solo hasta la carpeta del módulo.       
+                <figure> <img src="../../public/assets/images/cjs/10.png" alt="example"/>
+                </figure>
+              </li>
+            </ul>
+          </article>
+          <article id="7"> 
+            <h2>Lectura de JSON </h2>
+            <p>Cuando trabajamos con CJS es posible leer archivos JSON en nuestra aplicación de forma nativa, ya que en el sistema de módulos ESM no es posible importar un JSON en nuestro código y tenemos que recurrrir a tecnicas como crear nuestra propia función require o cambiar la extensión del archivo a mjs para poder importar el JSON.</p>
+            <p>Veamos a continuación que es posible importar un JSON de forma nativa y facíl con CJS.</p>
+            <figure> <img src="../../public/assets/images/cjs/11.png" alt="example"/>
+            </figure>
+          </article>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

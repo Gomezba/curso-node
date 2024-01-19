@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head></head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/public/css/styles.css">
+  <title>Node renovado</title>
+  <script src="../../public/js/scroll-linked-nav.js" defer> </script>
+  <body>       
+    <main class="layout">
+      <div>
+        <div class="sidebar"><a href="/"><img class="logo" src="/public/assets/icons/nodejs.png" alt="logo"></a>
+          <nav class="nav">
+                        <ul class="menu">
+                          <li class="menu__item"><a class="menu__link" href="/public/views/que-es-node.html">¿Qué es node?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/primeros-pasos.html">Primeros pasos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/package-json.html">¿Qué es el package-json?</a></li>
+                          <li class="menu__item"><a class="active menu__link" href="/public/views/global-vs-window.html">Global vs window</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/cjs.html">Sistema de módulos CJS</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/esm.html">Sistema de módulos ESM</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/modulos-nativos.html">Modúlos nativos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/dependencias.html">¿Qué son las dependencias?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/node-modules.html">¿Qué es node modules?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/servidor-web.html">Primer servidor web</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/url.html">¿URL?, parámetros de ruta, módulo URL</a></li>
+                        </ul>
+          </nav>
+        </div>
+      </div>
+      <section class="container-content">
+        <div class="container-title title-sticky">       
+          <h1>Global vs window</h1>
+        </div>
+        <section class="content">       
+          <nav class="container-submenu">
+            <ul class="submenu"> 
+              <li class="submenu__item"><a class="submenu__link" href="#1">¿Qué es globalthis?</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#2">process</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#3">process.exit </a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#4">process.env </a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#5">process.argv </a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#6">process.cwd </a></li>
+            </ul>
+          </nav>
+          <p>En esta sección hablaremos sobre la diferencia que hay entre el objeto <strong class="ts-1">global(node.js) </strong>y <strong class="ts-1">window(browser).</strong></p>
+          <p>Empezaremos por el objeto window en un navegador</p>
+          <figure> <img src="../../public/assets/images/global-vs-window/1.png" alt="example"/>
+          </figure>
+          <p>Pero si ejecutamos un <code>console.log(window)</code>  dentro de la consola de node podemos ver que el objeto window solo se puede ejecutar en un navegador.</p>
+          <figure> <img src="../../public/assets/images/global-vs-window/2.png" alt="example"/>
+          </figure>
+          <p>Sin embargo si escribimos global en un navegador devolverá un error ya que no existe un objeto llamado global, pero si ejecutamos en un <code>console.log(global)</code>  dentro de la consola de node, podemos ver que nos devuelve cierta información.    </p>
+          <figure> <img src="../../public/assets/images/global-vs-window/3.png" alt="example"/>
+          </figure>
+          <p>Si somos observadores nos abremos dado cuenta que hay cosas que comparten <span class="ts-2">window </span>y     <span class="ts-2">global</span>  como los timers, los cuales funcionan igual que de costumbre.</p>
+          <figure> <img src="../../public/assets/images/global-vs-window/4.png" alt="example"/>
+          </figure>
+          <p>Hasta este punto puede que nos estemos preguntando como es posible ejecutar un <code>console.log()</code>  dentro de <strong>node</strong>  si se supone que <span class="ts-1">console.log() </span>  pertenece a al objeto <code>window</code>  del navegador y el objeto window no se puede ejecutar dentro de node.</p>
+          <article id="1"> 
+            <h2>¿Qué es globalThis?</h2>
+            <p>Para responder a nuestra duda anterior, es importante conocer <span class="ts-1">globalThis</span>  que es una variable global tanto para <code>window </code>y <code>node</code>  en toda nuestra aplicación.</p>
+            <p>Veamos la siguiente imagen que ilustra como <code>globalThis </code>  apunta en <span class="ts-1">node </span>  hacia la variable <span class="ts-3">global  </span>  y en un <span class="ts-1">navegador</span>  apunta hacia <span class="ts-3">window.        </span></p>
+            <figure> <img src="../../public/assets/images/global-vs-window/5.png" alt="example"/>
+            </figure>
+            <p>Sabiendo esto, siempre que queramos hacer referencia a la variable global tanto en node como en un navegador, es buena práctica utilizar  <code>globalThis.</code></p>
+            <p>Para corroborar los punteros de <code>globalThis </code>  ejecutaremos globalThis en cada entorno tanto en <span class="ts-1">node</span>  como en el  <span class="ts-1">navegador.  </span></p>
+            <figure> <img src="../../public/assets/images/global-vs-window/6.png" alt="example"/>
+            </figure>
+            <figure> <img src="../../public/assets/images/global-vs-window/7.png" alt="example"/>
+            </figure>
+            <p>Gracias a <span class="ts-1">globalThis</span>  es que podemos utilizar un <code>console.log() </code>dentro de <span class="ts-1">node </span>ya que todo lo que es global en realidad viene de <code>globalThis</code>  por ejemplo.</p>
+            <ul>
+              <li class="ts-3">Fetch</li>
+              <li class="ts-3">Promise         </li>
+              <li class="ts-3">Math          </li>
+              <li class="ts-3">Cualquier cosa que sea global.          </li>
+            </ul>
+            <p>Otra diferencia es que en node se suele utilizar mucho para el sistema de archivos, o para ver información de la ejecución de un proceso, como el numero de hilos del procesador, el consumo de memoria, la versión de node en la que se está ejecutando el proceso, y para ello tenemos el objeto global <code>process.</code></p>
+          </article>
+          <article id="2">    
+            <h2>global.process o process</h2>
+            <p>El objeto process es un objeto global que proporciona información y control sobre el proceso actual de <span class="ts-1">Node.js.</span></p>
+            <p>Algunas de las propiedades y métodos más utilizados del objeto process incluyen:       </p>
+            <ul> 
+              <li><span class="ts-1">process.exit(?code):</span>  Se utiliza para terminar el proceso de Node.js de manera explícita. Puede recibir un código de salida como argumento, indicando si el proceso se cerró correctamente (código 0) o si hubo algún error (código diferente de 0).       </li>
+              <li> <span class="ts-1">process.env:  </span>  Contiene las variables de entorno del sistema. Puedes acceder a variables específicas utilizando process.env.NOMBRE_VARIABLE.
+                <div><code>console.log(process.env.NODE_ENV) // Accede a la variable de entorno NODE_ENV</code></div>
+              </li>
+              <li><span class="ts-1">process.argv:    </span>Un array que contiene los argumentos de la línea de comandos que se utilizaron para ejecutar el proceso Node.js.
+                <div><code>console.log(process.argv)</code></div>
+              </li>
+              <li><span class="ts-1">process.cwd(): </span>  Devuelve el directorio de trabajo actual del proceso.
+                <div><code>console.log(process.cwd())</code></div>
+              </li>
+              <li><span class="ts-1">process.pid:</span>  Devuelve el ID del proceso actual.
+                <div><code>console.log(process.pid)</code></div>
+              </li>
+              <li> <span class="ts-1">process.on():</span>  Permite registrar manejadores de eventos para diferentes eventos del proceso, como 'exit', 'uncaughtException', entre otros.
+                <div><code>process.on('exit', (code) => {
+                    <div><code>console.log(`Proceso finalizado con código ${code}`)</code></div>
+                    <div><code>})</code></div></code></div>
+              </li>
+            </ul>
+            <p>Si ejecutamos en un <code>console.log(</code><span class="ts-1">process</span>) en node, nos devolverá una cantidad enorme de información, en la siguiente imagen solo mostraremos una parte ya que abarcariamos mucho sitio en la página para mostrar toda la información.</p>
+            <figure> <img src="../../public/assets/images/global-vs-window/8.png" alt="example"/>
+            </figure>
+          </article>
+          <article id="3">   
+            <h2>process.exit(?code)</h2>
+            <p>Como se menciono anteriormente<code> process.exit(?code)                </code>  termina el proceso de Node.js </p>
+            <figure> <img src="../../public/assets/images/global-vs-window/9.png" alt="example"/>
+            </figure>
+            <p class="ts-1">Ahora veamos como función el argumento opcional.</p>
+            <figure> <img src="../../public/assets/images/global-vs-window/10.png" alt="example"/>
+            </figure>
+            <p>En que situaciones podemos ocupar process.exit(?code)? </p>
+            <p>Por ejemplo cuando ya tenemos un servidor más completo, queremos a lo mejor desconectar ciertas cosas antes de que ocurran y luego matar el proceso y lo que hacemos es escuchar ciertos eventos y terminar el proceso con process.exit().</p>
+          </article>
+          <article id="4"> 
+            <h2>process.env </h2>
+            <p>Uno de los usos mas fuertes en process es la propiedad env, que nos permite acceder a las variables de entorno del sistema o tambien podemos acceder a variables específicas de nuestro proyecto utilizando <code>process.env.NOMBRE_VARIABLE.</code><span class="ts-3">Estas variables se definen fuera del código de nuestra aplicación y se cargan en el entorno de ejecución antes de que la aplicación comience a ejecutarse.</span></p>
+            <p><strong class="ts-1">¿Qué es una variable de entorno?</strong>  no es más que una valor dinámico que puede afectar el funcionamiento de la aplicación.</p>
+            <p><span class="ts-2">¿Estos valores dinámicos para que suelen ser usados?</span>  Para configurar parámetros específicos del entorno en el que se ejecuta la aplicación, como configuraciones de base de datos, claves de API, secretos, rutas de archivos, etc.</p>
+            <p class="ts-1">Podemos decir que las variables de entorno son utilizadas para la siguientes categorías.</p>
+            <ul>
+              <li>Información sensible: passwords</li>
+              <li>Configuraciónes específicas para nuestro entorno de desarrollo: tokens, conexiones o puertos. Podemos tener diferentes configuraciones para diferentes entornos (por ejemplo, desarrollo, producción, prueba) y cambiar la configuración de la aplicación según la variable de entorno NODE_ENV.               </li>
+              <li>Configuración para simular las variables de entorno que eventualmente vamos a tener cuando publicamos nuestro sitio web en servicios que ya incluyen variables de entorno o que nos permiten utilizar variables de entorno para manejar configuraciones ya sean puertos, conexiones a bases de datos de forma externa a nuestro código.</li>
+            </ul>
+            <p class="note">Es muy importante que el archivo donde guardemos nuestras variables de entorno nunca se suban a un respositorio en la nube ya que contienen información sensible. Así que nuestro  <span class="ts-3">.gitignore </span>  debemos incluir el archivo <span class="ts-3">.env</span></p>
+            <p class="selected">Existe el paquete <strong>dotenv</strong>  en Node.js, donde podemos almacenar nuestras variables de entorno en un archivo .env y cargarlas en nuestra aplicación usando: <strong>require('node: dotenv').config()</strong>. Antes de la versión de node 20.6 era necesario utilizar el paquete de dotenv para poder acceder a las variables de entorno desde cualquier otro archivo como en app.js o index.js</p>
+            <p class="selected">A partir de la versión 20.6 de Node.js, ya no es necesario utilizar el paquete de <strong>dotenv </strong>  para poder acceder a las variables de entorno desde otro archivo.            </p>
+            <p>Aparte de las variables de entorno de nuestro proyecto <code>process.env    </code>  también nos da acceso a las variables de entorno definidas por nuestro sistema operativo, ya sea windows o linux.</p>
+            <p><span class="ts-1">Ejemplo:</span> Acceder a las variables de entorno de nuestro sistema operativo.    </p>
+            <figure> <img src="../../public/assets/images/global-vs-window/11.png" alt="example"/>
+            </figure>
+            <p><span class="ts-1">Ejemplo:</span> Acceder a las variables de entorno de nuestra applicación web.</p>
+            <ul> 
+              <li><span class="ts-2">Lo primero es crear un archivo en la raiz de nuestro proyecto </span><span class="ts-1">.env</span>, en el cual guardaremos nuestras variables de entorno de configuración.
+                <div>Antes de continuar, es necesario saber que en un archivo <code>.env</code>  los comentarios se ponen con un <span class="ts-1">#</span>.  Sin embargo, no todos los sistemas o bibliotecas de manejo de variables de entorno admiten comentarios en archivos .env. El estándar oficial de archivos .env no incluye soporte para comentarios, pero muchas implementaciones y herramientas, como <span class="ts-3">dotenv</span>, los admiten.</div>
+                <div> </div>
+                <p>La sintáxis para declarar las variables de entorno es la siguiente: </p>
+                <P>Por convención se suele utilizar las nomenclaturas <span class="ts-2">PASCAL_CASE </span>  o <span class="ts-2">UPPER_SNAKE_CASE</span>, nosotros utilizaremos Upper Snake Case</P>
+                <p>Y muy importante no puede existir espacios desde que se declarala variable hasta que se inicializa.    </p>
+                <p> <code>NOMBRE_VARIABLE=valor-de-variable</code>  &rarr; Como podemos ver no existe ningun espacio desde la declaración hasta la inicialización de la variable.              </p>
+              </li>
+              <figure> <img src="../../public/assets/images/global-vs-window/12.png" alt="example"/>
+              </figure>
+              <li>Para acceder a nuestras variables de entorno desde cualquier otro archivo utilizamos <code>process.env.NOMBRE_VARIABLE</code>,  pero como ya vimos anteriormente es necesario instalar el paquete de <span class="ts-1">dotenv</span>  para poder acceder a ellas.
+                <p>Veamos un ejemplo si quieremos acceder a una variable de entorno sin haber instalado  el paquete de  <span class="ts-1">dotenv.    </span></p>
+              </li>
+              <figure> <img src="../../public/assets/images/global-vs-window/13.png" alt="example"/>
+              </figure>
+              <p class="note">En la mayoría de los casos, es común instalar <strong class="ts-3">dotenv</strong>  como una dependencia de desarrollo (devDependency). Esto se debe a que <strong>dotenv generalmente se utiliza solo durante el desarrollo</strong>  para cargar variables de entorno desde un archivo .env. En producción, es posible que las variables de entorno se configuren de manera diferente, por ejemplo, directamente en el servidor de alojamiento.</p>
+              <p class="ts-1">Para instalar una dependencia de desarrollo tenemos los siguiente comandos.</p>
+              <ul>
+                <li><code>npm i nombreDependencia --save-dev    </code></li>
+                <li><code>npm install nombreDependencia --save-dev    </code></li>
+                <li><code>npm i nombreDependencia -D    </code></li>
+                <li><code>npm install nombreDependencia -D    </code></li>
+              </ul>
+              <p>Ya que sabemos como instalar una dependencia de desarrollo instalremos <code>dotenv</code>  como dependecia de desarrollo.</p>
+              <p class="ts-2">npm i dotenv -D     </p>
+              <figure> <img src="../../public/assets/images/global-vs-window/14.png" alt="example"/>
+              </figure>
+              <p>Para poder utilizar dotenv hay que asegurarnos de tener la siguiente línea de código <code>require('dotenv').config() </code>  antes de cualquier intento de acceder a las variables de entorno.</p>
+              <p>Pero como nosotros estamos utilizando el sistema de módulos de ecma ESM, en lugar de utilizar require utilizaremos <code>import dotenv from 'dotenv'</code>  y antes de querer acceder a una variable de entorno necesitamos la línea de  <span class="ts-1">dotenv.config()</span></p>
+              <figure> <img src="../../public/assets/images/global-vs-window/15.png" alt="example"/>
+              </figure>
+              <p>Esto era la forma tradicional de poder acceder a variables de entorno con <code>dotenv</code>  pero a partir de la versión 20.6 de node, ya no es necesario utilizar un modulo externo como dotenv, si no que ya es compatible de forma nativa. Veamos como hacerlo. </p>
+              <p>Necesitamos agregar al ejecutar node en nuestra consola el siguiente comando</p><code> <span class="ts-1">node</span>  --env-file <span class="ts-2">.env </span><span class="ts-3">rutaDeNuestroJS</span></code>
+              <p>Entonces nuestro comando quedaría de la siguiente manera </p><code> <span class="ts-1">node</span>  --env-file <span class="ts-2">.env </span><span class="ts-3">dev/js/app          </span></code>
+              <figure> 
+                <figcaption>Como podemos observar obtenemos el resultado de la variable de entorno sin necesidad de usar dotenv.</figcaption><img src="../../public/assets/images/global-vs-window/16.png" alt="example"/>
+              </figure>
+            </ul>
+          </article>
+          <article id="5"> 
+            <h2>process.argv </h2>
+            <p>Es un array que contiene los argumentos de la línea de comandos que se utilizaron para ejecutar el script de Node.js. Los dos primeros elementos del arreglo son rutas del ejecutable de Node y del script que se está ejecutando, mientras que los elementos restantes son los argumentos pasados al script.</p>
+            <p>Veamos un ejemplo        </p>
+            <figure> <img src="../../public/assets/images/global-vs-window/17.png" alt="example"/>
+            </figure>
+            <ul> 
+              <li>El primer elemento siempre pertenece al binario de node, es decir todo el path donde se encuentra el ejecutable de node.exe </li>
+              <li>El segundo elemento es el path a la ruta del script que estamos ejecutando </li>
+              <li>El resto de los elementos son los argumentos pasados al script</li>
+            </ul>
+            <p>La siguiente imagen nos ayudará a visualizar mejor el resultado.</p>
+            <figure> <img src="../../public/assets/images/global-vs-window/18.png" alt="example"/>
+            </figure>
+          </article>
+          <article id="6"> 
+            <h2>process.cwd Directorio de trabajo actual</h2>
+            <p>Devuelve el directorio de trabajo actual del proceso Node.js. Es el directorio desde el cual se ejecutó el script.   </p>
+            <figure> <img src="../../public/assets/images/global-vs-window/19.png" alt="example"/>
+            </figure>
+            <p>Esto ¿porque es importante? R= Porque hay veces que ejecutamos un script desde una dirección diferente.</p>
+            <p>Veamos el siguiente ejemplo.</p>
+            <p>Nos moveremos a una dirección diferente</p>
+            <figure> <img src="../../public/assets/images/global-vs-window/20.png" alt="example"/>
+            </figure>
+            <p>Si ejecutamos desde esta nueva dirección nuestro script, veremos que nos devuelve un directorio diferente</p>
+            <figure> <img src="../../public/assets/images/global-vs-window/21.png" alt="example"/>
+            </figure>
+            <p class="note">process.cwd devuelve <strong class="ts-3">la ruta desde donde se está ejectando el archivo</strong>,  ya que muchos se confunden y piensan que devuelve la ruta del archivo.</p>
+          </article>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head></head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/public/css/styles.css">
+  <title>Node renovado</title>
+  <script src="../../public/js/scroll-linked-nav.js" defer> </script>
+  <body>       
+    <main class="layout">
+      <div>
+        <div class="sidebar"><a href="/"><img class="logo" src="/public/assets/icons/nodejs.png" alt="logo"></a>
+          <nav class="nav">
+                        <ul class="menu">
+                          <li class="menu__item"><a class="menu__link" href="/public/views/que-es-node.html">¿Qué es node?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/primeros-pasos.html">Primeros pasos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/package-json.html">¿Qué es el package-json?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/global-vs-window.html">Global vs window</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/cjs.html">Sistema de módulos CJS</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/esm.html">Sistema de módulos ESM</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/modulos-nativos.html">Modúlos nativos</a></li>
+                          <li class="menu__item"><a class="active menu__link" href="/public/views/dependencias.html">¿Qué son las dependencias?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/node-modules.html">¿Qué es node modules?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/servidor-web.html">Primer servidor web</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/url.html">¿URL?, parámetros de ruta, módulo URL</a></li>
+                        </ul>
+          </nav>
+        </div>
+      </div>
+      <section class="container-content">
+        <div class="container-title title-sticky">       
+          <h1>¿Qué son las dependencias?</h1>
+        </div>
+        <section class="content">       
+          <article>
+            <h2>Introducción</h2>
+            <p>En este capítulo hablaremos sobre las <span class="ts-1">dependencias</span>,  ¿Qué son las dependencias? y ¿Cuál es la diferencia entre una dependencia de desarrollo y una de producción?</p>
+            <p>Aquí hay palabras que si es la primera vez que las escuchamos seguramente nos confundan, como por ejemplo, que es eso de <strong class="ts-3">desarrollo </strong>  y <strong class="ts-3">producción</strong>,  así que vamos a ir por partes.</p>
+            <p>Lo primero es explicar que es una dependencia.</p>
+          </article>
+          <article>
+            <h2>¿Qué es una dependencia?</h2>
+            <p>Una dependencia es cualquier archivo o cualquier variable que utiliza nuestro proyecto, ya sea en la fase de <strong class="ts-3">desarrollo</strong>  que sería cuando nosotros escribimos el código o en la fase de <strong class="ts-3">producción</strong>  que es cuando ese código final se sube al servidor y la gente lo puede ver y lo puede ejecutar.</p>
+            <p>Entonces en función de eso tenemos 2 entornos</p>
+            <ul>
+              <li>El entorno de <strong class="ts-1">desarrollo </strong>  que es el nuestro y que nadie más ve.</li>
+              <li>El entorno de <strong class="ts-1">producción</strong>  que es el entorno público.</li>
+            </ul>
+            <p>Sabiendo esto, una <span>dependencia</span>  por ejemplo podria ser,
+              <figure> <img src="../../public/assets/images/dependencias/1.png" alt="example"/>
+              </figure>
+            </p>
+            <p>Esto es una dependencia y es una dependencia de producción realmente. Esta la hemos escrito nosotros y tecnicamente es una dependencia de producción,<strong>pero esto no lo tenemos que poner en el <span class="ts-1">package.json</span></strong></p>
+            <p>En el <span class="ts-1">package.json </span><strong>ponemos las dependencias que instalamos de terceros</strong></p>
+            <article>
+              <h3>Ejemplos de dependencias de producción y desarrollo</h3>
+              <ul>
+                <li>Una dependencia de <strong>producción </strong>  podria ser <span class="ts-2">React</span>.  Si nosotros instalamos <span class="ts-2">React</span>,  necesitamos que en el servidor esté ese código para poder utilizarlo.</li>
+                <li>Una dependencia de <strong>desarrollo </strong>  podria ser <span class="ts-2">autoprefixer</span>.  Si nosotros utilizamos <span class="ts-2">autoprefixer</span>  en nuestro desarrollo, es para añadir los prefijos propietarios de los navegadores.</li>
+              </ul>
+            </article>
+            <article>
+              <h2>Instalación de dependencias con npm</h2>
+              <p>Como hemos visto tenemos dependencias de desarrollo y producción, primero veamos los comandos que tenemos para instalar ambas dependencias.</p>
+              <p><strong class="ts-1">COMANDOS PARA INSTALAR DEPENDENCIAS DE PRODUCCIÓN (dependencies)</strong></p>
+              <ul> 
+                <li>Para instalar una dependencia de producción (dependencies) solo nos basta con poner
+                  <p><code>npm install nomDependencia</code></p>
+                  <p>o la versión abreviada</p><code>npm i nomDependencia </code>
+                </li>
+                <li>En las versiones más antiguas de npm era necesario utilizar el prefijo
+                  <p><code>npm install nomDependencia --save</code></p>
+                  <p>o la versión abreviada </p>
+                  <p><code>npm i nomDependencia --save     </code></p>
+                </li>
+              </ul>
+              <p><strong class="ts-1">COMANDOS PARA INSTALAR DEPENDENCIAS DE PRODUCCIÓN (devDependencies)</strong></p>
+              <ul> 
+                <li><code>npm i nombreDependencia --save-dev</code></li>
+                <li><code>npm install nombreDependencia --save-dev</code></li>
+                <li><code>npm i nombreDependencia -D</code></li>
+                <li><code>npm install nombreDependencia -D</code></li>
+              </ul>
+              <div class="note"> 
+                <p>Cuando tenemos un proyecto y queremos instalar sus dependencias solo utilizamos el comando </p><strong>npm install </strong>o <strong>npm i </strong>y de esta manera se instalarán sus dependencias de desarrollo y producción.        
+                <p>Si solo queremos instalar las dependencias de producción tenemos el comando </p>
+                <p><strong>npm i --production</strong></p>
+              </div>
+              <p>De momento lo que vamos hacer es instalar una aplicación que basicamente solo sirve para colorear la consola.</p>
+              <ul>
+                <li>Primero escribiremos nuesto código JS en app.js para ver lo que queremos conseguir sin esa libreria.
+                  <figure> 
+                    <figcaption>código simplemente escribe I am Cyan en color cyan.</figcaption><img src="../../public/assets/images/dependencias/2.png" alt="example"/>
+                  </figure>
+                  <figure> 
+                    <figcaption>Ejecutamos ese código.</figcaption><img src="../../public/assets/images/dependencias/3.png" alt="example"/>
+                  </figure>
+                </li>
+                <li>Si queremos que un array de números se imprima en color cyan, tendremos que hacer lo siguiente.
+                  <figure> <img src="../../public/assets/images/dependencias/4.png" alt="example"/>
+                  </figure>
+                  <figure> 
+                    <figcaption>Como podemos ver los números se imprimen en color cyan.</figcaption><img src="../../public/assets/images/dependencias/5.png" alt="example"/>
+                  </figure>
+                </li>
+                <li>El tener que utilizar todo este código (<code>'\x1b[36m%s\x1b[0m', number</code>)  es un poco confuso y complejo de aprender.<br>  Para eso existe una libreria que se llama <span class="ts-2">chalk</span>  que lo que hace es simplificar esto.
+                    Así que vamos a instalar esa libreria.
+                  <p><a class="link" href="https://www.npmjs.com/package/chalk" target="_blank">https://www.npmjs.com/package/chalk/a</a></p>
+                  <p>Nos dirige a la libreria y en el lateral izquierdo nos sale el comando <code>npm i chalk</code>  que es el equivalente de <code>npm install chalk                        </code></p>
+                  <figure> <img src="../../public/assets/images/dependencias/6.png" alt="example"/>
+                  </figure>
+                  <figure> 
+                    <figcaption>Si ejecutamos ese comando se nos instalará la libreria</figcaption><img src="../../public/assets/images/dependencias/7.png" alt="example"/>
+                  </figure>
+                  <p>Si vamos al archivo <span class="ts-1">package.json</span>  podemos ver que nos pone <code>dependencies</code>,  esto significa que es una <strong class="ts-2">dependencia de producción.</strong></p>
+                  <p>Si nos apareciera <code>devDependencies</code>  serían <strong class="ts-2">dependencia de desarrollo</strong>.</p>
+                  <p>Pero como esta libreria en teoría la vamos a utilizar en producción solo pone <code>dependencies</code>.   </p>
+                  <p>Entonces sabemos que la dependencia se llama <span class="ts-3">chalk</span>  y que en este caso está en la versión <code>5.2.0</code>  que es lo que ya comentamos sobre el <code>semantic versioning</code>.</p>
+                  <p>Si en algún momento sale la versión 6 es posible que no sea compatible con esta versión y tengamos que actualizar, pero esos ya son temas más avanzados de <code>node</code>  y de versiones y básicamente de npm que daria para un curso único de NPM.</p>
+                  <figure> <img src="../../public/assets/images/dependencias/8.png" alt="example"/>
+                  </figure>
+                </li>
+                <li>Para utilizar la libreria en su página tiene un apartado de como utilizarla.                    
+                  <figure> 
+                    <figcaption>Como podemos ver la página nos da los comandos para utilizar la libreria en este caso en codeESM.</figcaption><img src="../../public/assets/images/dependencias/9.png" alt="example"/>
+                  </figure>
+                </li>
+                <li>En este caso la libreria nos da los comandos con <code>ESM</code>,  pero hay muchas librerias que utilizan <code>CommonJS</code>. 
+                  <p>Así quedaría con <code>CommonJS </code><code class="ts-1">const chalk = require ('chalk')</code></p>
+                  <p>Esto hace que en la constante <span class="ts-3">chalk</span>  nos guarde toda la información que contiene la libreria.</p>
+                  <p>Pero nosotros utilizaremos la nueva versión ya que si no no funcionaria.</p>
+                  <p> <span class="ts-1">chalk</span>  en su versión 5 para que se pueda utilizar con <code>ESM</code>  necesitamos agregar en el <span class="ts-2">package.json</span><code>"type": "module"</code>. </p>
+                  <figure> 
+                    <figcaption>&quot;Agregamos type&quot;: &quot;module&quot; al package.json</figcaption><img src="../../public/assets/images/dependencias/10.png" alt="example"/>
+                  </figure>
+                  <figure> 
+                    <figcaption>Ejecutamos los comandos</figcaption><img src="../../public/assets/images/dependencias/11.png" alt="example"/>
+                  </figure>
+                  <figure> 
+                    <figcaption>Podemos ver codeHello world en color cyan.</figcaption><img src="../../public/assets/images/dependencias/12.png" alt="example"/>
+                  </figure>
+                  <figure> 
+                    <figcaption>Tambien podemos cambiar el color, a rojo por ejemplo.</figcaption><img src="../../public/assets/images/dependencias/13.png" alt="example"/>
+                  </figure>
+                  <figure> <img src="../../public/assets/images/dependencias/14.png" alt="example"/>
+                  </figure>
+                </li>
+                <li>De esta manera es muchisimo más comodo poner <code>chalk.red</code>  que tener que buscar o aprenderse el código que equivale a rojo o a cualquier otro color.</li>
+              </ul>
+              <p>Esto es una libreria quizás muy tonta y nada útil pero hemos visto paso por paso como requerimos una libreria, como la instalamos y como la usamos.</p>
+            </article>
+          </article>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

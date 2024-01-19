@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head></head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/public/css/styles.css">
+  <title>Node renovado</title>
+  <script src="../../public/js/scroll-linked-nav.js" defer> </script>
+  <body>       
+    <main class="layout">
+      <div>
+        <div class="sidebar"><a href="/"><img class="logo" src="/public/assets/icons/nodejs.png" alt="logo"></a>
+          <nav class="nav">
+                        <ul class="menu">
+                          <li class="menu__item"><a class="menu__link" href="/public/views/que-es-node.html">¿Qué es node?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/primeros-pasos.html">Primeros pasos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/package-json.html">¿Qué es el package-json?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/global-vs-window.html">Global vs window</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/cjs.html">Sistema de módulos CJS</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/esm.html">Sistema de módulos ESM</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/modulos-nativos.html">Modúlos nativos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/dependencias.html">¿Qué son las dependencias?</a></li>
+                          <li class="menu__item"><a class="active menu__link" href="/public/views/node-modules.html">¿Qué es node modules?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/servidor-web.html">Primer servidor web</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/url.html">¿URL?, parámetros de ruta, módulo URL</a></li>
+                        </ul>
+          </nav>
+        </div>
+      </div>
+      <section class="container-content">
+        <div class="container-title title-sticky">       
+          <h1>¿Qué es node modules?</h1>
+        </div>
+        <section class="content">       
+          <article>
+            <p>En este capítulo hablaremos sobre la carpeta <strong>node_modules</strong>
+              <figure> <img src="../../public/assets/images/node-modules/1.png" alt="example"/>
+              </figure>que apareció cuando instalamos <span class="ts-2">chalk </span>con el comando <code>npm i chalk.</code>
+            </p>
+            <p>Si desplegamos esta carpeta            
+              <figure> <img src="../../public/assets/images/node-modules/2.png" alt="example"/>
+              </figure>tenemos la carpeta <span class="ts-2">chalk </span>pero en otros casos puede que haya carpetas que en un principio no sabemos de donde han salido.
+            </p>
+            <p>
+              En este capítulo se explicará de donde sale cada una de esas carpetas extras y por que al empezar el proyecto no
+              teníamos ni una.
+            </p>
+            <p>Cuando nosotros hicimos <code>npm i chalk </code>lo que hicimos fue instalar un <strong>módulo </strong>que en el
+              fondo es un <strong>módulo </strong>como el nuestro más complejo evidentemente, pero en principio es un
+              proyecto exactamente igual que el que estamos creando nosotros.
+            </p>
+            <p>Si desplegamos la carpeta <span class="ts-2">chalk </span>lo que miramos aquí es otro <span class="ts-1">package.json            </span>
+              <figure> <img src="../../public/assets/images/node-modules/3.png" alt="example"/>
+              </figure>Si lo abrimos, podemos ver que nos agrega unas <strong>dependencias de desarrollo            </strong>
+              <figure> <img src="../../public/assets/images/node-modules/4.png" alt="example"/>
+              </figure>
+            </p>
+            <p>
+               Si en dado caso que el módulo que hayamos instalado tuviera <strong>dependencias de producción</strong>, node automáticamente crea las carpetas de esas <span class="ts-1">dependencias</span></p>
+            <p><span class="ts-1">Ejemplo de una versión antigua de </span><strong class="ts-3">chalk </strong><span class="ts-1">que agrega dependencias de producción</span></p>
+            <p>Como podemos ver se agregan los paquetes de esas dependencias.            
+              <figure> <img src="../../public/assets/images/node-modules/5.png" alt="example"/>
+              </figure>
+            </p>
+            <div class="note">Como punto importante cuando nosotros instalamos un  <strong>módulo </strong>lo que hace es leer las <strong class="ts-3">dependencias</strong>, y una vez que se ha instalado la dependencia que solicitamos, lo
+              siguiente que hace node, es <strong>leer las dependencias de lo que hemos instalado en el caso de que las tenga</strong>. En nuestro caso no
+              tiene <strong>dependencias de producción </strong>y solo de <strong>desarrollo</strong>.
+            </div>
+            <div class="note">Esto implica que cuando nosotros hacemos un <code class="ts-3">npm install </code>lo único que se instalan son las <strong>dependencias de producción </strong>y no las de      <strong>desarrollo</strong>.</div>
+            <p class="note">Un ejemplo es el <strong class="ts-3">package.json </strong>de la carpeta <strong>node_modules</strong>, podemos
+              mirar que solo tiene <strong>dependencias de desarrollo </strong>y ninguna de esas dependencias ha agregado un
+              paquete de cada una de ellas.
+              <figure> 
+                <figcaption>Esto es algo que el que creó este módulo necesitaba de esas dependencias de desarrollo para desarrollar el módulo pero no para ejecutarlo.</figcaption><img src="../../public/assets/images/node-modules/6.png" alt="example"/>
+              </figure>
+            </p>
+            <p>Entonces esta es la principal diferencia que necesitamos diferenciar sobre <strong class="ts-1">dependencia de desarrollo </strong>y <strong class="ts-1">dependencias de producción</strong>.</p>
+            <p>
+              Esto es un poco complejo de entender al principio, pero básicamente lo podemos ver como un árbol, cada rama va
+              depender o no de otras ramas, en el caso de que dependa de una rama más pues nuestro <code>npm </code>las va
+              recorrer hasta que todas las <strong>dependencias de producción </strong>necesarias estén instaladas.
+            </p>
+            <p>Esto es porque todos los paquetes que nosotros vamos instalando, no instalamos la versión de <strong>desarrollo </strong>de ese paquete, sino que instalamos la versión de   <strong>producción</strong>.</p>
+            <p>La versión de producción no necesita de las <strong>devDependencies</strong>, esas dependencias solo se utilizan
+              en desarrollo.
+            </p>
+            <p>Esto cuesta un poco digerirlo al principio, pero lo que queremos dar a entender es ver como funciona <span class="ts-2">node_modules </span>y que lo que tenemos aquí dentro normalmente no tenemos que tocarlo, pero
+              tampoco hay que ignorar esta carpeta.
+            </p>
+            <p>Entonces simplemente es que entendamos lo que pasa cuando hacemos un <code>npm install </code>y por qué aquí en
+              la carpeta <span class="ts-2">node_modules </span>aparecerán más carpetas.
+            </p>
+            <p class="nota"><strong></strong>Esto también implica que <span class="ts-2">node_modules </span>es una carpeta que nunca tenemos que subir a un
+              repositorio y que nunca tenemos que compartir, no porque haya contenido sensible, ni privado, ni nada de eso,
+              sino porque esta carpeta no hace falta que se comparta y siempre es la carpeta que más pesa del proyecto.
+            </p>
+            <p>Así que cuando queremos descargar un proyecto de <strong>GitHub </strong>y hacer algo con ese proyecto, lo
+              descargamos y hacemos un <code>npm install </code>y ese <span class="ts-2">npm install </span>va leer el <span class="ts-1">package.json </span>y me va instalar todo lo que necesitamos para trabajar con ese proyecto.
+            </p>
+            <p>Así que recordar que la carpeta <span class="ts-2">package.json </span>incluso aunque copiemos el proyecto de un
+              sitio a otro, esta carpeta la podemos borrar y lo único que tenemos que hacer para volver a tenerla es ejecutar <code>npm install.</code>
+            </p>
+            <h2>¿Qué es el package-lock.json?</h2>
+            <p>Ya para terminar este capítulo tenemos el archivo <span class="ts-2">package-lock.json </span>, se encarga de
+              mantener un seguimiento de las versiones que estamos utilizando y de qué módulos dependen esas dependencias.
+            </p>
+            <p>En términos generales esto es un historial de los cambios que hemos sufrido en <span class="ts-1">package.json </span>y en <strong>node_modules </strong>para que siempre tengamos las mismas
+              versiones instaladas, aunque nos llevemos el proyecto a otro equipo o lo descargue otra persona.
+            </p>
+          </article>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

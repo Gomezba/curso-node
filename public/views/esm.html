@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head></head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/public/css/styles.css">
+  <title>Node renovado</title>
+  <script src="../../public/js/scroll-linked-nav.js" defer> </script>
+  <body>       
+    <main class="layout">
+      <div>
+        <div class="sidebar"><a href="/"><img class="logo" src="/public/assets/icons/nodejs.png" alt="logo"></a>
+          <nav class="nav">
+                        <ul class="menu">
+                          <li class="menu__item"><a class="menu__link" href="/public/views/que-es-node.html">¿Qué es node?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/primeros-pasos.html">Primeros pasos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/package-json.html">¿Qué es el package-json?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/global-vs-window.html">Global vs window</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/cjs.html">Sistema de módulos CJS</a></li>
+                          <li class="menu__item"><a class="active menu__link" href="/public/views/esm.html">Sistema de módulos ESM</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/modulos-nativos.html">Modúlos nativos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/dependencias.html">¿Qué son las dependencias?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/node-modules.html">¿Qué es node modules?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/servidor-web.html">Primer servidor web</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/url.html">¿URL?, parámetros de ruta, módulo URL</a></li>
+                        </ul>
+          </nav>
+        </div>
+      </div>
+      <section class="container-content">
+        <div class="container-title title-sticky">       
+          <h1>Sistema de módulos ESM</h1>
+        </div>
+        <section class="content">       
+          <nav class="container-submenu">
+            <ul class="submenu"> 
+              <li class="submenu__item"><a class="submenu__link" href="#1">¿Qué es ESM?</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#2">Diferencias entre CJS y ESM</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#3">¿Como especificar ESM en Node?</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#4">Exportación e Importación</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#5">Exportación e Importación por defecto</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#6">Exportación e Importación de objetos por default </a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#7">Cambiando el nombre de las exportaciones con un alias (as)</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#8">Diferencias importantes en ESM</a></li>
+            </ul>
+          </nav>
+          <article id="1"> 
+            <h2>¿Qué es ESM?</h2>
+            <p> <span class="ts-1">ESM (ECMAScript Modules)</span>: Es el sistema de módulos incorporado en el estándar ECMAScript (ES6 y versiones posteriores) y es compatible con JavaScript moderno tanto en el navegador como en entornos de servidor como Node.js. A diferencia de CommonJS, los módulos ESM se cargan de forma 
+              <spam class="ts-3">asíncrona </spam>  y su estructura incluye <code>import</code>  para importar módulos y <code>export</code>  para exportar valores desde el módulo.
+            </p>
+            <p> Los módulos ESM (ECMAScript Modules) son nativos de JavaScript y no requieren Node.js para ser utilizados. Los módulos ESM son una especificación de módulo incorporada en la especificación ECMAScript y se pueden utilizar directamente en los navegadores web modernos que soportan esta funcionalidad, como Chrome, Firefox, Edge, Safari y otros.</p>
+            <p>Con los módulos ESM, se pueden definir y exportar objetos, funciones y variables desde un módulo, y luego importarlos y utilizarlos en otros módulos utilizando la sintaxis import y export. Los módulos ESM proporcionan una forma más fácil y simple de modularizar el código en una aplicación y mejorar su legibilidad, mantenimiento y escalabilidad.</p>
+            <p>Aunque los módulos ESM se han vuelto cada vez más populares en la comunidad de JavaScript, todavía hay algunas limitaciones y problemas de compatibilidad que pueden requerir el uso de herramientas de compilación como Babel y Webpack para convertir los módulos ESM en un formato compatible con navegadores más antiguos o versiones anteriores de Node.js.</p>
+            <p>Módulos de ECMAScript (ESM): Es el estándar oficial de JavaScript para la creación de módulos, introducido en ES6. Se definen mediante la sintaxis import y export.    </p>
+          </article>
+          <article id="2"> 
+            <h2>Diferencias entre CJS y ESM </h2>
+            <p class="ts-1">Síncrono vs. Asíncrono:
+              <ul>
+                <li> <span class="ts-2">CommonJS (CJS)</span>: La carga de módulos es síncrona. Los módulos se cargan y ejecutan secuencialmente.</li>
+                <li> <span class="ts-3">ECMAScript Modules (ESM)</span>: La carga de módulos es asíncrona por defecto, lo que significa que los módulos pueden cargarse de forma asincrónica.</li>
+              </ul>
+            </p>
+            <p class="ts-1">Extensión de archivos al importar módulos locales:
+              <ul> 
+                <li> <span class="ts-2">CommonJS (CJS)</span>: Cuando importamos módulos locales no es necesaria la extensión.</li>
+                <li> <span class="ts-3">ECMAScript Modules (ESM)</span>: Al importar módulos locales es obligatorio especificar la extensión.       </li>
+              </ul>
+            </p>
+            <p class="ts-1">Importación/Exportación:
+              <ul>
+                <li> <span class="ts-2">CommonJS (CJS)</span>: Utiliza require() para importar módulos y module.exports o exports para exportar valores.</li>
+                <li> <span class="ts-3">ECMAScript Modules (ESM)</span>: Utiliza import para importar módulos y export para exportar valores.</li>
+              </ul>
+            </p>
+            <p class="ts-1">Evaluación en Tiempo de Ejecución:
+              <ul>
+                <li> <span class="ts-2">CommonJS (CJS)</span>: La evaluación y ejecución del código del módulo ocurre durante el tiempo de ejecución.</li>
+                <li> <span class="ts-3">ECMAScript Modules (ESM)</span>: La evaluación del código del módulo ocurre durante el tiempo de importación, incluso antes de la ejecución.</li>
+              </ul>
+            </p>
+            <p class="ts-1">Compatibilidad con Variables Dinámicas:
+              <ul>
+                <li> <span class="ts-2">CommonJS (CJS)</span>: Permite la importación de módulos de manera dinámica utilizando require() en cualquier punto del código.</li>
+                <li> <span class="ts-3">ECMAScript Modules (ESM)</span>: La importación de módulos es estática, lo que significa que las importaciones deben ser declaradas en la parte superior del archivo y no pueden depender de condiciones o variables dinámicas.</li>
+              </ul>
+            </p>
+            <p class="ts-1">Contexto del Módulo:
+              <ul>
+                <li> <span class="ts-2">CommonJS (CJS)</span>: El module objeto está disponible para acceder a información sobre el módulo actual.</li>
+                <li> <span class="ts-3">ECMAScript Modules (ESM)</span>: El import.meta objeto proporciona información sobre el módulo actual.</li>
+              </ul>
+            </p>
+            <p class="ts-1">Compatibilidad con el Uso en el Navegador:
+              <ul>
+                <li> <span class="ts-2">CommonJS (CJS)</span>: Diseñ2do principalmente para entornos de servidor como Node.js y no es compatible de forma nativa con navegadores web.</li>
+                <li> <span class="ts-3">ECMAScript Modules (ESM)</span>: Diseñado para ser compatible tanto con entornos de servidor como con navegadores web.</li>
+              </ul>
+            </p>
+            <p class="ts-1">Extensión de Archivo:
+              <ul>
+                <li> <span class="ts-2">CommonJS (CJS)</span>: Los archivos de módulos generalmente utilizan la extensión .js.</li>
+                <li> <span class="ts-3">ECMAScript Modules (ESM)</span>: Los archivos de módulos pueden utilizar la extensión .mjs o .js con la configuración adecuada.</li>
+              </ul>
+            </p>
+            <p class="ts-1">Formas de Importación:
+              <ul>
+                <li> <span class="ts-2">CommonJS (CJS)</span>: Importa un objeto que representa el módulo completo.</li>
+                <li> <span class="ts-3">ECMAScript Modules (ESM)</span>: Importa solo lo que se necesita, permitiendo importaciones más específicas.</li>
+              </ul>
+            </p>
+            <p class="ts-1">Compatibilidad con Variables Globales:
+              <ul>
+                <li> <span class="ts-2">CommonJS (CJS)</span>: Puede afectar al objeto global al agregar propiedades a global.</li>
+                <li> <span class="ts-3">ECMAScript Modules (ESM)</span>: El ámbito del módulo es local y no afecta directamente al objeto global.</li>
+              </ul>
+            </p>
+          </article>
+          <article id="3">
+            <h2>¿Como especificar ESM en Node?</h2>
+            <p>Para utilizar ESM nuestra aplicación con Node.js es necesario especificar en nuestro <span class="ts-1">package-json  </span>  el <span class="ts-2">"type": "module"</span>  para especificarle a Node.js que nuestro sistema de modulos será ESM.</p>
+            <figure> <img src="../../public/assets/images/esm/1.png" alt="example"/>
+            </figure>
+          </article>
+          <article id="4"> 
+            <h2>Exportación e Importación </h2>
+            <figure> 
+              <figcaption>Exportación</figcaption><img src="../../public/assets/images/esm/2.png" alt="example"/>
+            </figure>
+            <figure> 
+              <figcaption>Importación</figcaption><img src="../../public/assets/images/esm/3.png" alt="example"/>
+            </figure>
+          </article>
+          <article id="5"> 
+            <h2>Exportación e Importación por defecto</h2>
+            <p>En el sistema de módulos ESM se permite exportar algun valor por <span class="ts-1">default </span>  solo que hay que tener en cuenta que esto no permite <span class="ts-1">destructuring</span>  por lo cual no podemos utilizar { }, cuando importemos el valor por default se tiene que poner sin { } ya que no permite destructuración. </p>
+            <p>Una exportación por defecto es común en <code>React</code>  ya que cuando exportamos por default, normalmente exportamos el componente.       </p>
+            <p>Cuando importemos la función o cualquier valor podemos ocupar cualquier nombre de variable, ya que por defecto ya sabemos que por default se esta exportando el valor que nosotros especificamos.</p>
+            <p class="ts-1">Por último solo puede existir una exportación por default por módulo.</p>
+            <p>Su sintáxis básica es: <code>export default valorAExportar</code></p>
+            <figure> 
+              <figcaption>Exportación por default</figcaption><img src="../../public/assets/images/esm/6.png" alt="example"/>
+            </figure>
+            <figure> 
+              <figcaption>Importación por default</figcaption><img src="../../public/assets/images/esm/7.png" alt="example"/>
+            </figure>
+            <p class="ts-1">Tambien es posible convivir con la exportación normal y por default.</p>
+            <figure> 
+              <figcaption>Exportación normal y por default</figcaption><img src="../../public/assets/images/esm/8.png" alt="example"/>
+            </figure>
+            <figure> 
+              <figcaption>Importación normal y por default</figcaption><img src="../../public/assets/images/esm/9.png" alt="example"/>
+            </figure>
+          </article>
+          <article id="6"> 
+            <h2>Exportación e Importación de objetos por default </h2>
+            <p>Tambien es posible exportar por default un objeto con todos los valores que queramos que sean por defecto.</p>
+            <p>Esto es posible, pero hay que recordar que la exportación por defecto no permite destructuring, por lo cual no se recomienda, ya que cuando exportamos un objeto normalmente queremos destructurar.</p>
+            <figure> 
+              <figcaption>Exportación de objetos por default</figcaption><img src="../../public/assets/images/esm/11.png" alt="example"/>
+            </figure>
+            <figure> 
+              <figcaption>Importación de objetos por default</figcaption><img src="../../public/assets/images/esm/10.png" alt="example"/>
+            </figure>
+          </article>
+          <article id="7"> 
+            <h2>Cambiando el nombre de las exportaciones con un alias (as)</h2>
+            <p>Si deseamos cambiar el nombre de una exportación tenemos que poner un alias a esa importación, por ejemplo si ya importamos una exportación y deseamos por alguna razón volver a llamar esa exportación lo que podemos hacer es utilizar un alias para cambiarle el nombre y poder ocupar esa misma exportación. Ya que si no hacemos esto nos arroja un error que la variable ya ha sido declarada.</p>
+            <figure> 
+              <figcaption>Ya tenemos exportadas las funciones</figcaption><img src="../../public/assets/images/esm/12.png" alt="example"/>
+            </figure>
+            <figure> 
+              <figcaption>De esta manera cambiamos el nombre de una exportación con un alias.</figcaption><img src="../../public/assets/images/esm/13.png" alt="example"/>
+            </figure>
+            <p>Tambien podemos hacer una importación total * con un alias (as). Supongamos que tenemos 20 funciones exportadas solo con la palabra reservada exports y no se está ocupando un export default donde se exportan esas 20 funciones como objetos, entonces no queremos estar haciendo lo siguiente:</p><code>import {funcion1,funcion2,funcion3,...}</code>
+            <p>Lo que podemos hacer y es muy común verlo es lo siguiente:</p><code>import * as operaciones from './operaciones.js'</code>
+            <figure> 
+              <figcaption>Supongamos que tenemos 20 funciones exportadas con export</figcaption><img src="../../public/assets/images/esm/12.png" alt="example"/>
+            </figure>
+            <figure> 
+              <figcaption>De esta manera importamos el total de todas las exportaciones y le asignamos un alias.</figcaption><img src="../../public/assets/images/esm/14.png" alt="example"/>
+            </figure>
+          </article>
+          <article id="8"> 
+            <h2>Diferencias importantes en ESM </h2>
+            <p>A comparación del sistema de módulos CJS, cuando utilizamos ESM las variables <code>__filename</code>  y <code>__dirname</code>  no están disponibles. 
+                En su lugar tenemos la palabra clave <span class="ts-1">import</span>  que no solo sirve para importar, si no que a su vez es un objeto que contiene una propiedad <code>meta.url    </code>
+            </p>
+            <p>Cuando ejecutamos en consola <code>import.meta.url</code>  lo que obtenemos es la ruta del módulo hasta el archivo,
+                vendria siendo el sustituto a <span class="ts-2">__filename    </span>
+            </p>
+            <figure> <img src="../../public/assets/images/esm/4.png" alt="example"/>
+            </figure>
+            <p>Tambien tenemos la opción de crear nuestras propias variables <code>__filename </code>  y <code>__dirname</code>.</p>
+            <figure> <img src="../../public/assets/images/esm/5.png" alt="example"/>
+            </figure>
+            <p class="ts-1">Otra diferencia importante es que ESM no permite importar un JSON como lo hace CJS.</p>
+            <p>Si intentamos importar un JSON con ESM obtendremos un error.</p>
+            <figure> 
+              <figcaption>Aquí tenemos nuestro JSON</figcaption><img src="../../public/assets/images/esm/15.png" alt="example"/>
+            </figure>
+            <p>Ahora si intentamos importar el JSON veremos el error.</p>
+            <figure> 
+              <figcaption>Como podemos ver nos da un error</figcaption><img src="../../public/assets/images/esm/16.png" alt="example"/>
+            </figure>
+            <p>Si queremos importar un JSON con Esm, lo que podemos hacer es crear nuestra propia función <code>require()</code>  para poder importar un JSON, ya que hay que recordar que en CJS es posible importar un JSON, pero para lograrlo con ESM necesitamos crear nuestro propio <span class="ts-1">require().</span></p>
+            <h3>Crear nuestra función require para importar un JSON con ESM</h3>
+            <p>Para poder crear nuestra función require() necesitamos el módulo nativo o interno <code>module.</code></p>
+            <p>El objeto module es un objeto global en Node.js que proporciona información sobre el módulo actual. Cada archivo de JavaScript en Node.js es considerado un módulo, y el objeto module proporciona información y funcionalidades relacionadas con ese módulo específico.</p>
+            <p>El objeto module incluye propiedades como exports (para exportar variables o funciones), filename (la ruta completa al archivo del módulo), y require (una referencia a la función require que puede utilizarse para cargar otros módulos).        </p>
+            <p>El objeto module, nos proporciona un método llamado <code>createRequire(path)</code></p>
+            <p> <span class="ts-1">createRequire():</span>  Es un método del objeto module que se utiliza para crear una función require específica para un módulo en particular. Toma un solo argumento: la URL del módulo que está utilizando actualmente.    </p>
+            <p>Sintáxis </p><code>const require = createRequire(import.meta.url)</code>
+            <p>La función createRequire() crea y devuelve una nueva función require que está vinculada al contexto del módulo actual. La función require generada se puede utilizar para cargar módulos CommonJS dentro de un módulo ESM.</p>
+            <figure> 
+              <figcaption>De esta manera ya podemos importar un JSON con ESM.</figcaption><img src="../../public/assets/images/esm/17.png" alt="example"/>
+            </figure>
+          </article>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

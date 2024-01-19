@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head></head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/public/css/styles.css">
+  <title>Node renovado</title>
+  <script src="../../public/js/scroll-linked-nav.js" defer> </script>
+  <body>       
+    <main class="layout">
+      <div>
+        <div class="sidebar"><a href="/"><img class="logo" src="/public/assets/icons/nodejs.png" alt="logo"></a>
+          <nav class="nav">
+                        <ul class="menu">
+                          <li class="menu__item"><a class="menu__link" href="/public/views/que-es-node.html">¿Qué es node?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/primeros-pasos.html">Primeros pasos</a></li>
+                          <li class="menu__item"><a class="active menu__link" href="/public/views/package-json.html">¿Qué es el package-json?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/global-vs-window.html">Global vs window</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/cjs.html">Sistema de módulos CJS</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/esm.html">Sistema de módulos ESM</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/modulos-nativos.html">Modúlos nativos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/dependencias.html">¿Qué son las dependencias?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/node-modules.html">¿Qué es node modules?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/servidor-web.html">Primer servidor web</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/url.html">¿URL?, parámetros de ruta, módulo URL</a></li>
+                        </ul>
+          </nav>
+        </div>
+      </div>
+      <section class="container-content">
+        <div class="container-title title-sticky">       
+          <h1>¿Qué es el package json?</h1>
+        </div>
+        <section class="content">       
+          <section>
+            <article>
+              <p>En este capítulo, hablaremos sobre el <span class="ts-1">package.json </span>   que es una pieza muy importante de nuestro proyecto, es tan importante que si ese archivo no existe <strong>no hay proyecto </strong>  , así de importante es esta pieza.</p>
+              <p>Para generar un <span class="ts-1">package.json </span>  tenemos varias opciones.</p>
+              <ul>
+                <li>Una sería crearlo nosotros directamente</li>
+                <li>La segunda es con una herramienta que nos ayuda a crearlo</li>
+              </ul>
+              <p>Así que ocuparemos esa herramienta, escribimos dentro de la consola <code>npm init.</code></p>
+              <p>Estas líneas quieren decir inicia un <strong>node package manager.</strong></p>
+              <p>Nos saldrán las siguientes preguntas:</p>
+              <div>
+                <figure>
+                  <figcaption>Nombre del proyecto que viene dentro de paréntesis y es el valor que toma por defecto.</figcaption><img src="../../public/assets/images/package-json/1.png" alt="node">
+                </figure>
+                <p>Aquí es la importancia de escribir el nombre de la carpeta del proyecto sin <strong>mayúsculas y espacios, ya que si </strong><span class="ts-1">package name </span>  tiene mayúsculas, dígitos o espacios en blancos <strong>se considera un nombre de proyecto  </strong><span class="ts-2">incorrecto</span>.</p>
+                <p>Por lo tanto el nombre del proyecto debe ir siempre sin mayúsculas, dígitos y espacios en blancos.</p>
+                <figure>
+                  <figcaption>versión</figcaption><img src="../../public/assets/images/package-json/2.png" alt="node">
+                </figure>
+                <p>Esto se utiliza principalmente en proyectos que van escalando poco a poco y que se van actualizando para saber que tipo de versión es y cuanto cambio habido en este proyecto.</p>
+                <p>El número de versión del programa suele ir definido por algo que se denomina <span class="ts-1">semantic versioning</span></p>
+                <p>El sistema de versionado que se sigue en la mayoria de proyectos es el siguiente: <span class="ts-1">MAJOR.MINOR.PATCH </span>
+                  <div>En la versión tenemos (1.0.0) = (MAJOR.MINOR.PATCH)</div>
+                </p>
+                <ul>
+                  <li>El utimo valor ( <strong>PATCH </strong>  ) en este caso el 0: Es simplemente una correción muy pequeñita de algo que no funcionaba.</li>
+                  <li>El segundo valor ( <strong>MINOR </strong>  ) en este caso es 0: Es un cambio menor, que si tenemos otra versión no debería causar conflictos.</li>
+                  <li>El primer valor (<strong>MAJOR</strong>  ) en este caso 1: Lo que hace es un cambio gordo en la aplicación, eso implica que si estamos con la versión 1 y actualizan a la versión 2 es posible que sea incompatible y que nuestro proyecto se rompa.</li>
+                </ul>
+                <p>Esto es algo que debemos tener en cuenta en un futuro si escribimos una libreria y la subimos a node y ese tipo de cosas, pero viene bien que nos vaya sonando el nombre de <span class="ts-1">semantic versioning </span>  que viene siendo un versionado semántico.</p>
+              </div>
+              <figure>
+                <figcaption> description: Pondremos la descripción de nuestro proyecto, puede ser lo que hace la libreria, para que sirve y ese tipos de cosas.</figcaption><img src="../../public/assets/images/package-json/3.png" alt="node">
+              </figure>
+              <figure>
+                <figcaption>entry point:</figcaption><img src="../../public/assets/images/package-json/4.png" alt="node">
+              </figure>
+              <p>Si hemos trabajado con <span class="ts-1">webpack </span>  o con algún<strong>framework </strong>  el nombre nos sonará y si es la primera vez que tocamos algo de esto, el <span class="ts-3">entry point </span>  es el punto de inicio de nuestra aplicación.</p>
+              <p>Si fuera una página web el  <span class="ts-3">entry point </span>  sería nuestro <code>index.html </code>  , es decir de donde comienza todo.</p>
+              <p>Normalmente en las aplicaciones de node existe un archivo que se llama <span class="ts-2">app.js</span>  que es de donde arranca todo, que es donde está el servidor, las dependencias, digamos que el punto de partida, y desde ahí se accede a todo lo demás.</p>
+              <figure>
+                <figcaption>test command: </figcaption><img src="../../public/assets/images/package-json/5.png" alt="node">
+                <p>Simplemente es el comando si vamos a utilizar test, aquí iría ese comando.</p>
+              </figure>
+              <figure>
+                <figcaption>git repository:</figcaption><img src="../../public/assets/images/package-json/6.png" alt="node">
+              </figure>
+              <p> <span class="ts-3">git repository </span>  quiere decir, ¿donde? tenemos el repositorio de esa aplicación.</p>
+              <figure>
+                <figcaption>keywords:</figcaption><img src="../../public/assets/images/package-json/7.png" alt="node">
+              </figure>
+              <p>Serian las palabras claves por las que queremos que se coloque nuestro proyecto, si por ejemplo estamos haciendo una libreria que trata los <strong>strings </strong>  pues en <span class="ts-3">keywords </span>  pondríamos string o cosas así para que la gente que esté buscando una libreria para tratar cadenas de caracteres pues nos encuentre por esas palabras.</p>
+              <figure>
+                <figcaption>author: Evidentemente iría el nombre del autor.</figcaption><img src="../../public/assets/images/package-json/8.png" alt="node">
+              </figure>
+              <figure>
+                <figcaption>license:</figcaption><img src="../../public/assets/images/package-json/9.png" alt="node">
+              </figure>
+              <p>En <span class="ts-3">license</span>  , se especifica el tipo de licencia que es, en el caso de que sea gratuita<strong>(open source)</strong>  , que sea de pago, privada, todas esas cosas.</p>
+              <p>Estos serían todos los pasos, si damos enter nos enseñará el resultado de la configuración y nos pregunta si todo está correcto.</p><img src="../../public/assets/images/package-json/10.png" alt="node">
+              <p>Escribimos <strong>yes</strong>  y nos generará el archivo <span class="ts-1">package.json </span>  con toda la información que nosotros le hemos dado.</p><img src="../../public/assets/images/package-json/11.png" alt="node"><br><img src="../../public/assets/images/package-json/12.png" alt="node">
+              <p>Esto evidentemente es un resumen de lo que es <span class="ts-1">package.json</span>  , pero aquí se deja un enlace que redacta a detalle</p><a class="link" href="https://medium.com/noders/tú-yo-y-package-json-9553929fb2e3" target="_blank">https://medium.com/noders/tú-yo-y-package-json-9553929fb2e3</a>
+              <p>Creación del package.json más común cuando se empieza</p>
+              <p>Cuando recién empezamos con node es muy común generar el <span class="ts-1">package.json</span>  con el siguiente comando.</p>
+              <ul>
+                <li><code>npm init -y</code></li>
+                <li><code>npm init --yes</code></li>
+                <li>Podemos escribirlo de una u otra forma.</li>
+              </ul>
+              <p>Lo que hace este comando es generar el <span class="ts-1">package.json</span>  que equivale a que si nosotros hubiéramos hecho enter a cada línea que nos pregunta.</p>
+              <p>Entonces cuando se empieza esto es lo más común que se suele hacer, porque en los primeros proyectos no nos ponemos a pensar en todas estas cosas, porque lo único que estamos haciendo es probar node y ver como funciona.</p>
+              <p>Entonces cuando veamos que alguien está escribiendo <code>npm init -y</code>  prácticamente lo que está haciendo es generar el <span class="ts-1">package.json</span>  de manera automática.</p>
+            </article>
+          </section>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

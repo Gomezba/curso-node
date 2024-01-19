@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head></head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/public/css/styles.css">
+  <title>Node renovado</title>
+  <script src="../../public/js/scroll-linked-nav.js" defer> </script>
+  <body>       
+    <main class="layout">
+      <div>
+        <div class="sidebar"><a href="/"><img class="logo" src="/public/assets/icons/nodejs.png" alt="logo"></a>
+          <nav class="nav">
+                        <ul class="menu">
+                          <li class="menu__item"><a class="menu__link" href="/public/views/que-es-node.html">¿Qué es node?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/primeros-pasos.html">Primeros pasos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/package-json.html">¿Qué es el package-json?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/global-vs-window.html">Global vs window</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/cjs.html">Sistema de módulos CJS</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/esm.html">Sistema de módulos ESM</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/modulos-nativos.html">Modúlos nativos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/dependencias.html">¿Qué son las dependencias?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/node-modules.html">¿Qué es node modules?</a></li>
+                          <li class="menu__item"><a class="active menu__link" href="/public/views/servidor-web.html">Primer servidor web</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/url.html">¿URL?, parámetros de ruta, módulo URL</a></li>
+                        </ul>
+          </nav>
+        </div>
+      </div>
+      <section class="container-content">
+        <div class="container-title title-sticky">       
+          <h1>Primer servidor web</h1>
+        </div>
+        <section class="content">       
+          <article>
+            <p>En este capítulo, crearemos nuestro primer servidor, checaremos la<a class="link" href="https://nodejs.org/dist/latest-v14.x/docs/api/" target="_blank" rel="noopener">
+                <u>Documentación oficial</u></a> de node, donde tenemos todas las librerias que corresponden a la api de node, y en el enlace tenemos todas las
+               librerias que tenemos por defecto solo por tener instalado node, todas esas las podemos utilizar y no necesitamos
+               un <code>npm install</code> porque estas ya las tenemos incluidas.
+            </p>
+            <p>Para nuestro mini proyecto con un servidor, vamos a utilizar el módulo <strong class="ts-3">HTTP</strong>. Este módulo
+              es el que nos va permitir crear un servidor y poder realizar conexiones con el.
+            </p>
+            <p>Para eso hemos dejado nuestro proyecto limpio, hemos borrado todo lo de <strong class="ts-3">chalk </strong>incluyendo
+              el <code>"type": "module"</code> del <span class="ts-1">package.json</span> para que podamos ocupar <span class="ts-1">CommonJS</span> y la carpeta <strong>node_modules</strong>, solo hemos dejado el <span class="ts-1">app.js</span> y el <span class="ts-1">package.json</span> y no tiene ninguna dependencia.
+            </p>
+            <figure> <img src="../../public/assets/images/servidor-web/1.png" alt="example"/>
+            </figure>
+            <p>
+               Lo primero que vamos a requerir es lo siguiente.        </p>
+            <figure> <img src="../../public/assets/images/servidor-web/2.png" alt="example"/>
+            </figure>
+            <p>
+               Ahora mismo si ejecutamos nuestro archivo <span class="ts-1">app.js</span> veremos que
+              la linea de la función <span class="ts-1">listen</span> se está ejecutando
+            </p>
+            <figure> <img src="../../public/assets/images/servidor-web/3.png" alt="example"/>
+            </figure>
+            <p>
+              Vamos abrir un navegador para que se ejecute la línea que reciba la conexión de un cliente, en el navegador
+              escribimos <code>localhost:3000           </code>
+            </p>
+            <figure> 
+              <figcaption>Como podemos observar ya se ejecuta la línea de que un cliente se ha conectado.</figcaption><img src="../../public/assets/images/servidor-web/4.png" alt="example"/>
+            </figure>
+            <p>
+              Pero tenemos un problema y es que el navegador nunca dejará de cargar, ya que el navegador está esperando una
+              respuesta, nos hemos conectado al servidor pero el servidor no le está diciendo que la conexión ha terminado o que
+              se le está enviando un documento HTML, el servidor no está haciendo nada en absoluto.
+            </p>
+            <figure> 
+              <figcaption>Como podemos observar el navegador siempre se quedará cargando.</figcaption><img src="../../public/assets/images/servidor-web/5.png" alt="example"/>
+            </figure>
+            <p>
+              Así que vamos enviarle algo al navegador para certificar que la conexión ha sido correcta y que podemos terminar
+              el intercambio de datos.
+            </p>
+            <p>Agregaremos lo siguiente a nuestra <strong>función server</strong></p>
+            <figure> <img src="../../public/assets/images/servidor-web/6.png" alt="example"/>
+            </figure>
+            <p>Para detener el servidor utilizamos <code>ctrl + c</code> y lo volvemos a levantar con <code>node app</code></p>
+            <p>Ahora si el navegador a dejado de estar cargando y nos muestra el mensaje que hemos puesto.</p>
+            <figure> <img src="../../public/assets/images/servidor-web/7.png" alt="example"/>
+            </figure>
+            <p>El mensaje nos sale así por la codificación UTF-8</p>
+            <p>
+              Ahora ya hemos visto como se crea un servidor que admite conexiones utilizando el módulo http, en el siguiente
+              capítulo vamos a empezar con el framework de <span class="ts-2">Express</span>
+            </p>
+            <p class="note">
+              En el mundo real siempre que creemos un servidor que admita conexiones que sea un servidor web, siempre vamos a
+              utilizar Express, el módulo http es muy raro que lo utilizemos, pero como introducción es buena idea para que
+              veamos lo básico de un servidor y como funciona.
+            </p>
+          </article>
+          <article> 
+            <h2>Información importante Request</h2>
+            <p>Antes de continuar veamos algunos conceptos importantes de lo que recibimos en el servidor.</p>
+            <p class="ts-1">req.url</p>
+            <figure> <img src="../../public/assets/images/servidor-web/8.png" alt="example"/>
+            </figure>
+            <p class="ts-1">req.method</p>
+            <p>Devuelve el método de la request ya sabemos que por defecto el navegador hace una petición GET, si queremos hacer otra petición sin tener el front, podemos ocupar la extensión <span class="ts-3">restClient </span>y para poder ocuparla debemos crear un archivo con el nombre que queramos pero que la extensión sea .http </p>
+            <figure> <img src="../../public/assets/images/servidor-web/9.png" alt="example"/>
+            </figure>
+            <p class="ts-1">res.headers </p>
+            <p>Nos muestra los headers de la request  </p>
+            <figure> <img src="../../public/assets/images/servidor-web/10.png" alt="example"/>
+            </figure>
+          </article>
+          <article> 
+            <h2>Información importante Response </h2>
+            <p>El response es la información que nosotros le enviamos al cliente y podemos modificar algunos de los valores que nos devuelve este objeto o enviarlo en un formato adecuado al cliente uno de ellos es el estatusCode el cual es el estado de la request.</p>
+            <p class="ts-1">res.statusCode       </p>
+            <figure> <img src="../../public/assets/images/servidor-web/11.png" alt="example"/>
+            </figure>
+            <p>Otra operación muy importante que podemos realizar con la respuesta es configurar la cabecera. </p>
+            <p class="ts-1">res.setHeader()</p>
+            <p>Nos permite configurar un elemento de la cabecera, como información adicional que le vamos a enviar al cliente.</p>
+            <p>Por ejemplo podemos especificar el tipo de contenido que estamos enviando y un estandar es <code>'application/json'</code></p>
+            <p>El formato JSON ya sabemos que es escencial para enviar las respuestas desde el servidor hacia el cliente y las solicitudes del cliente al servidor.    </p>
+            <figure> <img src="../../public/assets/images/servidor-web/12.png" alt="example"/>
+            </figure>
+          </article>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

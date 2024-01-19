@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head></head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/public/css/styles.css">
+  <title>Node renovado</title>
+  <script src="../../public/js/scroll-linked-nav.js" defer> </script>
+  <body>       
+    <main class="layout">
+      <div>
+        <div class="sidebar"><a href="/"><img class="logo" src="/public/assets/icons/nodejs.png" alt="logo"></a>
+          <nav class="nav">
+                        <ul class="menu">
+                          <li class="menu__item"><a class="menu__link" href="/public/views/que-es-node.html">¿Qué es node?</a></li>
+                          <li class="menu__item"><a class="active menu__link" href="/public/views/primeros-pasos.html">Primeros pasos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/package-json.html">¿Qué es el package-json?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/global-vs-window.html">Global vs window</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/cjs.html">Sistema de módulos CJS</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/esm.html">Sistema de módulos ESM</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/modulos-nativos.html">Modúlos nativos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/dependencias.html">¿Qué son las dependencias?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/node-modules.html">¿Qué es node modules?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/servidor-web.html">Primer servidor web</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/url.html">¿URL?, parámetros de ruta, módulo URL</a></li>
+                        </ul>
+          </nav>
+        </div>
+      </div>
+      <section class="container-content">
+        <div class="container-title title-sticky">       
+          <h1>Primeros pasos con node</h1>
+        </div>
+        <section class="content">       
+          <section class="content">
+            <article>
+              <p>Lo primero es crear una carpeta que se llame</p><span class="ts-1">curso-node <strong>sin mayúsculas y sin espacios ya que si no dará error en un futuro.</strong></span><img src="../../public/assets/images/primeros-pasos/1.png" alt="node">
+              <p>Abrimos la carpeta en VSCode y creamos un nuevo archivo que se llame <span class="ts-1">app.js  </span></p><img src="../../public/assets/images/primeros-pasos/2.png" alt="node">
+              <p>Dentro de este archivo escribiremos el código <span class="ts-2">JavaScript  </span>  de toda la vida.</p>
+              <p>Si nosotros escribimos por ejemplo un array de números y el resultado lo imprimimos en consola necesitaríamos abrir el navegador y ver la consola para poder visualizarlo.</p>
+              <p>Pero como hemos comentado,  <span class="ts-1">node</span>  no necesita el navegador para visualizar el código JS.</p>
+              <p>Lo que necesitamos es abrir el <span class="ts-2">terminal/nuevo terminal</span>  dentro de VSCode y escribir <code>node</code>  y separado por un espacio el nombre del archivo <code>app.js</code>  , no es necesario agregar el formato del archivo ya que <code>node</code>  entiende que es un archivo JS.</p><img src="../../public/assets/images/primeros-pasos/3.png" alt="node">
+              <p>Como podemos observar, el resultado lo podemos ver desde la consola de VSCode</p><img src="../../public/assets/images/primeros-pasos/4.png" alt="node">
+              <p>Lo queremos dar a entender que el mismo código JS que escribimos para el navegador, aquí funcional igual con algunas diferencias principales como por ejemplo el <span class="ts-3">DOM</span>  no está disponible y el objeto <span class="ts-3">window</span>  tampoco está disponible, pero quitando esas cosillas y un par más el resto es
+                  exactamente igual.
+              </p>
+            </article>
+          </section>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

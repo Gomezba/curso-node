@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head></head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/public/css/styles.css">
+  <title>Node renovado</title>
+  <script src="../../public/js/scroll-linked-nav.js" defer> </script>
+  <script src="../../public/js/btn-code.js" defer> </script>
+  <body>       
+    <main class="layout">
+      <div>
+        <div class="sidebar"><a href="/"><img class="logo" src="/public/assets/icons/nodejs.png" alt="logo"></a>
+          <nav class="nav">
+                        <ul class="menu">
+                          <li class="menu__item"><a class="menu__link" href="/public/views/que-es-node.html">¿Qué es node?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/primeros-pasos.html">Primeros pasos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/package-json.html">¿Qué es el package-json?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/global-vs-window.html">Global vs window</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/cjs.html">Sistema de módulos CJS</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/esm.html">Sistema de módulos ESM</a></li>
+                          <li class="menu__item"><a class="active menu__link" href="/public/views/modulos-nativos.html">Modúlos nativos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/dependencias.html">¿Qué son las dependencias?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/node-modules.html">¿Qué es node modules?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/servidor-web.html">Primer servidor web</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/url.html">¿URL?, parámetros de ruta, módulo URL</a></li>
+                        </ul>
+          </nav>
+        </div>
+      </div>
+      <section class="container-content">
+        <div class="container-title title-sticky">       
+          <h1>Módulos nativos</h1>
+        </div>
+        <section class="content">       
+          <nav class="container-submenu">
+            <ul class="submenu"> 
+              <li class="submenu__item"><a class="submenu__link" href="#1">os (Operating System)</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#2">fs (File System) Introducción</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#3">fs readFileSync</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#4">fs readFile Asíncrono Callbacks</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#5">fs readFile Asíncrono Promesas</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#6">Obligar promificación de módulos nátivos que no permiten promesas </a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#7">fs readFile async-await</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#8">fs código asíncrono en paralelo</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#9">fs readdir parte 1</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#10">path</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#11">fs readdir parte 2</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#12">Módulo events</a></li>
+            </ul>
+          </nav>
+          <p>En la sección de sistema de módulos nativos CJS, se habló un poco de los módulos nativos, así que en esta sección estaremos viendo algunos de los módulos nativos más comunes en Node.js </p>
+          <article id="1">
+            <h2>os (Operating System)</h2>
+            <P>El módulo os proporciona métodos para trabajar con información del sistema operativo, como el nombre del sistema operativo, la arquitectura del sistema, la información sobre la red, entre otros. Aquí hay un ejemplo simple de cómo puedes utilizar el módulo os en Node.js:</P>
+            <figure> <img src="../../public/assets/images/modulos-nativos/1.png" alt="example"/>
+            </figure>
+            <figure> <img src="../../public/assets/images/modulos-nativos/2.png" alt="example"/>
+            </figure>
+            <figure> <img src="../../public/assets/images/modulos-nativos/3.png" alt="example"/>
+            </figure>
+          </article>
+          <article id="2"> 
+            <h2>fs (File System)</h2>
+            <p>Este módulo permite realizar operaciones como leer, escribir, actualizar, borrar y gestionar archivos y directorios en el sistema de archivos local.</p>
+            <p>Este módulos nor proporciona distintos métodos algunos síncronos y asíncronos.</p>
+            <h3>statSync(path) Síncrono</h3>
+            <p>Proporciona información sobre un archivo o directorio local de forma síncrona, y nos ofrece diferentes métodos.</p>
+            <figure> <img src="../../public/assets/images/modulos-nativos/4.png" alt="example"/>
+            </figure>
+            <p>Lo más importante de <code>fs</code>  es leer archivos ya que aquí, solo hemos obtenido información del archivo pero no lo hemos leído su contenido. </p>
+          </article>
+          <article id="3">
+            <h2> Lectura de archivos Síncrona <code>readFileSync(path, ?options)</code></h2>
+            <p>Se utiliza para leer el contenido de un archivo de forma síncrona. A diferencia de las operaciones asíncronas, como readFile, que requieren un callback, readFileSync bloquea el hilo principal hasta que la operación de lectura se completa, lo que significa que el código se ejecuta de manera sincrónica. </p>
+            <ul> 
+              <li> <span class="ts-1">path (cadena)</span>:  La ruta al archivo que se va a leer. Puede ser una ruta relativa o absoluta.</li>
+              <li> <span class="ts-1">options (objeto o cadena, opcional)</span>:  Especifica opciones adicionales para la operación de lectura. Puede ser un objeto que contenga opciones, como { encoding: 'utf8', flag: 'r' }, donde encoding indica la codificación del archivo y flag indica el modo de apertura del archivo. También puede ser una cadena que representa la codificación.
+                <ul>
+                  <li> <span class="ts-2">encoding (cadena, opcional)</span>:  La codificación del archivo. Si se proporciona, el contenido del archivo se interpreta con esta codificación. Los valores comunes son 'utf8', 'ascii', o 'binary'. <strong class="ts-3">Si no se proporciona, se devuelve un búfer (Buffer) en lugar de una cadena.</strong></li>
+                  <li> <span class="ts-2">flag (cadena, opcional)</span>:  El modo de apertura del archivo. Puede ser 'r' (lectura), 'w' (escritura), etc. Por defecto es 'r' (lectura).  </li>
+                </ul>
+              </li>
+            </ul>
+            <figure> <img src="../../public/assets/images/modulos-nativos/5.png" alt="example"/>
+            </figure>
+            <p>Como ya vimos en la teoría esto funciona de forma síncrona por lo que bloquea el hilo principal, veamos algo más complejo.</p>
+            <figure> 
+              <figcaption>Como podemos ver esto funciona síncronicamente, pero en realidad esto no es bueno ya que deberiamos hacerlo de forma asíncrona, para que no bloquiemos el hilo.</figcaption><img src="../../public/assets/images/modulos-nativos/6.png" alt="example"/>
+            </figure>
+            <p>La forma en la que realidad deberiamos trabajar es poder hacer otras cosas mientras se leen otras, si no nuestras apps serian muy lentas, debemos procurar el siguiente resultado.</p>
+            <figure> <img src="../../public/assets/images/modulos-nativos/7.png" alt="example"/>
+            </figure>
+            <p class="note">Hay que tener en cuenta que, en general, se recomienda evitar el uso de funciones síncronas en entornos Node.js, especialmente en operaciones de entrada/salida (I/O) que pueden bloquear el hilo principal de la aplicación. Sin embargo, en algunos casos, como scripts de inicio o configuración, el uso de funciones síncronas puede ser aceptable. En aplicaciones más grandes y orientadas a la producción, se favorece el uso de las funciones asíncronas para mantener la capacidad de respuesta del programa.</p>
+          </article>
+          <article id="4"> 
+            <h2>Lectura de archivos Asíncrona Con Callbacks <code>readFile(path, ?options, callback)</code></h2>
+            <p>Lee el contenido de un archivo asíncronamente. Podemos especificar opciones de codificación para obtener el contenido en un formato de texto.    </p>
+            <ul> 
+              <li> <span class="ts-1">path (cadena)</span>:  La ruta al archivo que se va a leer. Puede ser una ruta relativa o absoluta.</li>
+              <li> <span class="ts-1">options (objeto o cadena, opcional)</span>:  Especifica opciones adicionales para la operación de lectura. Puede ser un objeto que contenga opciones, como { encoding: 'utf8', flag: 'r' }, donde encoding indica la codificación del archivo y flag indica el modo de apertura del archivo. También puede ser una cadena que representa la codificación.
+                <ul> 
+                  <li> <span class="ts-2">encoding (cadena, opcional)</span>:  La codificación del archivo. Si se proporciona, el contenido del archivo se interpreta con esta codificación. Los valores comunes son 'utf8', 'ascii', o 'binary'. Si no se proporciona, se devuelve un búfer (Buffer) en lugar de una cadena.</li>
+                  <li><span class="ts-2">flag (cadena, opcional)</span>:  El modo de apertura del archivo. Puede ser 'r' (lectura), 'w' (escritura), etc. Por defecto es 'r' (lectura).</li>
+                </ul>
+              </li>
+              <li> <span class="ts-1">callback (función)</span>:  Una función de retorno de llamada que se ejecutará cuando la operación de lectura se complete. La función toma dos argumentos: err para cualquier error que haya ocurrido durante la lectura y data que contiene el contenido del archivo leído. </li>
+            </ul>
+            <figure> 
+              <figcaption>Como estamos utilizando callbacks no es necesario guardarlo en una constante.</figcaption><img src="../../public/assets/images/modulos-nativos/8.png" alt="example"/>
+            </figure>
+            <figure> 
+              <figcaption>Como podemos ver, ya no estamos bloqueando el hilo principal, el mensaje que dice HACIENDO COSAS MIENTRAS LEEMOS LOS ARCHIVOS, se está ejecutando primero y una vez que están listos los archivos ya se muestra el resultado.</figcaption><img src="../../public/assets/images/modulos-nativos/9.png" alt="example"/>
+            </figure>
+          </article>
+          <article id="5">
+            <h2>Lectura de archivos Asíncrona Con Promesas <code>readFile(path, ?options)</code></h2>
+            <p>Para poder utilizar promesas con algun módulo interno o nativo de Node.js lo que necesitamos es agregar lo siguiente <code>/promises </code>  a  la importación del modulo </p>
+            <figure> <img src="../../public/assets/images/modulos-nativos/10.png" alt="example"/>
+            </figure>
+            <p class="note">No todos los módulos internos permiten promesas, hay que revisar la documentación para saber que módulos nativos se pueden promisifcar.<br>  Para cuando tenemos un módulo que no permite promesas hay una manera de poder lograrlo pero lo veremos adelante en esta misma sección.</p>
+            <p>Sabiendo esto, ya podemos utilizar promesas con nuestra lectura de archivos.   </p>
+            <figure> <img src="../../public/assets/images/modulos-nativos/11.png" alt="example"/>
+            </figure>
+          </article>
+          <article id="6">   
+            <h2>Obligar promificación de módulos nátivos que no permiten promesas</h2>
+            <p>Como ya comentamos anteriormente no todos los módulos nativos permiten usar promesas, pero hay una forma de lograrlo para aquellos que no permiten las promesas.</p>
+            <p>Necesitamos importar otro módulo nativo llamado  <code>util</code>  y obtenemos un método que nos proprociona llamado <strong class="ts-3">promisify</strong>.</p>
+            <p>El módulo nativo <code>util</code>  en <span class="ts-1">Node.js </span>  proporciona varias funciones de utilidad, y una de las funciones más destacadas es <strong class="ts-3">promisify</strong>.  Esta función promisify se utiliza para convertir funciones basadas en callbacks (devolución de llamada) en funciones que devuelven promesas. Esto es especialmente útil cuando trabajamos con código asincrónico y preferimos utilizar <code>promesas</code>  y <code>async/await</code>  en lugar de callbacks.</p>
+            <p> <code>promisify(function)</code></p>
+            <ul> 
+              <li> <span class="ts-1">function</span>:  La función que se desea convertir para que devuelva una promesa.</li>
+            </ul>
+            <p>La función <code>promisify</code>  toma una función que utiliza un estilo de devolución de llamada (callback), donde el último argumento es una función que se llama una vez que la operación asincrónica está completa. Convierte esta función en una que devuelva una promesa.</p>
+            <p>Ahora lo que haremos es promisificar una función de un módulo que no permite las promesas y que funciona con callbacks, pero haremos una simulación e imaginemos que <code>readFile</code>  no permitiera promesas aunque sabemos que si.</p>
+            <figure> <img src="../../public/assets/images/modulos-nativos/12.png" alt="example"/>
+            </figure>
+          </article>
+          <article id="7">  
+            <h2> Lectura de archivos async-await readFile(path, ?options)</h2>
+            <p>Primero empezaremos hacer una aclaración y es que en el sistema de módulos   <strong class="ts-1">CJS </strong>  no es posible utilizar el <strong class="ts-3">top-level-await.</strong></p>
+            <figure> 
+              <figcaption>Como podemos ver nos dice que solo podemos utilizar await dentro de una función async.</figcaption><img src="../../public/assets/images/modulos-nativos/13.png" alt="example"/>
+            </figure>
+            <p>Si ejecutamos el mismo código con el sistema de módulos <strong class="ts-1">ESM</strong>  no obtenemos ese error, ya que el <code>top-level-await</code>  es compatible con ESM.</p>
+            <figure> <img src="../../public/assets/images/modulos-nativos/14.png" alt="example"/>
+            </figure>
+            <div class="note"> 
+              <p>Ya sabemos que async-await permite que el código se comporte como si fuera síncrono pero no bloquea el hilo principal, ya que lo que hacemos con async-await en realidad se le conoce como código asíncrono secuencial.</p>
+              <p>Tenemos que saber las siguientes diferencias entre: 
+                <ul> 
+                  <li> <strong>Código síncrono</strong></li>
+                  <li> <strong>Código Asíncrono</strong></li>
+                  <li> <strong>Código Asíncrono secuencial</strong></li>
+                  <li> <strong>Código Asíncrono paralelo</strong></li>
+                </ul>
+              </p>
+            </div>
+            <p>Para poder utilizar async-await dentro del sistema de módulos CJS, es comunmente utilizar una IIFE (Inmediatly Invoked Function Expression)</p>
+            <figure> <img src="../../public/assets/images/modulos-nativos/15.png" alt="example"/>
+            </figure>
+          </article>
+          <article id="8"> 
+            <h2>Código asíncrono en paralelo</h2>
+            <p>Ocuparemos el método  <code>Promise.all([])</code>  que ya sabemos que recibe un array de promesas y las resuelve en paraleleo y devuelve un array con los resultados en el orden del array de promesas,y este resultado está listo hasta que todas las promesas esten listas. </p>
+            <figure> <img src="../../public/assets/images/modulos-nativos/16.png" alt="example"/>
+            </figure>
+          </article>
+          <article id="9"> 
+            <h2>Leer el contenido de un directorio <code>readdir(path, callback)</code>  parte 1</h2>
+            <p>Pertenece al módulo fs (sistema de archivos) y se utiliza para leer el contenido de un directorio. Este método toma dos parámetros: la ruta del directorio que se va a leer y una función de devolución de llamada (callback).   </p>
+            <ul> 
+              <li><span class="ts-1">path:</span>  Es la ruta del directorio que se va a leer. Puede ser una ruta relativa o absoluta al sistema de archivos.</li>
+              <li><span class="ts-1">callback:</span>  Es una función de devolución de llamada que se ejecutará una vez que la lectura del directorio haya sido completada. La función de devolución de llamada toma dos parámetros: un posible error (err) y un array de nombres de archivos en el directorio (files). </li>
+            </ul>
+            <p class="ts-1">Lo que haremos es crear nuestro propio <code>ls       </code></p>
+            <figure> 
+              <figcaption>Primero vemos que el segundo parámetro del callback llamado files es un array con el nombre de los archivos en el directorio del path que pasamos como parámetro.</figcaption><img src="../../public/assets/images/modulos-nativos/17.png" alt="example"/>
+            </figure>
+            <p>Ahora recorreremos el array de files y lo mostraremos en consola </p>
+            <figure> <img src="../../public/assets/images/modulos-nativos/18.png" alt="example"/>
+            </figure>
+            <p>Nuestro código también lo podemos promisificar para poder usar el then y el catch.</p>
+            <figure> <img src="../../public/assets/images/modulos-nativos/19.png" alt="example"/>
+            </figure>
+            <p>Hasta ahora nuestro <code>ls</code>  se queda corto ya que siempre estamos buscando en el directorio (.) y lo que queremos es saber los nombres de cualquier archivo de un directorio en específico.</p>
+            <p>Para lograrlo necesitaremos utilizar el objeto <code>proces.argv</code>  que ya vimos en la sección de <span class="ts-1">global vs window </span>. El cual nos devuelve un array con los argumentos de la lista de comandos.   </p>
+            <figure> 
+              <figcaption>En este ejemplo ejecutamos el directorio raiz</figcaption><img src="../../public/assets/images/modulos-nativos/20.png" alt="example"/>
+            </figure>
+            <figure> 
+              <figcaption>En este caso estamos agregando otro argumento en la lista de comandos que hace referencia a otro directorio, y así poder leer los archivos que hay dentro de ese directorio.</figcaption><img src="../../public/assets/images/modulos-nativos/21.png" alt="example"/>
+            </figure>
+          </article>
+          <article id="10"> 
+            <h2>path</h2>
+            <p>Proporciona utilidades para trabajar con rutas de archivos y directorios. </p>
+            <p>Cuando nosotros trabajamos con rutas. </p>
+            <p>Aquí tenemos una descripción de algunos de sus métodos y propiedades más comunes junto con casos de uso:</p>
+            <ul> 
+              <li> <span class="ts-1">path.join(...paths)</span>
+                <p>Une segmentos de ruta en una única cadena de ruta. También se encarga de manejar de manera cruzada la separación de directorios en sistemas operativos diferentes.     </p>
+                <figure> <img src="../../public/assets/images/modulos-nativos/22.png" alt="example"/>
+                </figure>
+              </li>
+              <li> <span class="ts-1">path.resolve(...paths)</span>
+                <p>Se utiliza para convertir rutas relativas en rutas absolutas. Acepta varios argumentos, que son tratados como segmentos de ruta, y los resuelve en una única ruta absoluta.     </p>
+                <figure> <img src="../../public/assets/images/modulos-nativos/23.png" alt="example"/>
+                </figure>
+              </li>
+              <li> <span class="ts-1">path.dirname(path)</span>
+                <p>Devuelve el directorio de una ruta.</p>
+                <figure> <img src="../../public/assets/images/modulos-nativos/24.png" alt="example"/>
+                </figure>
+              </li>
+              <li> <span class="ts-1">path.basename(path, ?ext)</span>
+                <p>Devuelve el nombre del archivo de una ruta. El segundo argumento opcional <strong class="ts-1">ext</strong>  permite especificar una extensión para excluir.    </p>
+                <figure> <img src="../../public/assets/images/modulos-nativos/25.png" alt="example"/>
+                </figure>
+              </li>
+              <li> <span class="ts-1">path.extname(path)</span>
+                <p>Devuelve la extensión de un nombre de archivo en una ruta.</p>
+                <figure> <img src="../../public/assets/images/modulos-nativos/26.png" alt="example"/>
+                </figure>
+              </li>
+            </ul>
+          </article>
+          <article id="11"> 
+            <h2>Leer el contenido de un directorio <code>readdir(path, callback)</code>  parte 2</h2>
+            <p>Continuaremos con nuestra aplicación de crear nuestro propio ls.    </p>
+            <div> <a class="btn-code" id="btn-code" target="_blank" rel="noreferer">Código </a></div>
+            <figure> <img src="../../public/assets/images/modulos-nativos/27.png" alt="example"/>
+            </figure>
+          </article>
+          <article id="12"> 
+            <h2>Events </h2>
+            <p>El módulo events proporciona una forma de trabajar con eventos. Los eventos son fundamentales para construir aplicaciones asincrónicas y manejar la comunicación entre diferentes partes de nuestro código. Aquí hay una explicación básica de cómo funciona el módulo events y cómo podemos crear y emitir eventos:    </p>
+            <figure> <img src="../../public/assets/images/modulos-nativos/28.png" alt="example"/>
+            </figure>
+          </article>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

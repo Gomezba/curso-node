@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head></head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/public/css/styles.css">
+  <title>Node renovado</title>
+  <script src="../../public/js/scroll-linked-nav.js" defer> </script>
+  <body>       
+    <main class="layout">
+      <div>
+        <div class="sidebar"><a href="/"><img class="logo" src="/public/assets/icons/nodejs.png" alt="logo"></a>
+          <nav class="nav">
+                        <ul class="menu">
+                          <li class="menu__item"><a class="active menu__link" href="/public/views/que-es-node.html">¿Qué es node?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/primeros-pasos.html">Primeros pasos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/package-json.html">¿Qué es el package-json?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/global-vs-window.html">Global vs window</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/cjs.html">Sistema de módulos CJS</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/esm.html">Sistema de módulos ESM</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/modulos-nativos.html">Modúlos nativos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/dependencias.html">¿Qué son las dependencias?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/node-modules.html">¿Qué es node modules?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/servidor-web.html">Primer servidor web</a></li>
+                          <li class="menu__item"><a class="menu__link" href="/public/views/url.html">¿URL?, parámetros de ruta, módulo URL</a></li>
+                        </ul>
+          </nav>
+        </div>
+      </div>
+      <section class="container-content">
+        <div class="container-title title-sticky">       
+          <h1>Introducción a node</h1>
+        </div>
+        <section class="content">       
+          <section class="content">
+            <article>
+              <h2>¿Que no es node?</h2>
+              <ul>
+                <li>No es un lenguaje</li>
+                <li>No es una libreria</li>
+                <li>No es un framework</li>
+                <li>No es una sintaxis de JavaScript</li>
+                <li>No es un servidor</li>
+              </ul>
+            </article>
+          </section>
+          <article>
+            <h2>¿Qué es node?</h2>
+            <ul>
+              <li>Los navegadores tienen un motor que interpreta <span class="ts-1">JavaScript</span>  (cuando nosotros escrbimos JS y lo ejecutamos en el navegador dentro del navegador hay un intérprete que se encarga de leer eso y de traducirlo a código que pueda entender el navegador).</li>
+              <li>El motor más famoso es el V8 desarrollado por Google en C++</li>
+              <li>En 2009 Ryan Dahl, extrae ese motor y hace que se ejecute de forma externa al navegador</li>
+              <li>Node es un interprete de JavaScript que nos permite ejecutar JavaScript sin necesidad de un navegador <span class="ts-2">  (es tomar el intérprete y poder ponerlo en nuestra máquina o en cualquier otro sitio y poder escribir código JS sin tener que tener un navegador abierto que lo interprete).</span></li>
+            </ul>
+            <p>Cuando esto se presentó en 2009 empezó lo que se denominaría una revolución en el mundo del desarrollo web porque empezarón a surgir un monton de librerias y un monton de módulos que nos ayudan en el desarrollo web y todo esto es gracias a poder ejecutar JS fuera del navegador.</p>
+          </article>
+          <article>
+            <h2>¿Quién utiliza Node?</h2>
+            <ul>
+              <li>Netflix</li>
+              <li>Uber</li>
+              <li>Nasa</li>
+              <li>Paypal</li>
+              <li>trello</li>
+              <li>Otros cientos más..</li>
+            </ul>
+            <p>A día de hoy no se concibe el desarrollo web sin Node, no solo en el lado del servidor que es (opcional), si no Node en la parte de desarrollo.</p>
+            <p>Cuando nosotros estamos desarrollando aplicaciones web, Node nos ayuda muchisimo y a día de hoy es prácticamente imposible ir a trabajar a un sitio y que no se utilize Node.</p>
+          </article>
+          <article>
+            <h2>¿Como funciona Node?</h2>
+            <ul>
+              <li>  Cuando nosotros instalamos node, instalamos el núcleo solamente (<span class="ts-1">  Es decir el intérprete de Js, que nos permite hacer muchas cosas pero hay ciertas cosas que necesitamos ayuda externa de los módulos de node que se verán más adelante.)</span></li>
+              <li>  Para añadir funcionalidades extra, node nos da un<span class="ts-3">
+                  gestor de paquetes  . Si hemos escuchado</span><span class="ts-1"><strong>
+                    npm  ese es el gestor de paquetes que trae node integrado,</strong></span><span class="ts-2">  que para que nos demos una idea sería como el <strong>play store </strong></span>  de google, nosotros tenemos el celular pero si queremos añadirle funcionalidades extra necesitariamos un sitio de donde descargar esas funcionalidades, y en el caso de node esas funcionalidades las tenemos a través de <span class="ts-1"><strong>npm.</strong></span></li>
+            </ul>
+          </article>
+          <article>
+            <h2>¿Qué es NPM y Yarn?</h2>
+            <p>Son dos alternativas que tenemos</p>
+            <ul>
+              <li>La principal diferencia es que <code>npm </code>  ya viene integrado con node una vez que lo instalamos ya tenemos acceso a ese gestor de paquetes.</li>
+              <li> <code>yarn </code>  es más rápido que <code>npm </code>  pero como <code>yarn</code>  no viene integrado lo tenemos que instalar aparte. </li>
+              <li>  Sea cual sea el que usemos debemos recordar usar siempre el mismo para evitar conflictos. Así que si empezamos un proyecto con <code>npm  </code>  debemos utilizar <code>npm</code>  a lo largo de todo el proyecto        </li>
+            </ul>
+          </article>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>
