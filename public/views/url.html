@@ -22,10 +22,15 @@
                           <li class="menu__item"><a class="menu__link" href="./cjs.html">Sistema de módulos CJS</a></li>
                           <li class="menu__item"><a class="menu__link" href="./esm.html">Sistema de módulos ESM</a></li>
                           <li class="menu__item"><a class="menu__link" href="./modulos-nativos.html">Modúlos nativos</a></li>
+                          <li class="menu__item"><a class="active menu__link" href="./url.html">¿URL?, parámetros de ruta, módulo URL</a></li>
                           <li class="menu__item"><a class="menu__link" href="./dependencias.html">¿Qué son las dependencias?</a></li>
                           <li class="menu__item"><a class="menu__link" href="./node-modules.html">¿Qué es node modules?</a></li>
-                          <li class="menu__item"><a class="menu__link" href="./servidor-web.html">Primer servidor web</a></li>
-                          <li class="menu__item"><a class="active menu__link" href="./url.html">¿URL?, parámetros de ruta, módulo URL</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./npx.html">Comando npx</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./scripts.html">Scripts personalizados</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./info-impo.html">Conceptos importantes</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./servidor-web.html">Primer servidor web con HTTP (API)</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./express-init.html">Primeros pasos con Express</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./express-parameters.html">Express path-query-parameters</a></li>
                         </ul>
           </nav>
         </div>
@@ -38,10 +43,9 @@
           <nav class="container-submenu">
             <ul class="submenu"> 
               <li class="submenu__item"><a class="submenu__link" href="#1">¿Qué es un URL?</a></li>
-              <li class="submenu__item"><a class="submenu__link" href="#2">Parámetros de ruta</a></li>
-              <li class="submenu__item"><a class="submenu__link" href="#3">¿Como especificar ESM en Node?</a></li>
-              <li class="submenu__item"><a class="submenu__link" href="#4">Exportación e Importación</a></li>
-              <li class="submenu__item"><a class="submenu__link" href="#5">Exportación e Importación por defecto</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#2">Parámetros de ruta (Path Parameters)</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#3">Parámetros de consulta (Query Parameters)</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#4">Módulo URL</a></li>
             </ul>
           </nav>
           <article id="1"> 
@@ -56,7 +60,68 @@
             </figure>
           </article>
           <article id="2"> 
-            <h2>Parámetros de ruta</h2>
+            <h2>Parámetros de ruta (Path Parameters)</h2>
+            <p>Los parámetros de ruta son utilizados para identificar recursos específicos en una aplicación web o API. Estos permiten a los desarrolladores crear rutas dinámicas que respondan a diferentes entradas, como identificadores únicos, nombres, fechas, etc.</p>
+            <div> 
+              <p> <span class="ts-1">Ejemplo en una Aplicación de Usuarios</span>: Supongamos que estamos construyendo una aplicación de gestión de usuarios y tenemos una ruta para obtener información sobre un usuario específico. La URL podría verse así: <code>https://api.ejemplo.com/users/{id}    </code></p>
+              <p>Aquí, {id} es un parámetro de ruta que permite especificar el ID del usuario que deseas recuperar. Por ejemplo, <code>https://api.ejemplo.com/users/123 </code>recuperaría la información del usuario con ID 123.    </p>
+              <div>Ventajas:</div>
+              <ul> 
+                <li> <span class="ts-3">Legibilidad</span>: Las URL con parámetros de ruta suelen ser más legibles y expresivas, ya que indican claramente qué recurso se está solicitando.</li>
+                <li> <span class="ts-3">SEO Amigable</span>: En algunos casos, el uso de parámetros de ruta puede mejorar la optimización para motores de búsqueda (SEO), ya que los términos relevantes están directamente en la URL.</li>
+              </ul>
+            </div>
+            <div> 
+              <p class="ts-1"> Ejemplo en una API REST:</p>
+              <p><code>GET /api/products/{category}/items/{itemID}</code></p>
+              <p>Aquí, la ruta se adapta para devolver información sobre un ítem específico en una categoría dada.</p>
+            </div>
+          </article>
+          <article id="3"> 
+            <h2>Parámetros de consulta (Query Parameters)  </h2>
+            <p>Parámetros de Consulta (Query Parameters) tambien se les conoce Query Strings:</p>
+            <p class="ts-1">Sintaxis:</p>
+            <p>Los parámetros de consulta se añaden al final de la URL y se identifican mediante el símbolo de interrogación ?, seguido de pares clave=valor separados por el símbolo &.</p>
+            <p><code>https://ejemplo.com/ruta?<span class="ts-2">parametro1</span>=<span class="ts-2">valor1</span>&<span class="ts-2">parametro2</span>=<span class="ts-2">valor2</span></code></p>
+            <p class="ts-2">Ejemplo:</p>
+            <p>En la URL <code>https://api.ejemplo.com/search?<span class="ts-2">query</span>=<span class="ts-2">term</span>&<span class="ts-2">page</span>=<span class="ts-2">1</span></code>, los parámetros de consulta son <strong class="ts-2">query </strong>y <strong class="ts-2">page </strong>con valores <strong class="ts-2">term </strong>y <strong class="ts-2">1 </strong>respectivamente.</p>
+            <p>Normalmente Usamos parámetros query para filtrar solicitudes GET (para obtener recursos específicos).    </p>
+            <p>En resumen, mientras que los parámetros de ruta se encuentran directamente en la ruta de la URL, los parámetros de consulta se agregan al final de la URL después del símbolo de interrogación. Ambos tipos de parámetros son utilizados para enviar información adicional a un servidor web al realizar una solicitud.</p>
+          </article>
+          <article id="4"> 
+            <h2>Módulo URL  </h2>
+            <p>En Node.js, el módulo url proporciona utilidades para trabajar con URLs. Este módulo es parte del núcleo de Node.js, por lo que no es necesario instalarlo por separado</p>
+            <div> 
+              <p class="ts-1">url.parse(urlStr, ?parseQueryString, ?slashesDenoteHost):</p>
+              <p>Esta función toma una cadena de URL y la descompone en partes más pequeñas, devolviendo un objeto con propiedades como protocol, hostname, port, pathname, query, y hash.</p>
+              <ul>
+                <li> <span class="ts-3">urlStr </span>: Url en string. </li>
+                <li> <span class="ts-3">parseQueryString (opcional)</span>: Indica si la cadena de consulta debe ser analizada en busca de parámetros (por defecto es false).</li>
+                <li> <span class="ts-3">slashesDenoteHost (opcional)</span>: Indica si las barras diagonales dobles (//) indican la presencia de un host (por defecto es false).</li>
+              </ul>
+            </div>
+            <figure> 
+              <figcaption>En este ejemplo vemos todo los valores que puede tener una URL, habra veces en las que ocupamos el puerto dentro de la URL.</figcaption><img src="../../public/assets/images/url/3.png" alt="example"/>
+            </figure>
+            <figure> <img src="../../public/assets/images/url/4.png" alt="example"/>
+            </figure>
+            <div> 
+              <p class="ts-1">url.format(urlObj):</p>
+              <p>Esta función toma un objeto de URL y lo convierte de nuevo en una cadena de URL.                                </p>
+            </div>
+            <figure> <img src="../../public/assets/images/url/5.png" alt="example"/>
+            </figure>
+            <div> 
+              <p class="ts-1">url.resolve(from, to):</p>
+              <p>Esta función resuelve una URL relativa (to) respecto a una URL base (from).</p>
+            </div>
+            <figure> <img src="../../public/assets/images/url/6.png" alt="example"/>
+            </figure>
+            <p class="ts-3">Para manipular la URL tambien podemos ocupar el constructor <code>Url </code></p>
+            <figure> <img src="../../public/assets/images/url/7.png" alt="example"/>
+            </figure>
+            <figure> <img src="../../public/assets/images/url/8.png" alt="example"/>
+            </figure>
           </article>
         </section>
       </section>

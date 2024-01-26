@@ -23,10 +23,15 @@
                           <li class="menu__item"><a class="menu__link" href="./cjs.html">Sistema de módulos CJS</a></li>
                           <li class="menu__item"><a class="menu__link" href="./esm.html">Sistema de módulos ESM</a></li>
                           <li class="menu__item"><a class="active menu__link" href="./modulos-nativos.html">Modúlos nativos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./url.html">¿URL?, parámetros de ruta, módulo URL</a></li>
                           <li class="menu__item"><a class="menu__link" href="./dependencias.html">¿Qué son las dependencias?</a></li>
                           <li class="menu__item"><a class="menu__link" href="./node-modules.html">¿Qué es node modules?</a></li>
-                          <li class="menu__item"><a class="menu__link" href="./servidor-web.html">Primer servidor web</a></li>
-                          <li class="menu__item"><a class="menu__link" href="./url.html">¿URL?, parámetros de ruta, módulo URL</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./npx.html">Comando npx</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./scripts.html">Scripts personalizados</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./info-impo.html">Conceptos importantes</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./servidor-web.html">Primer servidor web con HTTP (API)</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./express-init.html">Primeros pasos con Express</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./express-parameters.html">Express path-query-parameters</a></li>
                         </ul>
           </nav>
         </div>
@@ -150,15 +155,15 @@
             <figure> <img src="../../public/assets/images/modulos-nativos/14.png" alt="example"/>
             </figure>
             <div class="note"> 
-              <p>Ya sabemos que async-await permite que el código se comporte como si fuera síncrono pero no bloquea el hilo principal, ya que lo que hacemos con async-await en realidad se le conoce como código asíncrono secuencial.</p>
-              <p>Tenemos que saber las siguientes diferencias entre: 
+              <div>Ya sabemos que async-await permite que el código se comporte como si fuera síncrono pero no bloquea el hilo principal, ya que lo que hacemos con async-await en realidad se le conoce como código asíncrono secuencial.</div>
+              <div>Tenemos que saber las siguientes diferencias entre: 
                 <ul> 
                   <li> <strong>Código síncrono</strong></li>
                   <li> <strong>Código Asíncrono</strong></li>
                   <li> <strong>Código Asíncrono secuencial</strong></li>
                   <li> <strong>Código Asíncrono paralelo</strong></li>
                 </ul>
-              </p>
+              </div>
             </div>
             <p>Para poder utilizar async-await dentro del sistema de módulos CJS, es comunmente utilizar una IIFE (Inmediatly Invoked Function Expression)</p>
             <figure> <img src="../../public/assets/images/modulos-nativos/15.png" alt="example"/>

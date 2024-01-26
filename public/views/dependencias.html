@@ -22,10 +22,15 @@
                           <li class="menu__item"><a class="menu__link" href="./cjs.html">Sistema de módulos CJS</a></li>
                           <li class="menu__item"><a class="menu__link" href="./esm.html">Sistema de módulos ESM</a></li>
                           <li class="menu__item"><a class="menu__link" href="./modulos-nativos.html">Modúlos nativos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./url.html">¿URL?, parámetros de ruta, módulo URL</a></li>
                           <li class="menu__item"><a class="active menu__link" href="./dependencias.html">¿Qué son las dependencias?</a></li>
                           <li class="menu__item"><a class="menu__link" href="./node-modules.html">¿Qué es node modules?</a></li>
-                          <li class="menu__item"><a class="menu__link" href="./servidor-web.html">Primer servidor web</a></li>
-                          <li class="menu__item"><a class="menu__link" href="./url.html">¿URL?, parámetros de ruta, módulo URL</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./npx.html">Comando npx</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./scripts.html">Scripts personalizados</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./info-impo.html">Conceptos importantes</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./servidor-web.html">Primer servidor web con HTTP (API)</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./express-init.html">Primeros pasos con Express</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./express-parameters.html">Express path-query-parameters</a></li>
                         </ul>
           </nav>
         </div>
@@ -67,7 +72,7 @@
               <p>Como hemos visto tenemos dependencias de desarrollo y producción, primero veamos los comandos que tenemos para instalar ambas dependencias.</p>
               <p><strong class="ts-1">COMANDOS PARA INSTALAR DEPENDENCIAS DE PRODUCCIÓN (dependencies)</strong></p>
               <ul> 
-                <li>Para instalar una dependencia de producción (dependencies) solo nos basta con poner
+                <li>Las dependencias de producción (dependencies) se instalan con 
                   <p><code>npm install nomDependencia</code></p>
                   <p>o la versión abreviada</p><code>npm i nomDependencia </code>
                 </li>
@@ -77,7 +82,7 @@
                   <p><code>npm i nomDependencia --save     </code></p>
                 </li>
               </ul>
-              <p><strong class="ts-1">COMANDOS PARA INSTALAR DEPENDENCIAS DE PRODUCCIÓN (devDependencies)</strong></p>
+              <p><strong class="ts-1">COMANDOS PARA INSTALAR DEPENDENCIAS DE DESARROLLO (devDependencies)</strong></p>
               <ul> 
                 <li><code>npm i nombreDependencia --save-dev</code></li>
                 <li><code>npm install nombreDependencia --save-dev</code></li>
@@ -85,9 +90,14 @@
                 <li><code>npm install nombreDependencia -D</code></li>
               </ul>
               <div class="note"> 
-                <p>Cuando tenemos un proyecto y queremos instalar sus dependencias solo utilizamos el comando </p><strong>npm install </strong>o <strong>npm i </strong>y de esta manera se instalarán sus dependencias de desarrollo y producción.        
-                <p>Si solo queremos instalar las dependencias de producción tenemos el comando </p>
-                <p><strong>npm i --production</strong></p>
+                <div> Cuando tenemos un proyecto y queremos instalar sus dependencias solo utilizamos el comando </div><strong>npm install </strong>o <strong>npm i </strong>y de esta manera se instalarán sus dependencias de desarrollo y producción.        
+                <div>Si solo queremos instalar las dependencias de producción tenemos el comando </div>
+                <div><strong>npm i --production</strong></div>
+              </div><br>
+              <div class="note">
+                <p>Tambien tenemos la opción de instalar una dependencia de forma global.</p><strong>npm i -g dependencia </strong>
+                <p>La ventaja es que podemos ocupar esa dependencia en cualquier proyecto de nuestra computadora ya que se instala en nuestro equipo y no en el proyecto, por lo cual nuestro <strong>package.json </strong>no se agregaria ni en dependences o devDependences.</p>
+                <p>La desventaja es que al subir nuestro proyecto a un repositorio en la nube, las demás personas no se daran cuenta que ocupamos tal dependencia. </p>
               </div>
               <p>De momento lo que vamos hacer es instalar una aplicación que basicamente solo sirve para colorear la consola.</p>
               <ul>
