@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head></head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <title>Node renovado</title>
+  <script src="../js/scroll-linked-nav.js" defer> </script>
+  <body>       
+    <main class="layout">
+      <div>
+        <div class="sidebar"><a href="../../"><img class="logo" src="../assets/icons/nodejs.png" alt="logo"></a>
+          <nav class="nav">
+                        <ul class="menu">
+                          <li class="menu__item"><a class="menu__link" href="./que-es-node.html">¿Qué es node?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./primeros-pasos.html">Primeros pasos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./package-json.html">¿Qué es el package-json?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./global-vs-window.html">Global vs window</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./cjs.html">Sistema de módulos CJS</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./esm.html">Sistema de módulos ESM</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./modulos-nativos.html">Modúlos nativos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./url.html">¿URL?, parámetros de ruta, módulo URL</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./dependencias.html">¿Qué son las dependencias?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./node-modules.html">¿Qué es node modules?</a></li>
+                          <li class="menu__item"><a class="active menu__link" href="./npx.html">Comando npx</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./scripts.html">Scripts personalizados</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./info-impo.html">Conceptos importantes</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./servidor-web.html">Primer servidor web con HTTP (API)</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./express-init.html">Primeros pasos con Express</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./express-parameters.html">Express path-query-parameters</a></li>
+                        </ul>
+          </nav>
+        </div>
+      </div>
+      <section class="container-content">
+        <div class="container-title title-sticky">       
+          <h1>Comando npx</h1>
+        </div>
+        <section class="content">       
+          <div> 
+            <article> 
+              <p>El comando <code>npx</code>  es una herramienta que viene con Node.js y se utiliza para ejecutar paquetes Node.js directamente desde el registro <strong class="ts-2">npm (Node Package Manager)</strong>. La principal ventaja de npx es que <strong class="ts-1">permite ejecutar paquetes sin necesidad de instalarlos globalmente en nuestro sistema. </strong>Esto es útil cuando solo necesitamos ejecutar un comando específico de un paquete en lugar de tener que instalarlo en todo el sistema.</p>
+              <p>La función principal de npx es buscar el paquete en el registro npm y ejecutar el comando asociado a ese paquete. <strong class="ts-3">Si el paquete no está instalado localmente, npx lo instalará temporalmente para ejecutar el comando y luego lo eliminará.</strong></p>
+              <p>La versión de Node.js en la que se introdujo npx es la 5.2.0. A partir de esa versión, npx se incluyó en la instalación predeterminada de Node.js.</p>
+            </article>
+            <p>El comando npx es útil porque podemos ejecutar paquetes que anteriormente teniamos que instalar de forma global pero sin la necesidad de instalarlos directamente en nuestro sistema operativo y que permanezcan a parte en el registro de nuestro proyecto.</p>
+            <p>Esto logra que tengamos mas limpio nuestro equipo de computo y de nuestro proyecto de Nodejs y sus dependencias.    </p>
+            <p>Hay que saber que cuando nosotros instalamos un paquete de forma global, este no se instala como dependencia en nuestro package.json por lo cual no se ve reflejado en la carpeta node_modules si no que se instala en nuestro equipo de computo en la carpeta donde nosotros tenemos instalado NodeJs y ahi se encuentra una carpeta de node_modules pero de la instalación de node.</p>
+            <p>Es por eso que el comando npx nos ayuda a tener más limpio nuestro equipo y las dependencias de cada proyecto.</p>
+          </div>
+          <article> 
+            <h2>Lista de librerias y herramientas que suelen recomendar npx para su uso </h2>
+            <ul> 
+              <li> <strong class="ts-1">Eleventy</strong>: Compila un proyecto Eleventy, un generador de sitios estáticos (SSG).
+                <p><code>npx eleventy</code></p>
+              </li>
+              <li> <strong class="ts-1">Astro</strong>: Crea un nuevo proyecto Astro, un marco de trabajo para construir aplicaciones web rápidas utilizando JavaScript moderno.
+                <p><code>npx create-astro</code></p>
+              </li>
+              <li> <strong class="ts-1">Vue CLI</strong>: Similar a create-react-app, pero para proyectos Vue.js.
+                <p><code>npx vue create my-vue-app</code></p>
+              </li>
+              <li> <strong class="ts-1">Angular CLI</strong>: Inicia un nuevo proyecto Angular sin necesidad de instalar globalmente Angular CLI.
+                <p><code>npx @angular/cli new my-angular-app</code></p>
+              </li>
+              <li> <strong class="ts-1">Gatsby</strong>:  Inicia un nuevo sitio Gatsby, una aplicación de generación de sitios estáticos basada en React.
+                <p><code>npx gatsby new my-gatsby-site    </code></p>
+              </li>
+              <li> <strong class="ts-1">TypeScript</strong>: Ejecuta el compilador TypeScript sin tener que instalarlo globalmente.
+                <p><code>npx tsc    </code></p>
+              </li>
+              <li> <strong class="ts-1">http-server</strong>: Inicia un servidor HTTP para servir archivos estáticos desde el directorio actual.
+                <p><code>npx http-server</code></p>
+              </li>
+              <li> <strong class="ts-1">storybook</strong>: Inicia un entorno de desarrollo para componentes de UI con Storybook.
+                <p><code>npx -p @storybook/cli sb init</code></p>
+              </li>
+              <li> <strong class="ts-1">jest</strong>: Ejecuta pruebas con Jest, un popular marco de pruebas para JavaScript.    
+                <p><code>npx jest     </code></p>
+              </li>
+            </ul>
+          </article>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head></head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <title>Node renovado</title>
+  <script src="../js/scroll-linked-nav.js" defer> </script>
+  <body>       
+    <main class="layout">
+      <div>
+        <div class="sidebar"><a href="../../"><img class="logo" src="../assets/icons/nodejs.png" alt="logo"></a>
+          <nav class="nav">
+                        <ul class="menu">
+                          <li class="menu__item"><a class="menu__link" href="./que-es-node.html">¿Qué es node?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./primeros-pasos.html">Primeros pasos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./package-json.html">¿Qué es el package-json?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./global-vs-window.html">Global vs window</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./cjs.html">Sistema de módulos CJS</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./esm.html">Sistema de módulos ESM</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./modulos-nativos.html">Modúlos nativos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./url.html">¿URL?, parámetros de ruta, módulo URL</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./dependencias.html">¿Qué son las dependencias?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./node-modules.html">¿Qué es node modules?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./npx.html">Comando npx</a></li>
+                          <li class="menu__item"><a class="active menu__link" href="./scripts.html">Scripts personalizados</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./info-impo.html">Conceptos importantes</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./servidor-web.html">Primer servidor web con HTTP (API)</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./express-init.html">Primeros pasos con Express</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./express-parameters.html">Express path-query-parameters</a></li>
+                        </ul>
+          </nav>
+        </div>
+      </div>
+      <section class="container-content">
+        <div class="container-title title-sticky">       
+          <h1>Scripts personalizados</h1>
+        </div>
+        <section class="content">       
+          <article> 
+            <h2>¿Que son los scripts personalizados?</h2>
+            <p>En un archivo package.json en Node.js, la sección de "scripts" nos permite definir comandos personalizados que podemos ejecutar utilizando el comando <code>npm run</code>  o <code>yarn run</code>.  Estos scripts son útiles para automatizar tareas comunes relacionadas con el desarrollo, como la ejecución de pruebas, la compilación de código, el inicio de servidores locales, entre otras cosas.</p>
+            <p>Veamos nuestro <code>package.json </code></p>
+            <figure> <img src="../../public/assets/images/scripts/1.png" alt="example"/>
+            </figure>
+            <P>Para poder ejecutar ese script personalizado, en nuestra línea de comandos necesitamos escribir: </P>
+            <p> <code>npm run (NombreScript) en nuestro caso test </code>y nos devolverá el resultado de la tarea que ejecuta ese script. </p>
+            <figure> <img src="../../public/assets/images/scripts/2.png" alt="example"/>
+            </figure>
+            <p>Ahora que ya sabemos lo que es un script personalizado veamos otros scripts personalizados que son un estandar en nodeJs.</p>
+            <figure> <img src="../../public/assets/images/scripts/3.png" alt="example"/>
+            </figure>
+            <ul> 
+              <li> <strong class="ts-1">"build"</strong>: El script "build" se utiliza comúnmente para automatizar el proceso de construcción del proyecto. Este proceso puede incluir la compilación de código fuente, la minificación de archivos, la transpilación de TypeScript a JavaScript, entre otras tareas. <strong class="ts-2">En general, el resultado del script "build" es la preparación del código para su implementación en un entorno de producción.</strong>
+                <p>Ejemplo: "npx @11ty/eleventy" seria para levantar el código de producción de eleventy (SSG)</p>
+              </li>
+              <li> <strong class="ts-1">"start"</strong>: El script "start" se utiliza típicamente para iniciar la aplicación o el servidor localmente durante el desarrollo. Este script suele ser usado para lanzar el servidor de desarrollo, cargar la aplicación en un entorno local y permitir que los desarrolladores realicen pruebas mientras trabajan en el código fuente.
+                <p>Ejemplo: "start": "node index.js" podría ser un script que inicia la aplicación ejecutando el archivo index.js con Node.js, en nuestro ejemplo el script que inicia la applicacion la tenemos en otra ruta y se llama app.js que es otro nombre que suele remplazar a index.js </p>
+              </li>
+            </ul>
+            <p class="note"> Algunas herramientas y plataformas, como servicios de alojamiento en la nube, pueden reconocer automáticamente estos nombres y ejecutar ciertos scripts durante despliegues o integración continua.        </p>
+            <p class="note">En nodeJs es muy común el script personalizado 
+              <u>start </u>que ya es una convención y es de los pocos scripts personalizados que se pueden correr sin la palabra <strong>run </strong>con el simple hecho de poner <strong>npm start </strong>ejecutaria el script personalizado start.        
+            </p>
+            <figure> <img src="../../public/assets/images/scripts/4.png" alt="example"/>
+            </figure>
+          </article>
+          <article> 
+            <h2>nodemon</h2>
+            <p>Reinicia automáticamente la aplicación cuando detecta cambios en el código fuente. A diferencia de ejecutar tu aplicación con el comando node, que requeriría que manualmente detengas y vuelvas a ejecutar la aplicación cada vez que realizas cambios en el código, nodemon automatiza este proceso para hacer que el desarrollo sea más eficiente.</p>
+            <p>Algunas características clave de nodemon incluyen:</p>
+            <ul> 
+              <li> <span class="ts-1">Reinicio automático</span>: nodemon monitorea los archivos en tu proyecto y reinicia automáticamente la aplicación cuando detecta cambios. Esto significa que puedes ver los efectos de tus modificaciones en tiempo real sin tener que reiniciar manualmente el servidor.</li>
+              <li> <span class="ts-1">Compatibilidad con múltiples archivos y directorios</span>: nodemon puede monitorear múltiples archivos y directorios en tu proyecto, permitiéndote reiniciar la aplicación cuando se realizan cambios en cualquiera de ellos.</li>
+              <li> <span class="ts-1">Configuración fácil</span>: Puedes configurar nodemon mediante un archivo de configuración (nodemon.json) o utilizando opciones en la línea de comandos para ajustar su comportamiento según las necesidades específicas de tu proyecto.</li>
+              <li> <span class="ts-1">Integración con entornos de desarrollo</span>: nodemon es ampliamente utilizado en entornos de desarrollo y es compatible con muchos marcos y bibliotecas de Node.js. Puede ser utilizado con aplicaciones Express, Koa, Hapi, entre otros.</li>
+            </ul>
+            <p>Para usar nodemon, primero debes instalarlo globalmente o como dependencia de desarrollo en tu proyecto,lo más recomendable es instalarlo como dependencia de desarrollo:</p>
+            <div> 
+              <p><code>npm install -g nodemon</code></p>
+              <p><code>npm install nodemon -D</code></p>
+            </div>
+            <p>Después de la instalación, puedes ejecutar tu aplicación con nodemon en lugar de node:</p>
+            <div> 
+              <p><code>nodemon tu-archivo-de-app.js</code></p>
+            </div>
+            <p>Pero no serviria si de todas formas tenemos que estar escribiendo en nuestra línea de comandos a cada rato <code>nodemon tu-archivo-de-app.js  </code></p>
+            <P>Para que nuestro observador cheque automáticamente los cambios y no tengamos que estar escribiendo en nuestra línea de comandos podemos crear nuestro script personalizado para asi solo ejecutar una vez nuestro script y así nodemon se quede vigilando nuestro archivo.</P>
+            <figure> <img src="../../public/assets/images/scripts/5.png" alt="example"/>
+            </figure>
+            <figure> 
+              <figcaption>De esta manera ya se queda vigilando cualquier cambio de nuestro archivo y ya no tenemos que estar volviendo a ejecutar en nuestra línea de comandos el comando para volver a levantar nuestra aplicación.</figcaption><img src="../../public/assets/images/scripts/6.png" alt="example"/>
+            </figure>
+            <figure> <img src="../../public/assets/images/scripts/7.png" alt="example"/>
+            </figure>
+          </article>
+          <article> 
+            <h2>Alternativa a nodemon --watch </h2>
+            <p>Es el más recomendado ya que al contrario de nodemon,<code>--watch </code>es un observador nátivo y por ende es más rapido, un contra es que no tiene tanta configuración como nodemon que podemos vigilar varios archivos al mismo tiempo.</p>
+            <div> 
+              <p>Para poder ejecutar nuestro observador tenemos que poner lo siguiente en nuestra línea de comandos </p>
+              <p><code>node --watch nombreArchivo.js    </code></p>
+            </div>
+            <figure> <img src="../../public/assets/images/scripts/8.png" alt="example"/>
+            </figure>
+          </article>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

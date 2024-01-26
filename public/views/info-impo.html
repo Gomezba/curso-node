@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head></head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <title>Node renovado</title>
+  <script src="../js/scroll-linked-nav.js" defer> </script>
+  <body>       
+    <main class="layout">
+      <div>
+        <div class="sidebar"><a href="../../"><img class="logo" src="../assets/icons/nodejs.png" alt="logo"></a>
+          <nav class="nav">
+                        <ul class="menu">
+                          <li class="menu__item"><a class="menu__link" href="./que-es-node.html">¿Qué es node?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./primeros-pasos.html">Primeros pasos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./package-json.html">¿Qué es el package-json?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./global-vs-window.html">Global vs window</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./cjs.html">Sistema de módulos CJS</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./esm.html">Sistema de módulos ESM</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./modulos-nativos.html">Modúlos nativos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./url.html">¿URL?, parámetros de ruta, módulo URL</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./dependencias.html">¿Qué son las dependencias?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./node-modules.html">¿Qué es node modules?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./npx.html">Comando npx</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./scripts.html">Scripts personalizados</a></li>
+                          <li class="menu__item"><a class="active menu__link" href="./info-impo.html">Conceptos importantes</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./servidor-web.html">Primer servidor web con HTTP (API)</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./express-init.html">Primeros pasos con Express</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./express-parameters.html">Express path-query-parameters</a></li>
+                        </ul>
+          </nav>
+        </div>
+      </div>
+      <section class="container-content">
+        <div class="container-title title-sticky">       
+          <h1>Conceptos importantes</h1>
+        </div>
+        <section class="content">       
+          <nav class="container-submenu">
+            <ul class="submenu"> 
+              <li class="submenu__item"><a class="submenu__link" href="#1">Cliente servidor</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#2">Patrón MVC</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#3">¿Qué es una Api?</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#4">Tipos de Api</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#5">Conceptos al desarrollar una Api</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#6">¿Qué es una Api Rest?</a></li>
+            </ul>
+          </nav>
+          <article id="1">
+            <h2>Modelo Cliente-Servidor</h2>
+            <p>El modelo cliente-servidor es una arquitectura de red que divide las funciones de un sistema informático en dos partes principales: el cliente y el servidor. Estas partes interactúan entre sí para proporcionar servicios o recursos a los usuarios.</p>
+            <p>1. <strong class="ts-1">Cliente:</strong><br>  - El cliente es la parte del sistema que solicita servicios o recursos al servidor.<br>  - Puede ser un software, hardware o incluso un usuario que utiliza una interfaz para acceder a los servicios.</p>
+            <p>2. <strong class="ts-1">Servidor:</strong><br>  - El servidor es la parte del sistema que proporciona servicios o recursos solicitados por los clientes.<br>  - Está diseñado para escuchar las solicitudes entrantes, procesarlas y enviar las respuestas adecuadas.</p>
+            <p>3. <strong class="ts-1">Comunicación:</strong><br>  - La comunicación entre el cliente y el servidor se realiza a través de un protocolo específico (por ejemplo, HTTP para la web).<br>  - El cliente envía solicitudes al servidor, y este responde con la información o servicio solicitado.</p>
+            <p>4. <strong class="ts-1">Descentralización:</strong><br>  - Este modelo permite la descentralización de servicios, ya que los clientes pueden acceder a recursos compartidos en servidores remotos.<br>  - Los servidores pueden especializarse en tareas específicas, y los clientes pueden utilizar varios servicios sin necesidad de tener toda la funcionalidad localmente.</p>
+            <p>5. <strong class="ts-1">Escalabilidad:</strong><br>  - El modelo cliente-servidor es escalable, ya que puedes agregar más clientes y servidores según las necesidades de la aplicación o sistema.</p>
+            <p>6. <strong class="ts-1">Ejemplos de aplicaciones:</strong><br>  - El modelo cliente-servidor se utiliza en una amplia variedad de aplicaciones, como aplicaciones web, servicios en la nube, bases de datos distribuidas, juegos en línea y sistemas de correo electrónico.</p>
+            <p>En resumen, el modelo cliente-servidor es una estructura de comunicación que organiza la interacción entre los usuarios (clientes) y los recursos o servicios proporcionados (servidores) de manera eficiente y descentralizada. Este enfoque ha demostrado ser fundamental en el diseño de sistemas distribuidos y aplicaciones en red.</p>
+          </article>
+          <article id="2">
+            <h2>Patrón Modelo-Vista-Controlador (MVC)</h2>
+            <p>El patrón Modelo-Vista-Controlador (MVC) es una arquitectura o patron de diseño de software. Este patrón divide la aplicación en tres componentes principales: Modelo, Vista y Controlador, con el objetivo de separar las responsabilidades y mejorar la modularidad.</p>
+            <p>Este modelo tambien se suele conocer como el módelo de 3 capas.</p>
+            <P>Por un lado la (UI) el frontend lo que en desarrollo web, construimos con HTML, CSS Y JAVASCRIPT </P>
+            <P>Luego tenemos el backend y ahí es donde justamente, hasta antes de nodeJs si queriamos hacer ana aplicación web, pues en el front siempre vamos a tener HTML, CSS y JS con las herramientas que están al rededor del sistema frontend, pero en el backend tambien ya dependia mucho de con que lenguaje de programación ibamos a trabajar y que tipo de servidor ibamos a tener, entonces pues en el backend tenemos una mayor variedad de opciones, porque yo podria desarrollar un mismo tipo de aplicación en tecnologías de lenguaje JAVA, .NET, C#, C++, ASP.NET, Phyton, PHP.</P>
+            <p>Pues justamente hasta antes de NodeJs JAVASCRIPT solo existia en los navegadores, es curioso saber que ni JAVASCRIPT ni PHP nacieron como lenguajes de programación si no más bien como herramientas que le permitieran a los programadores de generar código HTML para la web de manera más dinámica, pero obviamente que con la popularidad que tuvieron ambas tecnologías posteriormente se pensó en hacerlo en un lenguaje formal.</p>
+            <p>Entonces desde del 2009 gracias a la creación de NodejS creado por Ryan Lienhart Dahl, pues podemos utilizar en el frontend JS y en el backend tambien, y la tercera capa sería justamente la capa del modelo de datos, es decir donde almacenaremos la información.</p>
+            <p>Otra de las cosas que tambien popularizo nodeJs y tambien gracias a la big-data, los desarrolladores empezamos a tener la necesidad de almacenar la información no simplemente en módelos relacionales a base de tablas y columnas, porque digamos que de un registro a otro la información podria cambiar, entonces fue por eso que nacieron las corrientes de bases de datos NoSql.</p>
+            <p>En las bases de datos no relacionales NoSql tambien tenemos diferentes tipos de bases de datos, las que son de tipo "clave" - "valor" y otras que son documentales porque guardan en documentos la información y pues resulta que la estructura de un documento es como si fuera un objeto JS.</p>
+            <p>Esto significa que con bases de datos documentales como bien podria ser FIREBASE o MONGODB, tambien podriamos tener la misma sintaxis de JS en el lado del servidor.</p>
+            <p>Este concepto se le conoce como programación ISOMORFICA que viene de "ISO" = "IGUAL", "MORFOS" = "FORMA", es decir la misma forma y en este caso hoy en día el unico lenguaje de programación en el que podemos hacer una aplicación en sus 3 grandes capas (frontend, backend, modelo de datos) es JAVASCRIPT.</p>
+            <p>En otros lenguajes como por ejemplo si queremos construir una aplicación en tecnologías .NET, pues en el backend tendremos .net pero en la base de datos seguramente utilizaremos SQL-Server. </p>
+            <p>1. <strong class="ts-1">Modelo:</strong><br>  - El Modelo representa la lógica y los datos de la aplicación.<br>  - Gestiona el acceso a los datos y contiene la lógica de negocio.</p>
+            <p>2. <strong class="ts-1">Vista (UI):</strong><br>  - La Vista se encarga de la presentación de la información al usuario.<br>  - Muestra los datos del Modelo y recibe la entrada del usuario.</p>
+            <p>3. <strong class="ts-1">Controlador:</strong><br>  - El Controlador actúa como intermediario entre el Modelo y la Vista.<br>  - Maneja la entrada del usuario, actualiza el Modelo y actualiza la Vista.</p>
+            <figure> <img src="../../public/assets/images/info-impo/1.png" alt="example"/>
+            </figure>
+            <p><span class="ts-3">Ventajas del patrón MVC:</span>
+              <ul>
+                <li>Facilita la modularidad y el mantenimiento del código.</li>
+                <li>Permite cambios en la interfaz de usuario sin afectar la lógica subyacente.</li>
+                <li>Mejora la reutilización del código.</li>
+              </ul>
+            </p>
+            <p><span class="ts-3">Ejemplo de implementación en un entorno web:</span>
+              <ul>
+                <li> <strong class="ts-1">Ruta del Modelo:</strong> Contiene la lógica de acceso a la base de datos y las operaciones relacionadas con los datos.</li>
+                <li> <strong class="ts-1">Ruta de la Vista:</strong> Incluye los archivos de plantilla que definen la presentación y la interfaz de usuario.</li>
+                <li> <strong class="ts-1">Ruta del Controlador:</strong> Gestiona las solicitudes del usuario, interactúa con el Modelo y actualiza la Vista.</li>
+              </ul>
+            </p>
+            <p>En resumen, el patrón Modelo-Vista-Controlador (MVC) proporciona una estructura organizada para el desarrollo de software, mejorando la mantenibilidad y permitiendo la separación de responsabilidades entre los componentes de la aplicación.</p>
+          </article>
+          <article id="3"> 
+            <h2>¿Qué es una Api?</h2>
+            <p class="ts-1">API (Interfaz de Programación de Aplicaciones):</p>
+            <p>Una API, por sus siglas en inglés, es una Interfaz de Programación de Aplicaciones. Es un conjunto de reglas y definiciones que permite a diferentes software comunicarse entre sí. Una API define cómo interactuar con un software o un conjunto de servicios, permitiendo que aplicaciones externas accedan y utilicen sus funciones y datos de manera controlada.                </p>
+            <p>Cuando se habla de una "interfaz de programación de aplicaciones (API)," se hace referencia a un conjunto de reglas y definiciones que permiten la comunicación entre diferentes software. Una API no tiene que ser necesariamente visual; es más bien un conjunto de métodos, reglas y protocolos que permiten que las aplicaciones se comuniquen entre sí de manera programática. Las APIs definen cómo se deben realizar ciertas operaciones y cómo se deben estructurar los datos para interactuar con un servicio o aplicación.</p>
+            <p>Para entender mas el concepto de una Api supongamos que queremos hacer una aplicación como la de <strong>Uber </strong>y para eso necesitamos mapas (geolocalización) y para eso necesitariamos una tonelada de billetes para poder desarrollar los mapas desde cero, así que lo mejor es conectarnos a google maps y utilizar los mapas de ellos ya que ellos han gastado muchisimo dinero, en imagenes satelitales, aviones, helicopteros, carros sin conductor, gente con camaras en la cabeza, es enorme todo lo que ellos han hecho.</p>
+            <p>Nosotros ya podemos utilizar todo ese desarrollo que otros han hecho como google maps.</p>
+            <P>Otro ejemplo si queremos hacer un e-commerce para vender en internet, entonces imaginemonos desarrollar toda la tecnología para desarrollar el sistema de pagos desde cero para poder cobrar por internet, pues si que sería algo complicado, pues mejor nos conectamos a una pasarela de pago, tipo <strong>paypal </strong>,<strong>stripe </strong>y ya estaría, entonces aprovechamos el desarrollo que han hecho otras empresas para nuestra aplicación y ese es el <strong>concepto de Apis a grandes rasgos.</strong></P>
+            <p>Ahora veamos los conceptos más claros.</p>
+            <h3>Terminología</h3>
+            <h4>Interfaz    </h4>
+            <p>Como ya vimos una interfaz es una capa de abstracción para que 2 sistemas se comuniquen, una capa de abstracción nos permite a nosotros interactuar con un sistema sin necesidad de saber que está pasando por detrás, por ejemplo la imagén de voltante de un auto.</p>
+            <figure> 
+              <figcaption>Nosotros podemos girar el volante y el auto sigue esa dirección, nosotros no necesitamos saber que está pasando por detrás para que eso pase, eso es un ejemplo de interacción con una capa de abstracción.</figcaption><img src="../assets/images/info-impo/2.png" alt="ejemplo" width="250px">
+            </figure>
+            <p>Otro ejemplo un formulario de login, nosotros ponemos nuestro usuario y contraseña, hacemos clic en iniciar sesión y accedemos, pero no necesitamos saber que fue lo que pasó por detrás, eso es una interfaz.</p>
+            <h4>Api </h4>
+            <figure> 
+              <figcaption>Una Api es una interfaz pero es (Application Programming Interface), pero es una interfaz para que se comuniquen aplicaciones o programas de software y compartan datos entre ellos.</figcaption><img src="../assets/images/info-impo/3.png" alt="ejemplo" width="250px">
+            </figure>
+            <h4>Arquitectura de software</h4>
+            <figure> 
+              <figcaption>Es la forma en que esta diseñado un sistema, como estan organizados sus componentes, como se comunican entre ellos y que funciones cumplen.</figcaption><img src="../assets/images/info-impo/4.png" alt="ejemplo" width="250px">
+            </figure>
+            <h4>Servicio Web   </h4>
+            <figure> 
+              <figcaption>Es un sistema que permite la comunicación entre equipos que esten en una misma red, estos sistemas tienen que seguir ciertos estándares como usar el protocolo HTTP que es el mismo protocolo para navegar en la web y es la base de las Apis remotas, de la comunicación entre programas pero que esten en lugares diferentes.</figcaption><img src="../assets/images/info-impo/5.png" alt="ejemplo" width="250px">
+            </figure>
+            <h4>Rest   </h4>
+            <figure> 
+              <figcaption>Es una arquitectura, las Apis pueden ser de varios tipos y una de estos tipos son las Apis Rest, la arquitectura rest, significa (RESPRESENTATIONAL STATE TRANSFER), que en español significa una REPRESENTACIÓN DE TRANSFERENCIA DE ESTADO, esta arquitectura implica que puedan guardarse los datos en cache, también que el estado no se envía en las peticiones y que nosotros podemos definir que datos permitimos que otra aplicación acceda, revise o manipule de nuestra aplicación. Es decir si nosotros queremos que nuestra aplicación pueda consumirse desde otras apps yo puedo definir los permisos y eso es REST.</figcaption><img src="../assets/images/info-impo/6.png" alt="ejemplo" width="250px">
+            </figure>
+            <h4>JSON   </h4>
+            <figure> 
+              <figcaption>Hoy en día el formato mas usado para transferir información, es el formato JSON, anteriormente se usaba más XML pero en la actualiadad es muy poco común utilizar ese formato de transferencia, salvo en casos muy concretos, JSON es muy facíl de entender y manipular tambien.</figcaption><img src="../assets/images/info-impo/7.png" alt="ejemplo" width="250px">
+            </figure>
+            <h4>Token   </h4>
+            <figure> 
+              <figcaption>Las Apis pueden ser privadas o públicas, pues obviamente las públicas son las que cualquier persona puede acceder a ellas y consultar la información mientras que una Api privada requiere una autenticación, cuando nosotros nos autenticamos la primera vez el servidor nos devuelve un token que es un objeto que contiene todos los datos de esta autenticación, entonces cada que nosotros solicitemos información adicional el servidor revisará si el token todavía está vigente y ya no nos pedirá una nueva autenticación, el formato más común para los tokens en Apis Rest es JWT.</figcaption><img src="../assets/images/info-impo/8.png" alt="ejemplo" width="250px">
+            </figure>
+            <P>Ya entendimos el concepto de Apis que son interfazes para que programas de software se comuniquen entre ellos y compartan datos bajo ciertos estándares y el más usado hoy en día es REST y el formato más usado para enviar datos es JSON pero no es el único pero si el más usado.</P>
+          </article>
+          <article id="4"> 
+            <h2>Tipos de Api </h2>
+            <p>Ahora nos enfocaremos en el tema de los tipos de Apis para abarcar más el enfoque sobre las Apis.</p>
+            <p>Las apis las podemos definir en 2 tipos entre locales y remotas</p>
+            <figure> <img src="../../public/assets/images/info-impo/9.png" alt="example"/>
+            </figure>
+            <h3>Apis Locales </h3>
+            <p>Son las que se ejecutan dentro del mismo entorno, por ejemplo supongamos que estamos desarrollando una aplicación android y necesitamos que cuando nos llegue una notificación queremos que el celular vibre, entonces nos comunicamos con la Api de vibración del teléfono, entonces todo ocurre ahí todo es local.</p>
+            <h3>Apis Remotas</h3>
+            <p>Estas obviamente son Apis que consumen datos de una aplicación que está en otro lugar en otro punto del mundo.</p>
+            <p>Las Apis remotas tienen mucha mas información pero la siguiente imagén trata de simplificar lo que son las Apis remotas, pero nos ayudará a entender como está organizado esto.</p>
+            <figure> <img src="../../public/assets/images/info-impo/10.png" alt="example"/>
+            </figure>
+            <p>Estas Apis remotan pueden utilizar servicios web que ya vimos que son un sistema de comunicación utilizando el protoclo HTTP, entonces las Apis remotas pueden utilizar servicios web que es lo más común y si usan servicios web pueden utilizar el protocolo SOAP (Simple Object Acces Protocol) o pueden ser REST, el protocolo SOAP todavía se sigue usando aunque ya no tanto, pero en su momento fue el más usado, pero hoy en día REST es la arquitectura más usada para Apis, hay que saber que REST es una arquitectura a comparación de SOAP que no lo és ya que es un protocolo.</p>
+            <p>Cuando nosotros creamos un servicio web utilizando la arquitectura REST estamos hablando de <strong class="ts-3">RESTFUl</strong>.</p>
+          </article>
+          <article id="5"> 
+            <h2>Conceptos al desarrollar una Api</h2>
+            <p>Cuando nosotros estemos desarrollando una Api Rest debemos conocer ciertos conceptos </p>
+            <h3>Consultar Recursos (URI)</h3>
+            <figure> 
+              <figcaption>Cada recurso que nosotros consultamos tiene un identificador único llamado <strong class="ts-1">URI (Uniform Resource Identifier) </strong>y lo consultamos por algo llamado <strong class="ts-1">endpoint </strong>que es la URL completa.<br>Esa URI permite consultar directamente un recurso por ejemplo www.guitars.com/tipos<br>Esta URI se convierte en una forma única de identificar y acceder a la página específica de tipos de guitarras en el sitio web. Cada recurso en la web, ya sea una página web, una imagen, un archivo de texto, etc., tiene su propia URI única que lo identifica.</figcaption><img src="../assets/images/info-impo/11.png" alt="ejemplo" width="250px">
+            </figure>
+            <h3>Códigos de estado </h3>
+            <p>Cuando nosotros solicitamos una información a través de una Api, el servidor puede contestarnos con distintos códigos y con esos códigos vamos a saber que pasó con nuestra petición.     </p>
+            <figure> 
+              <figcaption>Según el código que nosotros recibamos en nuestra petición ya sabremos nosotros que hacer con ellos.</figcaption><img src="../../public/assets/images/info-impo/12.png" alt="example"/>
+            </figure>
+            <h3>Métodos HTTP</h3>
+            <p>Estos métodos nos permiten interactuar con la Api.</p>
+            <figure> <img src="../../public/assets/images/info-impo/13.png" alt="example"/>
+            </figure>
+            <h3>Formatos </h3>
+            <p>Como ya se ha mencionado las Apis pueden devolver la información en distintos formatos, ya hemos visto que el formato más utilizado es JSON, pero no es el único, en Apis REST, podemos devolver o no pueden dar formato XML o texto plano, ya que hay empresas que tienen sus sitemas que necesiten XML o incluso texto plano como empresas del gobierno, lo importante es que no tenemos que utilizar otro sistema sino que podemos seguir utilizando una Api Rest y devolver ese tipo de formato.</p>
+            <figure>          <img src="../assets/images/info-impo/14.png" alt="ejemplo" width="250px"></figure>
+            <h3>Buenas prácticas </h3>
+            <p>Cuando nosotros desarrollamos una Api Rest hay buenas prácticas que podemos seguir y aquí tenemos algunas de ellas.</p>
+            <figure><img src="../assets/images/info-impo/15.png" alt="ejemplo"></figure>
+          </article>
+          <article id="6"> 
+            <h2>¿Qué es una Api Rest?</h2>
+            <p>Sabiendo los conceptos y teoria mencionada anteriormente, una Api Rest, no es más que un estilo de arquitectura de construir nuestras Apis.</p>
+            <p><strong class="ts-1">API REST (Transferencia de Estado Representacional):</strong><br>REST es un estilo arquitectónico para diseñar sistemas de red que utilizan HTTP. Una API REST (también conocida como interfaz RESTful) utiliza los principios de REST para proporcionar servicios web. Utiliza los métodos HTTP estándar (GET, POST, PUT, DELETE, etc.) para realizar operaciones en recursos, y los datos suelen ser transmitidos en formato JSON o XML. Las API REST son conocidas por ser simples, escalables y fáciles de entender.</p>
+            <p> <strong class="ts-1">RESTful:</strong><br>"RESTful" es un término que se utiliza para describir implementaciones que siguen los principios de REST de manera rigurosa. Una API RESTful sigue las convenciones de REST y utiliza una arquitectura orientada a recursos, donde cada recurso (por ejemplo, usuarios, productos) tiene su propio identificador único y se accede a través de URI (Uniform Resource Identifier).    </p>
+            <p>En resumen, una API es un conjunto de reglas que permite la interacción entre software, mientras que una API REST es una implementación de servicios web que sigue los principios de REST. La etiqueta "RESTful" se utiliza para describir implementaciones que adhieren estrictamente a los principios de REST.    </p>
+            <p><strong>Para entender más a fondo, veamos cuales son los principios que definen a REST, ya que para que una Api sea llamada Api Rest tiene que cumplir con ciertos requisitos, ya que muchos piensan que una Api Rest es aquella que devuelve un JSON e incluso podemos tener diferentes representaciones de recursos como HTML, como XML, pero no es así, eso es un concepto erroneo.</strong></p>
+            <h3>Principios Rest</h3>
+            <p>REST, que significa Transferencia de Estado Representacional, es un estilo arquitectónico para diseñar sistemas distribuidos. Fue propuesto por Roy Fielding en su tesis doctoral en 2000. REST se basa en un conjunto de principios y restricciones que ayudan a diseñar sistemas web que sean escalables, flexibles y fáciles de entender. Aquí hay algunos conceptos clave:</p>
+            <h4>Recursos:</h4>
+            <p>En el contexto de REST, todo es considerado como un recurso. Un recurso puede ser cualquier cosa que tenga sentido para el sistema, como un objeto, un servicio o incluso un concepto abstracto. Cada recurso tiene un identificador único llamado URI (Uniform Resource Identifier).</p>
+            <h4>Operaciones sobre Recursos:</h4>
+            <p>REST utiliza métodos HTTP estándar para realizar operaciones sobre recursos. Los métodos principales son GET (para obtener información sobre un recurso), POST (para crear un nuevo recurso), PUT (para actualizar un recurso existente) y DELETE (para eliminar un recurso).</p>
+            <h4>Representación de Recursos:</h4>
+            <p>La información sobre un recurso se transfiere entre el cliente y el servidor en forma de representaciones. Las representaciones pueden ser en formatos como JSON, XML, HTML, entre otros. Esto permite la flexibilidad en la presentación y el consumo de datos.</p>
+            <h4>Estado Stateless (Sin Estado):</h4>
+            <p>Una de las restricciones fundamentales de REST es que cada solicitud del cliente al servidor debe contener toda la información necesaria para entender y procesar la solicitud. El servidor no debe almacenar ningún estado sobre el cliente entre solicitudes. Cada solicitud del cliente al servidor es independiente.</p>
+            <h4>Interfaz Uniforme:</h4>
+            <p>REST promueve una interfaz uniforme entre los componentes del sistema. Esto incluye la identificación de recursos mediante URIs, la manipulación de recursos a través de representaciones y el uso consistente de los métodos HTTP.</p>
+            <h4>Sistema Cliente-Servidor:</h4>
+            <p>REST separa la interfaz de usuario y la lógica del servidor, lo que permite que cada parte evolucione de manera independiente. Esto mejora la escalabilidad y la portabilidad.</p>
+            <h4>Cacheabilidad:</h4>
+            <p>REST permite que las respuestas a las solicitudes se puedan cachear, lo que puede mejorar la eficiencia y el rendimiento en sistemas distribuidos.</p>
+            <p>En resumen, REST es un enfoque arquitectónico que utiliza los principios de la web para diseñar sistemas distribuidos, haciendo un uso eficiente del protocolo HTTP y proporcionando una interfaz uniforme y sencilla para la interacción entre componentes. Las API RESTful siguen estos principios para crear servicios web que son eficientes, escalables y fáciles de entender.</p>
+            <figure> <img src="../../public/assets/images/info-impo/16.png" alt="example"/>
+            </figure>
+            <figure> 
+              <figcaption>De manera visual así es como se podria mirar una Api REST</figcaption><img src="../../public/assets/images/info-impo/17.png" alt="example"/>
+            </figure>
+          </article>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

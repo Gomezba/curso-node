@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head></head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <title>Node renovado</title>
+  <script src="../js/scroll-linked-nav.js" defer> </script>
+  <body>       
+    <main class="layout">
+      <div>
+        <div class="sidebar"><a href="../../"><img class="logo" src="../assets/icons/nodejs.png" alt="logo"></a>
+          <nav class="nav">
+                        <ul class="menu">
+                          <li class="menu__item"><a class="menu__link" href="./que-es-node.html">¿Qué es node?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./primeros-pasos.html">Primeros pasos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./package-json.html">¿Qué es el package-json?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./global-vs-window.html">Global vs window</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./cjs.html">Sistema de módulos CJS</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./esm.html">Sistema de módulos ESM</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./modulos-nativos.html">Modúlos nativos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./url.html">¿URL?, parámetros de ruta, módulo URL</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./dependencias.html">¿Qué son las dependencias?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./node-modules.html">¿Qué es node modules?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./npx.html">Comando npx</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./scripts.html">Scripts personalizados</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./info-impo.html">Conceptos importantes</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./servidor-web.html">Primer servidor web con HTTP (API)</a></li>
+                          <li class="menu__item"><a class="active menu__link" href="./express-init.html">Primeros pasos con Express</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./express-parameters.html">Express path-query-parameters</a></li>
+                        </ul>
+          </nav>
+        </div>
+      </div>
+      <section class="container-content">
+        <div class="container-title title-sticky">       
+          <h1>Primeros pasos con express</h1>
+        </div>
+        <section class="content">       
+          <article>
+            <h2>Introducción </h2>
+            <p>En este capítulo vamos a construir un servidor web a través de Express para empezar a construir una Api Rest, iremos parte por parte las cuales estarán divididas en varios archivos.</p>
+          </article>
+          <article> 
+            <h2>¿Qué es Express?    </h2>
+            <p>En la documentación oficial, Express nos dice, que es una infraestructura web, rápida, minimalista y flexible para NodeJs.</p>
+            <p>En términos generales para que sepamos exactamente qué es lo que hace Express, es interactuar con nuestro módulo HTTP.</p>
+            <p>Basicamente nos provee una serie de métodos y de propiedades que hace muy sencillo el interacturar con el módulo de HTTP.</p>
+            <p>Todo lo que hacemos con Express podemos hacerlo directamente con el módulo HTTP pero tendriamos que escribir mucho más código y seria más complejo de entender.</p>
+            <p>Sin embargo con Express crear un servidor web por ejemplo, es muchisimo mucho más sencillo y es lo que veremos en este capítulo para que podamos comparar que realemente veamos la facilidad que tiene utilizar Express para construir un servidor.</p>
+          </article>
+          <article> 
+            <h2>Pasos para empezar a construir nuestro servidor</h2>
+            <p>Primero tenemos que saber que Express no es un módulo que venga por defecto, así que tenemos que instalarlo.</p>
+            <p>
+               En nuestra terminal escribiremos <code>npm install express -E </code>al porner el prefijo -E signifca que instalará la version actual de Express y por lo tanto no agregará los caret en nuestro package-json.</p>
+            <figure> <img src="../../public/assets/images/express-init/1.png" alt="example"/>
+            </figure>
+            <p>Nosotros vamos a utilizar Express cuando el cliente interactue con nuestro servidor, así que por eso es una dependencia de producción y no de desarrollo.</p>
+            <figure> <img src="../../public/assets/images/express-init/2.png" alt="example"/>
+            </figure>
+            <p>Una vez que hacemos esto, ahora en la constante app tenemos guardado todo el objeto de Express con sus propiedades y sus métodos.</p>
+            <p>Ahora ya estamos listos para utilizar app como si fuera HTTP.</p>
+            <p>Cuando utilizabamos directamente el módulo HTTP haciamos la constante server y creabamos un servidor y después teniamos que poner ese servidor a la escucha.</p>
+          </article>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>
