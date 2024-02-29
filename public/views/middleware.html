@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head></head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <title>Node renovado</title>
+  <script src="../js/scroll-linked-nav.js" defer> </script>
+  <body>       
+    <main class="layout">
+      <div>
+        <div class="sidebar"><a href="../../"><img class="logo" src="../assets/icons/nodejs.png" alt="logo"></a>
+          <nav class="nav">
+                        <ul class="menu">
+                          <li class="menu__item"><a class="menu__link" href="./que-es-node.html">¿Qué es node?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./primeros-pasos.html">Primeros pasos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./package-json.html">¿Qué es el package-json?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./global-vs-window.html">Global vs window</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./cjs.html">Sistema de módulos CJS</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./esm.html">Sistema de módulos ESM</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./modulos-nativos.html">Modúlos nativos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./url.html">¿URL?, parámetros de ruta, módulo URL</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./dependencias.html">¿Qué son las dependencias?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./node-modules.html">¿Qué es node modules?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./npx.html">Comando npx</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./scripts.html">Scripts personalizados</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./info-impo.html">Conceptos importantes</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./servidor-web.html">Primer servidor web con HTTP (API)</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./express-init.html">Primeros pasos con Express</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./express-parameters.html">Parameters-req-y-res</a></li>
+                          <li class="menu__item"><a class="active menu__link" href="./middleware.html">Middleware</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./routers.html">Routers</a></li>
+                        </ul>
+          </nav>
+        </div>
+      </div>
+      <section class="container-content">
+        <div class="container-title title-sticky">       
+          <h1>Middleware</h1>
+        </div>
+        <section class="content">       
+          <nav class="container-submenu">
+            <ul class="submenu"> 
+              <li class="submenu__item"><a class="submenu__link" href="#1">¿Qué es un middleware en Express?</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#2">¿Cómo se usa un middleware en Express?</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#3">¿Por qué se utiliza el método next() en los middlewares?</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#4">Algunos ejemplos de casos de uso</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#5">Casos de uso comunes de middlewares en Express</a></li>
+            </ul>
+          </nav>
+          <article id="1"> 
+            <h2>¿Qué es un middleware en Express?</h2>
+            <p>En Express, un <strong class="ts-1">middleware </strong> es una función que actúa como un intermediario entre una solicitud entrante y la respuesta que se enviará de vuelta al cliente. Esta función tiene acceso a objetos clave como la solicitud (req), que contiene información sobre lo que el cliente está solicitando, y la respuesta (res), que permite enviar una respuesta al cliente. Además, cada middleware tiene acceso a una función especial llamada <strong class="ts-1">next()</strong>, que es responsable de pasar el control al siguiente middleware en la cadena. Esto permite que los middlewares realicen diversas tareas como la autenticación, el registro de solicitudes, el análisis de datos y más, antes de que la solicitud finalmente llegue a su destino o se genere una respuesta para el cliente.</p>
+            <p>Los middleware se ejecutan de forma previa es decir antes de la lógica del end point o los end points, por ejemplo antes de ejecutar la logica del end point debemos mirar la base de datos, o hacer una autenticación. </p>
+            <figure> <img src="../../public/assets/images/middlewares/5.png" alt="example"/>
+            </figure>
+            <p class="note">Cuando se dice que un middleware se ejecuta previamente a un endpoint, significa que el programador ha colocado ese middleware antes de definir el endpoint en el flujo del código. En Express, los middlewares y las rutas (también conocidas como endpoints) se registran en el orden en que aparecen en el código. Por lo tanto, si colocas un middleware antes de definir una ruta específica, ese middleware se ejecutará antes de que la solicitud llegue a esa ruta.<br>No es obligatorio pero si, en la mayoría de casos los middlwares se ponen en el flujo antes de los endpoints pero puede ser que haya casos donde un middleware se pude poner después de una ruta o al ultímo del código.</p>
+            <figure> <img src="../../public/assets/images/middlewares/4.png" alt="example"/>
+            </figure>
+            <p class="ts-2">Los middlewares se utilizan para realizar tareas como la manipulación de la solicitud, la modificación de la respuesta y el control del flujo de la aplicación.</p>
+          </article>
+          <article id="2"> 
+            <h2>¿Cómo se usa un middleware en Express?</h2>
+            <p>El método <code>use()</code>se utiliza para registrar middlewares en una aplicación de Express. Este método toma como argumento una función middleware que se ejecutará en cada solicitud entrante, independientemente de la ruta especificada. También puedes utilizar middlewares específicos de ruta, que solo se ejecutarán cuando una solicitud coincida con una ruta específica.      </p>
+            <P class="ts-1">Middlewares globales   </P>
+            <p>  <code>app.use(middleware)</code><span class="ts-2">  De esta manera el middleware afecta a todas las rutas de nuestra aplicación.</span></p>
+            <p>   <code>app.use((req, res, next) => {//Lógica middleware})<span class="ts-3">  Esta es la forma más común de crear middlewares globales, podemos tener middlewares globales solo para afectar aquellas peticiones que nosotros explícitamentele indiquemos, por ejemplo afectar aquellos endpoints que sean solo POST por decir algo, siguen siendo globales ya que afectará a todas aquellas peticiones POST como en este siguiente ejemplo.</span></code></p>
+            <figure> 
+              <figcaption>Middleware global que afecta a todas las peticiones POST</figcaption><img src="../../public/assets/images/middlewares/7.png" alt="example"/>
+            </figure>
+            <p>  <code>app.use('/laptops',(req, res, next) => {//Lógica middleware})</code><span class="ts-2">  Estamos creando un middleware que será ejecutado para cualquier solicitud que coincida con la ruta especificada, en este caso, cualquier solicitud que comience con /laptops. Esto significa que el middleware se ejecutará para cualquier ruta que comience con /laptops, como /laptops, /laptops/acer, /laptops/dell, etc.</span></p>
+            <p>Entonces, en este caso, el middleware no es global en el sentido de que se aplique a todas las solicitudes, pero es global en el sentido de que se aplica a todas las solicitudes que coincidan con la ruta especificada.    </p>
+            <figure> <img src="../../public/assets/images/middlewares/8.png" alt="example"/>
+            </figure>
+            <p>Resultado </p>
+            <figure> <img src="../../public/assets/images/middlewares/9.png" alt="example"/>
+            </figure>
+            <P class="ts-1">Middlewares específicos</P>
+            <p> <code>app.get('/ruta', callbackMiddleware ,(req,res)=>{})</code>De esta manera el middleware solo afecta a la ruta especificada</p>
+            <figure> <img src="../../public/assets/images/middlewares/10.png" alt="example"/>
+            </figure>
+          </article>
+          <article id="3"> 
+            <h2>¿Por qué se utiliza el método next() en los middlewares?</h2>
+            <p>El método <strong class="ts-1">next() </strong>es esencial en Express para pasar el control al siguiente middleware en la cadena de middlewares o a la ruta final en el caso de que no haya más middlewares registrados.</p>
+            <p>En Express, los middlewares se ejecutan secuencialmente en el orden en que se registran. Después de que un middleware realiza su tarea, puede optar por pasar el control al siguiente middleware llamando a la función next(). Esto permite que cada middleware realice su función específica y luego permita que el siguiente middleware o la ruta final manejen la solicitud.        </p>
+            <figure> <img src="../../public/assets/images/middlewares/6.png" alt="example"/>
+            </figure>
+          </article>
+          <article id="4">
+            <h2>Algunos ejemplos de casos de uso </h2>
+            <h3>Middleware global </h3>
+            <p>Como se habia mencionado podemos crear middlwares globales que afectarán a todos los end points de nuestra aplicacion, por ejemplo podemos tener un middleware global que parsee el body de la petición de JSON a un Objeto Literal JS ya que por ejemplo puede que nuestra aplicación siempre envie la info en formato JSON y es necesario parsearla para convertirla en un objeto para JS.</p>
+            <p>Pero hay que recordar que los middleware siempre se ejecutan en el orden en el que estan definidos.</p>
+            <figure> <img src="../../public/assets/images/middlewares/1.png" alt="example"/>
+            </figure>
+            <p>Resultado con el end point guitars con el método PUT</p>
+            <figure> <img src="../../public/assets/images/middlewares/2.png" alt="example"/>
+            </figure>
+            <p>Resultado con el end point bass con el método POST</p>
+            <figure> <img src="../../public/assets/images/middlewares/3.png" alt="example"/>
+            </figure>
+            <h3>Ejemplo de middleware específico con autorización </h3>
+            <p>Este ejemplo es didáctico para darnos una idea de como se usan los middlewares un poco más complejos.</p>
+            <figure> <img src="../../public/assets/images/middlewares/11.png" alt="example"/>
+            </figure>
+            <h3>Uso de express.static(publicDirectoryPath) para enviar archivos estáticos</h3>
+            <p>express.static es un middleware incorporado en Express que se utiliza para servir archivos estáticos, como HTML, imágenes, archivos CSS, archivos JavaScript, etc. Este middleware toma como argumento el directorio raíz desde el cual se servirán los archivos estáticos.</p>
+            <p> Para usar express.static, primero necesitamos especificar el directorio raíz que contiene nuestros archivos estáticos. Podemos hacerlo utilizando la función express.static y pasándole la ruta del directorio como parámetro.</p>
+            <figure> <img src="../../public/assets/images/middlewares/12.png" alt="example"/>
+            </figure>
+            <p>Veamos una nota sobre express.static()</p>
+            <div class="note"> 
+              <p>Cuando una solicitud de archivo estático se realiza a través del middleware express.static, si la ruta especificada en la solicitud no se encuentra en el directorio raíz especificado (publicDirectory en tu caso), Express responderá automáticamente con un error HTTP 404 (Not Found).</p>
+              <p>Esto significa que si intentamos acceder a un archivo que no existe en el directorio público, como <strong class="ts-2">/ruta/a/archivo_que_no_existe.css</strong>, Express detectará que el archivo no se encuentra en el directorio especificado y responderá automáticamente con una respuesta HTTP 404.</p>
+              <p>El middleware express.static está diseñado para manejar la lógica de servir archivos estáticos de manera eficiente y segura, pero no incluye automáticamente la lógica de manejo de errores para las rutas que no existen. En su lugar, delega el manejo de esas solicitudes al siguiente middleware en la cadena de middleware de Express. </p>
+            </div>
+            <p>Como ya vimos en la nota anterior no se incluye el manejo de la lógica de errores para las rutas que no existen, si deseamos personalizar la respuesta para las rutas que no se encuentran, podemos colocar un middleware de manejo de errores después del middleware express.static para manejar estos casos específicos, donde nosotros ya sabemos que el <strong class="ts-1">middleware <code>express.static(publicDirectory) </code>delega el manejo de los errores al siguiente middleware en la cadena de middlewares en el flujo de nuestro programa. </strong></p>
+            <div class="note"> 
+              <p>Cuando decimos que
+                <strons class="ts-2">express.static()</strons>  no maneja los errores de las rutas que no existen y que debemos poner un middleware para manejar esos errores despues del express.static() puede ir justo después es decir si tenemos expres.static() en la línea 15 por ejemplo, el middleware de errores de rutas puede ir juestos después en la línea 16, pero también puede ir (después) no justo depués pero sí después, esto quiere decir que por ejemplo tenemos el express.static() en la línea 15 y el middleware de errores lo podemos tener en la linea 30 y antes podemos tener otras líneas de código pero sigue estando después, espero que se entienda.
+              </p>
+            </div>
+            <p>Ahora que ya sabemos la nota anterior, veamos un ejemplo que parece correcto pero da un error.</p>
+            <figure> <img src="../../public/assets/images/middlewares/13.png" alt="example"/>
+            </figure>
+            <p>Al ejecutar el código podemos ver que al ingresar al home(index.html) automáticamente nos devolverá la pagina 404 NOT FOUND, y se supone que nos deberia mostrar la página de inicio.</p>
+            <figure> <img src="../../public/assets/images/middlewares/14.png" alt="example"/>
+            </figure>
+            <p class="ts-3">Explicación de error </p>
+            <P>Ahora, aquí está el problema: si el manejador de la ruta raíz / está definido después del middleware de manejo de errores, Express intentará primero pasar la solicitud al middleware de manejo de errores antes de verificar si la solicitud coincide con la ruta raíz. Esto significa que si la solicitud no coincide con una ruta estática, Express intentará pasarla al middleware de manejo de errores en lugar de al manejador de la ruta raíz. Como resultado, el manejador de la ruta raíz nunca se ejecutará, y la solicitud siempre terminará siendo manejada por el middleware de manejo de errores, lo que resultará en que siempre se envíe la página 404.</P>
+            <p class="ts-3">Solución al error </p>
+            <p>Para asegurar que el manejador de la ruta raíz / se ejecute antes de intentar pasar la solicitud al middleware de manejo de errores, debes colocar el manejador de la ruta raíz antes del middleware de manejo de errores en la secuencia de middleware. Esto garantiza que Express primero intente manejar las rutas dinámicas antes de intentar manejar las rutas de manejo de errores.</p>
+            <p class="ts-2">Código correcto </p>
+            <figure> <img src="../../public/assets/images/middlewares/15.png" alt="example"/>
+            </figure>
+            <figure> 
+              <figcaption>Ahora si visualiza el index</figcaption><img src="../../public/assets/images/middlewares/16.png" alt="example"/>
+            </figure>
+            <figure> 
+              <figcaption>Si intentamos entrar a una pagina que no existe, ahora si muestra el 404 NOT FOUND</figcaption><img src="../../public/assets/images/middlewares/17.png" alt="example"/>
+            </figure>
+            <p>Es por eso que deciamos que el middleware de errores puede ir justo despues o muchos después.</p>
+          </article>
+          <article id="5"> 
+            <h2>Casos de uso comunes de middlewares en Express</h2>
+            <ul> 
+              <li> <strong class="ts-3">Autenticación y autorización: </strong>  Verificar las credenciales del usuario antes de permitir el acceso a ciertas rutas.</li>
+              <li> <strong class="ts-3">Registro de solicitudes: </strong>Registrar información sobre las solicitudes entrantes, como la hora, la ruta solicitada, etc.</li>
+              <li> <strong class="ts-3">Manejo de errores: </strong>  Capturar y manejar errores en la aplicación.  </li>
+              <li> <strong class="ts-3">Compresión:</strong>  Comprimir las respuestas antes de enviarlas al cliente para mejorar el rendimiento.</li>
+              <li> <strong class="ts-3">Análisis de cuerpo de solicitud:</strong>  Analizar y procesar el cuerpo de las solicitudes entrantes, por ejemplo, para el análisis de JSON o formularios.</li>
+            </ul>
+          </article>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

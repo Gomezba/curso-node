@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head></head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <title>Node renovado</title>
+  <script src="../js/scroll-linked-nav.js" defer> </script>
+  <body>       
+    <main class="layout">
+      <div>
+        <div class="sidebar"><a href="../../"><img class="logo" src="../assets/icons/nodejs.png" alt="logo"></a>
+          <nav class="nav">
+                        <ul class="menu">
+                          <li class="menu__item"><a class="menu__link" href="./que-es-node.html">¿Qué es node?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./primeros-pasos.html">Primeros pasos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./package-json.html">¿Qué es el package-json?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./global-vs-window.html">Global vs window</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./cjs.html">Sistema de módulos CJS</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./esm.html">Sistema de módulos ESM</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./modulos-nativos.html">Modúlos nativos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./url.html">¿URL?, parámetros de ruta, módulo URL</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./dependencias.html">¿Qué son las dependencias?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./node-modules.html">¿Qué es node modules?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./npx.html">Comando npx</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./scripts.html">Scripts personalizados</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./info-impo.html">Conceptos importantes</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./servidor-web.html">Primer servidor web con HTTP (API)</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./express-init.html">Primeros pasos con Express</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./express-parameters.html">Parameters-req-y-res</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./middleware.html">Middleware</a></li>
+                          <li class="menu__item"><a class="active menu__link" href="./routers.html">Routers</a></li>
+                        </ul>
+          </nav>
+        </div>
+      </div>
+      <section class="container-content">
+        <div class="container-title title-sticky">       
+          <h1>Routers</h1>
+        </div>
+        <section class="content">       
+          <article id="1"> 
+            <h2>¿Qué son los routers?</h2>
+            <p>Los routers en Express son como los divisores en un cajón de herramientas. Imagina que tu aplicación es un cajón grande lleno de herramientas diversas, pero a medida que crece, se vuelve cada vez más difícil encontrar lo que necesitas. Aquí es donde entran los routers: te permiten dividir ese cajón en secciones más pequeñas y etiquetadas, de modo que puedas encontrar fácilmente lo que buscas sin tener que revolver todo el cajón.</p>
+            <p>En términos más técnicos, los routers en Express te permiten crear mini-aplicaciones dentro de tu aplicación principal. Puedes definir un grupo de rutas relacionadas, middleware y lógica de manejo de solicitudes en un archivo separado, lo que hace que tu código sea más modular y fácil de mantener.</p>
+            <p>La modularización se refiere a dividir tu aplicación en partes más pequeñas y manejables. En el contexto de Express y los routers, modularizar significa separar diferentes aspectos de tu aplicación, como la lógica de manejo de solicitudes, en archivos separados que se centran en tareas específicas. Por ejemplo, podrías tener un router para manejar todas las solicitudes relacionadas con la autenticación de usuarios, otro para las solicitudes relacionadas con la manipulación de datos, y así sucesivamente.</p>
+            <p>Esta modularización no solo hace que tu código sea más fácil de entender y mantener, sino que también te permite reutilizar código en diferentes partes de tu aplicación. Por ejemplo, si tienes un conjunto de middleware que necesitas usar en varias rutas, puedes definirlo una vez en un router y luego montar ese router en diferentes puntos de tu aplicación donde lo necesites.</p>
+            <p>En resumen, los routers en Express te permiten modularizar tu aplicación, lo que hace que tu código sea más organizado, mantenible y reutilizable.</p>
+          </article>
+          <article id="2"> 
+            <h2>Sintaxis básica</h2>
+            <p>Para usar un router en Express, primero necesitamos crear una instancia del mismo utilizando express.Router(). Luego, podemos definir rutas utilizando los métodos HTTP (GET, POST, PUT, DELETE, etc.) disponibles en Express (router.get(), router.post(), etc.). Finalmente, necesitamos montar el router en nuestra aplicación principal utilizando el método app.use().</p>
+            <p>Hay que recordar el método app.use()</p>
+            <p>El método use() en Express se utiliza para montar middleware y routers en una ruta específica o en el nivel de la aplicación. Cuando utilizamos app.use() con un router, estamos indicando a Express que queremos que todas las solicitudes que coincidan con una cierta ruta se manejen utilizando ese router.   </p>
+            <figure> <img src="../../public/assets/images/routers/1.png" alt="example"/>
+            </figure>
+          </article>
+          <article id="3"> 
+            <h2>Routers con archivos separados </h2>
+            <p>Para esta sección tendremos la siguiente estructura de nuestros archivos.</p>
+            <figure> <img src="../../public/assets/images/routers/2.png" alt="example"/>
+            </figure>
+            <p>Como podemos ver en la imagen de arriba tenemos una carpeta llamada routes, y ahí es donde pondremos todas las rutas de nuestra aplicación, es importante que el archivo de cada ruta tenga el nombre de la ruta, y de manera opcional el nombre suele ser -> <strong class="ts-3">nombreRuta.routes.js</strong>, pero en realidad puede ser el nombre que queramos.</p>
+            <p>El archivo <strong class="ts-1">products.json </strong>tiene la siguiente estructura.    </p>
+            <figure> <img src="../../public/assets/images/routers/3.png" alt="example"/>
+            </figure>
+            <p>Una vez visto esto ahora si podemos empezar con la práctica.</p>
+            <p>Empezamos primeramente con el archivo <strong class="ts-3">categorias.routes.js.</strong></p>
+            <figure> <img src="../../public/assets/images/routers/4.png" alt="example"/>
+            </figure>
+            <p>Archivo <strong class="ts-3">app.js</strong></p>
+            <figure> <img src="../../public/assets/images/routers/5.png" alt="example"/>
+            </figure>
+            <p:strong class="ts-1">RESULTADOS</p:strong>
+            <figure> <img src="../../public/assets/images/routers/6.png" alt="example"/>
+            </figure>
+            <figure> <img src="../../public/assets/images/routers/7.png" alt="example"/>
+            </figure>
+          </article>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>
