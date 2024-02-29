@@ -30,17 +30,190 @@
                           <li class="menu__item"><a class="menu__link" href="./info-impo.html">Conceptos importantes</a></li>
                           <li class="menu__item"><a class="menu__link" href="./servidor-web.html">Primer servidor web con HTTP (API)</a></li>
                           <li class="menu__item"><a class="menu__link" href="./express-init.html">Primeros pasos con Express</a></li>
-                          <li class="menu__item"><a class="active menu__link" href="./express-parameters.html">Express path-query-parameters</a></li>
+                          <li class="menu__item"><a class="active menu__link" href="./express-parameters.html">Parameters-req-y-res</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./middleware.html">Middleware</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./routers.html">Routers</a></li>
                         </ul>
           </nav>
         </div>
       </div>
       <section class="container-content">
         <div class="container-title title-sticky">       
-          <h1>Path parameter y Query parameter en Express</h1>
+          <h1>Parameters y usos de Request y Response</h1>
         </div>
         <section class="content">       
-          <article> </article>
+          <nav class="container-submenu">
+            <ul class="submenu"> 
+              <li class="submenu__item"><a class="submenu__link" href="#1">Introducción</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#2">Path parameters</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#3">Path parameters ejemplo</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#4">Query parameters</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#5">Query parameters ejemplo</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#6">Usos con request</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#7">Usos con response</a></li>
+            </ul>
+          </nav>
+          <article id="1"> 
+            <h2>Introducción </h2>
+            <p>En la sección de conceptos importantes, aprendimos que tenemos 2 tipos de parámetros en las rutas, los <strong class="ts-1">Path parameter </strong>y <strong class="ts-1">Query parameter</strong></p>
+            <p>Veamos un repaso de estos parámetros</p>
+            <div> 
+              <p>Los "path parameters" (parámetros de ruta) y los "query parameters" (parámetros de consulta) son dos formas diferentes de pasar información a un servidor en Express.js, y cada uno se utiliza en diferentes contextos según el diseño de la aplicación.</p>
+            </div>
+          </article>
+          <article id="2">
+            <h2>Path parameters        </h2>
+            <p>Path Parameters:</p>
+            <ul> 
+              <li> <strong class="ts-1">Uso</strong>: Los parámetros de ruta se utilizan para capturar valores específicos de la URL que forman parte de la ruta misma.</li>
+              <li> <strong class="ts-1">Ejemplo de URL</strong>: /users/:userId</li>
+            </ul>
+            <p>Ejemplo didáctico en Express.js:</p>
+            <figure> <img src="../../public/assets/images/express-parameters/1.png" alt="example"/>
+            </figure>
+            <p>Características:</p>
+            <ul> 
+              <li>Los parámetros de ruta se definen en la ruta misma, precedidos por : en la definición de la ruta.</li>
+              <li>Son útiles cuando se necesita identificar un recurso específico en la URL, como un ID de usuario en la ruta /users/:userId.</li>
+              <li>Son parte de la ruta y no afectan la lógica de enrutamiento de manera significativa.</li>
+            </ul>
+          </article>
+          <article id="3"> 
+            <h2>Path parameters ejemplo</h2>
+            <p>Realizaremos una práctica, por lo cual estaremos haciendo parte de una API para configurar las rutas de acceso </p>
+            <p>Estaremos simulando una base de datos con un archvio JSON con la siguiente estrcuctura.
+              <figure> <img src="../../public/assets/images/express-parameters/2.png" alt="example"/>
+              </figure>
+            </p>
+            <p>Leemos nuestro JSON oon readFile y pasamos el JSON a un objeto iterable para JS.
+              <figure> <img src="../../public/assets/images/express-parameters/3.png" alt="example"/>
+              </figure>
+            </p>
+            <p>Ahora lo que haremos es configurar las rutas, lo que haremos es devolver la información de una categoría de productos </p>
+            <p>Esta seria la estructura de nuestra URL </p>
+            <p><strong class="ts-3">http://localhost:3000/categorias/<strong class="ts-2">nombreCategoria</strong></strong></p>
+            <p>Lo que queremos es devolver la información del path parameter <strong class="ts-2">nombreCategoria</strong></p>
+            <p>El código quedaría de la siguiente manera 
+              <figure> <img src="../../public/assets/images/express-parameters/4.png" alt="example"/>
+              </figure>
+            </p>
+            <p class="ts-1">Explicación </p>
+            <p>Este código define una ruta en Express.js para manejar solicitudes GET a la URL <strong class="ts-3">/categorias/:categoria</strong>, donde <strong class="ts-3">:categoria</strong>  es un parámetro dinámico que representa la categoría de los productos. La función de manejo de solicitudes filtra los productos según la categoría proporcionada y responde con los productos encontrados o un mensaje de error si no se encontraron productos.    </p>
+            <p class="ts-1">Resultados </p>
+            <figure> <img src="../../public/assets/images/express-parameters/5.png" alt="example"/>
+            </figure>
+            <figure> <img src="../../public/assets/images/express-parameters/6.png" alt="example"/>
+            </figure>
+          </article>
+          <article id="4"> 
+            <h2>Query Parameters </h2>
+            <p>Query Parameters:</p>
+            <ul> 
+              <li> <strong class="ts-1">Uso</strong>: Los parámetros de consulta se utilizan para enviar datos a través de la URL como pares clave-valor, generalmente para filtrar o personalizar la respuesta del servidor.</li>
+              <li> <strong class="ts-1">Ejemplo de URL</strong>: /search?query=keyword&page=2</li>
+            </ul>
+            <p>Ejemplo didáctico en Express.js:</p>
+            <figure> <img src="../../public/assets/images/express-parameters/7.png" alt="example"/>
+            </figure>
+            <p class="ts-1">Características:</p>
+            <ul> 
+              <li>Los parámetros de consulta se incluyen en la parte de la URL después del signo de interrogación (?) y se separan por & si hay varios.</li>
+              <li>Son útiles cuando se necesita enviar información adicional a través de la URL sin afectar la estructura de la ruta, como parámetros de búsqueda, filtros, o datos opcionales.</li>
+              <li>Son flexibles y pueden no estar presentes en la URL sin afectar la funcionalidad de la ruta.</li>
+            </ul>
+            <p class="ts-1">Conclusión entre Path parameter y Query parameter </p>
+            <p>En resumen, los parámetros de ruta se utilizan para capturar valores específicos de la URL que forman parte de la ruta misma, mientras que los parámetros de consulta se utilizan para enviar datos adicionales a través de la URL como pares clave-valor para personalizar o filtrar la respuesta del servidor. Ambos tienen diferentes casos de uso y se utilizan en contextos diferentes según los requisitos de la aplicación.</p>
+          </article>
+          <article id="5"> 
+            <h2>Query parameters ejemplo    </h2>
+            <p>Una ventaja que tienen los query params es que no intervienen con la ruta, si no se llegase a poner un query param en la URL el resultado sigue siendo el normal, pero si en dado caso especificamos uno por ejemplo si pasamos en la URL <strong class="ts-3">?ordenar=stock</strong></p>
+            <p class="ts-3">http://localhost:3000/categorias/electronicos?ordenar=stock</p>
+            <p>Nosotros somos los que decidimos el nombre del parámetro de consulta y de acuerdo a su nombre y valor, es lo que nosotros programaremos.</p>
+            <p>En este caso lo que haremos es programar un parametro de consulta para ordenar los productos de la categoría establecida en la url de forma ascendente dependiendo de su stock.</p>
+            <figure> <img src="../../public/assets/images/express-parameters/8.png" alt="example"/>
+            </figure>
+            <p class="ts-1">Resultado</p>
+            <figure> <img src="../../public/assets/images/express-parameters/9.png" alt="example"/>
+            </figure>
+            <p>Si no pasamos un parámetro de consulta simplemente tenemos el filtrado de aquellos productos que pertenencen a esa categoría, por eso deciamos que los parámetros de consulta no intervienen con la estructura de la ruta.</p>
+            <figure> <img src="../../public/assets/images/express-parameters/10.png" alt="example"/>
+            </figure>
+          </article>
+          <article id="6">
+            <h2>Algunos usos con request</h2>
+            <p>Ya hemos visto algunos de los usos como, acceder a los parámetros de ruta y parámetros de consulta, aquí veremos otro tipo de usos tambien comunes.</p>
+            <h3>Acceso al cuerpo de la solicitud</h3>
+            <p>Para las solicitudes <strong class="ts-1">POST</strong>, <strong class="ts-1">PUT </strong>  o <strong class="ts-1">PATCH</strong>, puedes acceder al cuerpo de la solicitud utilizando <strong>req.body</strong>después de haber configurado el middleware adecuado (por ejemplo, 
+              <u>express.json() </u>o  
+              <u>express.urlencoded()</u>). 
+            </p>
+            <figure> <img src="../../public/assets/images/express-parameters/11.png" alt="example"/>
+            </figure>
+            <h3>Acceso a las cabeceras de la solicitud</h3>
+            <p>Puedes acceder a las cabeceras de la solicitud utilizando req.headers.</p>
+            <figure> <img src="../../public/assets/images/express-parameters/12.png" alt="example"/>
+            </figure>
+            <h3>Verificación de la autenticación</h3>
+            <p>Puedes verificar la autenticación del usuario utilizando los datos proporcionados en las cabeceras de la solicitud, como tokens de acceso.</p>
+            <figure> <img src="../../public/assets/images/express-parameters/13.png" alt="example"/>
+            </figure>
+          </article>
+          <article id="7">
+            <h2>Algunos usos con response</h2>
+            <p>Ya hemos visto algunos usos como enviar información, mensajes de estado. </p>
+            <p>El objeto response (a menudo abreviado como res) en Express se utiliza para enviar una respuesta HTTP al cliente. Aquí tenemos algunos ejemplos de cómo podemos utilizar el objeto response dentro de un endpoint.</p>
+            <h3>Enviar JSON</h3>
+            <p>Podemos enviar datos JSON al cliente utilizando el método json().</p>
+            <figure> <img src="../../public/assets/images/express-parameters/14.png" alt="example"/>
+            </figure>
+            <h3>Enviar un archivo estático</h3>
+            <p>Podemos enviar un archivo al cliente utilizando el método sendFile(), utilizando el método resolve() que nos brina el módulo de PATH.</p>
+            <figure> <img src="../../public/assets/images/express-parameters/15.png" alt="example"/>
+            </figure>
+            <h3>Renderizar una vista (usando un motor de plantillas)</h3>
+            <p>Si estamos utilizando un motor de plantillas como PUG, EJS o Handlebars, podemos renderizar una vista y enviarla al cliente.</p>
+            <figure> <img src="../../public/assets/images/express-parameters/16.png" alt="example"/>
+            </figure>
+            <figure> <img src="../../public/assets/images/express-parameters/17.png" alt="example"/>
+            </figure>
+            <figure> <img src="../../public/assets/images/express-parameters/18.png" alt="example"/>
+            </figure>
+            <h3>Redireccionar a otra URL</h3>
+            <p>Podemos redireccionar al cliente a otra URL utilizando el método redirect().</p>
+            <p>Por defecto, cuando utilizamos el método </p>
+            <p> <code>redirect(redireccion(default 302), 'ruta-redireccion') </code></p>
+            <p>En express sin especificar un código de estado de redirección, se utiliza el código de estado 302 Found. Este código de estado indica que la redirección es temporal y el cliente debería volver a enviar la misma solicitud a la nueva ubicación proporcionada en el encabezado Location.  </p>
+            <h4>Redirección 301 (Moved Permanently):</h4>
+            <ul> 
+              <li> <strong class="ts-1">Significado: </strong>Indica que la página ha sido movida permanentemente a una nueva ubicación.</li>
+              <li> <strong class="ts-1">Impacto en los motores de búsqueda:     </strong>Los motores de búsqueda interpretan esto como una instrucción para actualizar sus índices con la nueva ubicación y tratar la página original como obsoleta. </li>
+              <li> <strong class="ts-1">Almacenamiento en caché en navegadores:   </strong>Los navegadores pueden almacenar en caché la nueva ubicación y utilizarla para futuras solicitudes.    </li>
+              <li> <strong class="ts-1"> Uso apropiado: </strong>Deberías utilizar una redirección 301 cuando una página ha sido permanentemente movida a una nueva ubicación y quieres que los motores de búsqueda y los usuarios actualicen sus enlaces y marcadores.  </li>
+            </ul>
+            <h4>Redirección 302 (Found o Temporary Redirect):</h4>
+            <ul> 
+              <li> <strong class="ts-1">Significado: </strong>Indica que la página ha sido movida temporalmente a una nueva ubicación.</li>
+              <li> <strong class="ts-1">Impacto en los motores de búsqueda: </strong>Los motores de búsqueda interpretan esto como una instrucción para seguir indexando la página original y no actualizar sus enlaces.</li>
+              <li> <strong class="ts-1">Almacenamiento en caché en navegadores: </strong>Los navegadores no almacenan en caché la nueva ubicación y continúan solicitando la página original para futuras visitas.</li>
+              <li> <strong class="ts-1">Uso apropiado: </strong>Deberías utilizar una redirección 302 cuando una página ha sido temporalmente movida a una nueva ubicación, por ejemplo, durante el mantenimiento del sitio o para pruebas temporales.</li>
+            </ul>
+            <h4>Casos de usos con redirecciones </h4>
+            <p>Tenemos varios casos comunes en los que puedes redireccionar a los usuarios a otra página en tu aplicación web. </p>
+            <p>Aquí hay algunos ejemplos:</p>
+            <ul> 
+              <li> <strong class="ts-1">Después de un inicio de sesión exitoso</strong>: Después de que un usuario inicie sesión correctamente en tu aplicación, es común redirigirlos a una página de inicio o a la página que intentaron acceder antes de iniciar sesión.</li>
+              <li><strong class="ts-1">Después de completar un formulario              </strong>: Después de que un usuario complete un formulario (por ejemplo, un formulario de registro o un formulario de contacto), puedes redirigirlos a una página de confirmación o a una página que muestre los detalles de lo que acaban de enviar.</li>
+              <li><strong class="ts-1">Después de completar una acción de autenticación o autorización</strong>: Después de que un usuario autorice una acción (por ejemplo, autorizar una compra o cambiar la configuración de su cuenta), puedes redirigirlos de regreso a la página desde la que iniciaron la acción.</li>
+              <li><strong class="ts-1">Manejo de rutas no encontradas</strong>: Cuando un usuario intenta acceder a una ruta que no existe en tu aplicación, puedes redirigirlos a una página de error personalizada o a la página de inicio.</li>
+              <li><strong class="ts-1">Enrutamiento basado en lógica de negocio</strong>: Dependiendo de la lógica de tu aplicación, es posible que necesites redirigir a los usuarios a diferentes páginas en función de ciertas condiciones o acciones específicas que hayan realizado.</li>
+            </ul>
+            <div class="note"> 
+              <p>La redirección no es la técnica habitual para manejar casos de rutas no encontradas (404 Not Found) en una aplicación Express. La redirección se utiliza más comúnmente para enviar al cliente a una nueva ubicación cuando la ruta solicitada existe pero se ha movido o cambiado temporal o permanentemente.        </p>
+            </div>
+            <p class="ts-3">Veamos un ejemplo de redireccion   </p>
+            <figure> <img src="../../public/assets/images/express-parameters/19.png" alt="example"/>
+            </figure>
+          </article>
         </section>
       </section>
     </main>

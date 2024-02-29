@@ -30,7 +30,9 @@
                           <li class="menu__item"><a class="menu__link" href="./info-impo.html">Conceptos importantes</a></li>
                           <li class="menu__item"><a class="menu__link" href="./servidor-web.html">Primer servidor web con HTTP (API)</a></li>
                           <li class="menu__item"><a class="active menu__link" href="./express-init.html">Primeros pasos con Express</a></li>
-                          <li class="menu__item"><a class="menu__link" href="./express-parameters.html">Express path-query-parameters</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./express-parameters.html">Parameters-req-y-res</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./middleware.html">Middleware</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./routers.html">Routers</a></li>
                         </ul>
           </nav>
         </div>
@@ -42,7 +44,7 @@
         <section class="content">       
           <article>
             <h2>Introducción </h2>
-            <p>En este capítulo vamos a construir un servidor web a través de Express para empezar a construir una Api Rest, iremos parte por parte las cuales estarán divididas en varios archivos.</p>
+            <p>En este capítulo vamos a construir un servidor web muy sencillo a través de Express para despues crear una API REST pero en varias secciones.</p>
           </article>
           <article> 
             <h2>¿Qué es Express?    </h2>
@@ -65,6 +67,33 @@
             <p>Una vez que hacemos esto, ahora en la constante app tenemos guardado todo el objeto de Express con sus propiedades y sus métodos.</p>
             <p>Ahora ya estamos listos para utilizar app como si fuera HTTP.</p>
             <p>Cuando utilizabamos directamente el módulo HTTP haciamos la constante server y creabamos un servidor y después teniamos que poner ese servidor a la escucha.</p>
+            <figure> <img src="../../public/assets/images/express-init/3.png" alt="example"/>
+            </figure>
+            <p>Con Express no hace falta hacer ese paso, podemos decirle lo siguiente.</p>
+            <figure> <img src="../../public/assets/images/express-init/4.png" alt="example"/>
+            </figure>
+            <p>Después tenemos que crear el hecho de que el cliente se conecte a través de una ruta GET y mandarle un mensaje como por ejemplo la conexión ha sido correcta.</p>
+            <p>En Express esto se simplifica mucho, no por número de líneas de código, pero si a la hora de entender lo que está pasando.</p>
+            <p>Nosotros tenemos un método para cada uno de los verbos de conexión que existen.</p>
+            <p>Tenemos:</p>
+            <ul> 
+              <li>GET</li>
+              <li>POST</li>
+              <li>PUT</li>
+              <li>PATCH</li>
+              <li>DELETE</li>
+            </ul>
+            <p>Por ahora debemos saber que todas las rutas que vienen a través de la URL son conexiones GET</p>
+            <p>Entonces haremos lo siguiente.</p>
+            <figure> <img src="../../public/assets/images/express-init/5.png" alt="example"/>
+            </figure>
+            <p>levantamos el servidor con node app. Ahorá si abrimos nuestro navegador con la ruta localhost:3000 y veremos el resultado. </p>
+            <figure> <img src="../../public/assets/images/express-init/7.png" alt="example"/>
+            </figure>
+            <p>El código sin comentarios quedaría así</p>
+            <figure> 
+              <figcaption>Hemos agregado la configuracion de puerto para cuando subamos a un hoisting accediendo a la variables de entorno y de lo contrario escuchamos el puerto 3000</figcaption><img src="../../public/assets/images/express-init/8.png" alt="example"/>
+            </figure>
           </article>
         </section>
       </section>

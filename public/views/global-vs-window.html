@@ -30,7 +30,9 @@
                           <li class="menu__item"><a class="menu__link" href="./info-impo.html">Conceptos importantes</a></li>
                           <li class="menu__item"><a class="menu__link" href="./servidor-web.html">Primer servidor web con HTTP (API)</a></li>
                           <li class="menu__item"><a class="menu__link" href="./express-init.html">Primeros pasos con Express</a></li>
-                          <li class="menu__item"><a class="menu__link" href="./express-parameters.html">Express path-query-parameters</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./express-parameters.html">Parameters-req-y-res</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./middleware.html">Middleware</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./routers.html">Routers</a></li>
                         </ul>
           </nav>
         </div>
@@ -135,7 +137,7 @@
               <li>Configuraciónes específicas para nuestro entorno de desarrollo: tokens, conexiones o puertos. Podemos tener diferentes configuraciones para diferentes entornos (por ejemplo, desarrollo, producción, prueba) y cambiar la configuración de la aplicación según la variable de entorno NODE_ENV.               </li>
               <li>Configuración para simular las variables de entorno que eventualmente vamos a tener cuando publicamos nuestro sitio web en servicios que ya incluyen variables de entorno o que nos permiten utilizar variables de entorno para manejar configuraciones ya sean puertos, conexiones a bases de datos de forma externa a nuestro código.</li>
             </ul>
-            <p class="note">Es muy importante que el archivo donde guardemos nuestras variables de entorno nunca se suban a un respositorio en la nube ya que contienen información sensible. Así que nuestro  <span class="ts-3">.gitignore </span>  debemos incluir el archivo <span class="ts-3">.env</span></p>
+            <p class="note">Es muy importante que el archivo donde guardemos nuestras variables de entorno nunca se suban a un respositorio en la nube ya que contienen información sensible. Así que nuestro  <strong>.gitignore </strong>  debemos incluir el archivo <strong>.env</strong></p>
             <p class="selected">Existe el paquete <strong>dotenv</strong>  en Node.js, donde podemos almacenar nuestras variables de entorno en un archivo .env y cargarlas en nuestra aplicación usando: <strong>require('node: dotenv').config()</strong>. Antes de la versión de node 20.6 era necesario utilizar el paquete de dotenv para poder acceder a las variables de entorno desde cualquier otro archivo como en app.js o index.js</p>
             <p class="selected">A partir de la versión 20.6 de Node.js, ya no es necesario utilizar el paquete de <strong>dotenv </strong>  para poder acceder a las variables de entorno desde otro archivo.            </p>
             <p>Aparte de las variables de entorno de nuestro proyecto <code>process.env    </code>  también nos da acceso a las variables de entorno definidas por nuestro sistema operativo, ya sea windows o linux.</p>
@@ -159,7 +161,7 @@
               </li>
               <figure> <img src="../../public/assets/images/global-vs-window/13.png" alt="example"/>
               </figure>
-              <p class="note">En la mayoría de los casos, es común instalar <strong class="ts-3">dotenv</strong>  como una dependencia de desarrollo (devDependency). Esto se debe a que <strong>dotenv generalmente se utiliza solo durante el desarrollo</strong>  para cargar variables de entorno desde un archivo .env. En producción, es posible que las variables de entorno se configuren de manera diferente, por ejemplo, directamente en el servidor de alojamiento.</p>
+              <p class="note">En la mayoría de los casos, es común instalar <strong>dotenv</strong>  como una dependencia de desarrollo (devDependency). Esto se debe a que <strong>dotenv generalmente se utiliza solo durante el desarrollo</strong>  para cargar variables de entorno desde un archivo .env. En producción, es posible que las variables de entorno se configuren de manera diferente, por ejemplo, directamente en el servidor de alojamiento.</p>
               <p class="ts-1">Para instalar una dependencia de desarrollo tenemos los siguiente comandos.</p>
               <ul>
                 <li><code>npm i nombreDependencia --save-dev    </code></li>
@@ -211,7 +213,7 @@
             <p>Si ejecutamos desde esta nueva dirección nuestro script, veremos que nos devuelve un directorio diferente</p>
             <figure> <img src="../../public/assets/images/global-vs-window/21.png" alt="example"/>
             </figure>
-            <p class="note">process.cwd devuelve <strong class="ts-3">la ruta desde donde se está ejectando el archivo</strong>,  ya que muchos se confunden y piensan que devuelve la ruta del archivo.</p>
+            <p class="note">process.cwd devuelve <strong>la ruta desde donde se está ejectando el archivo</strong>,  ya que muchos se confunden y piensan que devuelve la ruta del archivo.</p>
           </article>
         </section>
       </section>
