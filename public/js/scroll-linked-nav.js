@@ -29,3 +29,22 @@ if (submenu) {
 
 	articles.forEach((article) => observer.observe(article))
 }
+
+// addEventListener('DOMContentLoaded', () => {
+// 	const linkActive = document.querySelector('.active')
+// 	if (linkActive) {
+// 		linkActive.scrollIntoView({ behavior: 'smooth', block: 'start' })
+// 	}
+// })
+
+document.addEventListener('DOMContentLoaded', function () {
+	// Obtener el enlace activo
+	const linkActive = document.querySelector('.active')
+	if (linkActive) {
+		// Hacer scroll suave hasta el enlace activo dentro del contenedor del menú
+		const mainMenu = document.querySelector('.sidebar')
+		if (mainMenu) {
+			mainMenu.scrollTop = linkActive.offsetTop - mainMenu.offsetTop
+		}
+	}
+})
