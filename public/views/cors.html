@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head></head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <title>Node renovado</title>
+  <script src="../js/scroll-linked-nav.js" defer> </script>
+  <body>       
+    <main class="layout">
+      <div>
+        <div class="sidebar">
+          <figure class="container-logo"> <a href="../../"><img class="logo" src="../assets/icons/nodejs.png" alt="logo"></a></figure>
+          <nav class="nav">
+                        <ul class="menu">
+                          <li class="menu__item"><a class="menu__link" href="./que-es-node.html">¿Qué es node?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./primeros-pasos.html">Primeros pasos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./package-json.html">¿Qué es el package-json?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./global-vs-window.html">Global vs window</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./cjs.html">Sistema de módulos CJS</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./esm.html">Sistema de módulos ESM</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./modulos-nativos.html">Modúlos nativos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./url.html">¿URL?, parámetros, módulo URL</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./dependencias.html">¿Qué son las dependencias?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./node-modules.html">¿Qué es node modules?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./npx.html">Comando npx</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./scripts.html">Scripts personalizados</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./info-impo.html">Conceptos importantes</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./servidor-web.html">Primer servidor web con HTTP (API)</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./express-init.html">Primeros pasos con Express</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./express-parameters.html">Parameters-req-y-res</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./middleware.html">Middleware</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./routers.html">Routers</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./validaciones-zod.html">Validaciones con Zod</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./diferencias.html">Diferencias post,put,patch</a></li>
+                          <li class="menu__item"><a class="active menu__link" href="./cors.html">Solución error de cors</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./mvc.html">MVC</a></li>
+                        </ul>
+          </nav>
+        </div>
+      </div>
+      <section class="container-content">
+        <div class="container-title title-sticky">       
+          <h1>Solución de cors</h1>
+        </div>
+        <section class="content">       
+          <nav class="container-submenu">
+            <ul class="submenu"> 
+              <li class="submenu__item"><a class="submenu__link" href="#1">Generando error de cors</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#2">¿Qué es el error de CORS?</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#3">Solución de CORS teórica</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#4">Solución de CORS práctica</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#5">CORS pre-flight</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#6">Solución de CORS pre-flight</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#7">Solución de CORS con módulo cors</a></li>
+            </ul>
+          </nav>
+          <article id="1">
+            <h2>Generando el error de cors</h2>
+            <p>Antés de entrar de lleno a la solución de cors, vamos a provocar el error de cors.</p>
+            <p>Seguiremos trabajando con la Api que hemos estando creando en las secciones anteriores.</p>
+            <p>Lo que haremos es crear un frontend para poner a prueba nuestra api desde una página web.</p>
+            <p>Crearemos una carpeta nueva llamada web y dentro un archivo index.html</p>
+            <figure> 
+              <figcaption>Nuestra estructura quedará así</figcaption><img src="../../public/assets/images/cors/1.png" alt="example"/>
+            </figure>
+            <p class="ts-1">index.html</p>
+            <figure> 
+              <figcaption>Hacemos la petición a nuestra Api que se levanta en el puerto 3000</figcaption><img src="../../public/assets/images/cors/2.png" alt="example"/>
+            </figure>
+            <figure> 
+              <figcaption>Para poder correr nuestro frontend podemos ocupar el servicio de servor que nos proporciona un entorno local de nuestro frontend en el puerto 8080.</figcaption><img src="../../public/assets/images/cors/3.png" alt="example"/>
+            </figure>
+            <p>Accedemos al entorno que nos da servor</p>
+            <figure> 
+              <figcaption>Como podemos ver no podemos ver nada en nuestra página.</figcaption><img src="../../public/assets/images/cors/4.png" alt="example"/>
+            </figure>
+            <p>Si inspeccionamos nuestra pagina y checamos la pestaña de network podemos ver el famoso error de cors.</p>
+            <figure> 
+              <figcaption>Observamos el error de cors</figcaption><img src="../../public/assets/images/cors/5.png" alt="example"/>
+            </figure>
+          </article>
+          <article id="2"> 
+            <h2>¿Qué es el error de CORS?</h2>
+            <P>El error de CORS, que significa <strong class="ts-1">Cross-Origin Resource Sharing </strong><strong class="ts-3">(Compartir recursos entre diferentes orígenes)</strong>, <strong> <em>ocurre cuando un script de una página web trata de hacer una solicitud a un recurso (como datos, imágenes, etc.) ubicado en otro dominio diferente al de la propia página web</em></strong>. CORS es un mecanismo de seguridad implementado por los navegadores web para proteger la seguridad de los usuarios y evitar que un sitio malicioso acceda a recursos de otros sitios sin permiso.</P>
+            <div class="note"> 
+              <p>El error de CORS SOLO OCURRE EN LOS NAVEGADORES    </p>
+            </div>
+            <p>Conceptos clave para entender el error de CORS:</p>
+            <ul> 
+              <li> <strong class="ts-3">Origen</strong>: En el contexto de CORS, un "origen" se refiere a la combinación de protocolo, dominio y puerto de un recurso web. Por ejemplo, el origen de 
+                <strons class="ts-1">"https://www.ejemplo.com" </strons>es <strong class="ts-1">"https://www.ejemplo.com"</strong>. Si una solicitud se hace desde un origen diferente al del recurso solicitado, CORS puede entrar en juego.
+              </li>
+              <li> <strong class="ts-3">Política de mismo origen (Same-Origin Policy)</strong>: Esta política es un principio de seguridad que impide que un script en una página web acceda a recursos de otro origen. Sin embargo, CORS es una forma de relajar esta política bajo ciertas condiciones controladas.</li>
+              <li> <strong class="ts-3">Solicitud de origen cruzado (Cross-Origin Request)</strong>: Es una solicitud HTTP realizada por un script de una página web hacia un origen diferente al de la página actual.</li>
+            </ul>
+            <p> 
+              <strons class="ts-2">El error de CORS se origina cuando el servidor al que se hace la solicitud no incluye las cabeceras CORS adecuadas en su respuesta</strons>. Estas cabeceras CORS son utilizadas por el servidor para informar al navegador si es seguro permitir que el script de la página web que realiza la solicitud acceda al recurso solicitado desde un origen diferente.
+            </p>
+          </article>
+          <article id="3"> 
+            <h2>Solución de CORS teórica </h2>
+            <p:strong class="ts-1">PRIMER SOLUCIÓN</p:strong>
+            <p>Una solución es configurar el servidor para permitir solicitudes CORS, si tenemos control sobre el servidor al que estamos haciendo las solicitudes, podemos configurarlo para que envíe las cabeceras CORS adecuadas en sus respuestas HTTP. Esto se puede hacer agregando las cabeceras <strong class="ts-1">Access-Control-Allow-Origin</strong>, <strong class="ts-2">Access-Control-Allow-Methods</strong>, <strong class="ts-3">Access-Control-Allow-Headers</strong>, etc., con los valores apropiados. Por ejemplo:        </p>
+            <ul> 
+              <li> <strong class="ts-1">Access-Control-Allow-Origin</strong>: *
+                <div class="note">Para la cabecera <strong>Access-Control-Allow-Origin </strong>al poner (*) estamos indicando que le damos acceso a nuestro servidor o Api desde cualquier origen, poner <strong>(*) </strong>es lo más comun y más fácil, pero no siempre queremos darle acceso a cualquier origen si no a unos cuantos especificos.
+                  <p>Podemos especificarle explícitamente los origenes.</p>
+                  <p><strong>Access-Control-Allow-Origin: </strong>podemos poner por ejemplo el origen del cual ya sabemos que nos pediran recursos en nuestro servidor.</p>
+                  <p>Por ejemplo: </p>
+                  <p><strong>http://localhost:1234 </strong>o <strong>'https://movies.com' </strong>o cualquier otro origen que ya sabemos que nos pediran recursos, de esta manera podemos brindar más seguridad a nuestros recursos.</p>
+                </div>
+              </li>
+              <li> <strong class="ts-2">Access-Control-Allow-Methods</strong>: GET, POST, OPTIONS</li>
+              <li> <strong class="ts-3">Access-Control-Allow-Headers</strong>: Content-Type   </li>
+            </ul>
+            <p>Esto permitirá solicitudes CORS desde cualquier origen (*), con los métodos especificados (en este caso, GET, POST y OPTIONS) y los encabezados permitidos (en este caso, solo el encabezado Content-Type).         </p>
+            <p:strong class="ts-1">SEGUNDA SOLUCIÓN</p:strong>
+            <p>Utilizar bibliotecas o herramientas que manejen CORS automáticamente: Algunas bibliotecas y herramientas en el lado del cliente, como <strong class="ts-3">Axios </strong>en JavaScript, tienen capacidades integradas para manejar solicitudes CORS automáticamente. Puedes usar estas bibliotecas para realizar tus solicitudes y evitar tener que lidiar con el error de CORS manualmente.</p>
+          </article>
+          <article id="4"> 
+            <h2>Solución de CORS práctica  </h2>
+            <p>Ya sabemos que el error de CORS se origina cuando el servidor al que se hace la solicitud no incluye las cabeceras CORS adecuadas en su respuesta.</p>
+            <p>Entonces procederemos a incluir una de las cabeceras que solucionan el error, decimos una de las cabeceras porque más adelante veremos las demás </p>
+            <h3>Incluyendo cabecera Access-Control-Allow-Origin: *</h3>
+            <figure> 
+              <figcaption>Agregamos la cabecera en el archivo movies.routes.js en el endpoint que accede a todas nuestras películas</figcaption><img src="../../public/assets/images/cors/6.png" alt="example"/>
+            </figure>
+            <figure> 
+              <figcaption>Si ahora recargamos de nuevo el entorno local que nos daba servor podemos ver que ya podemos acceder a los recursos.</figcaption><img src="../../public/assets/images/cors/7.png" alt="example"/>
+            </figure>
+            <p>El agregar la cabecera <strong class="ts-3">Access-Control-Allow-Origin: * </strong>es lo más común que se hace para solucionar el error de CORS, pero como ya explicamos en la teoría el agregar (*) indica que le estamos dando permiso a todos los origenes para que puedan acceder a nuestro recursos y puede que no siempre queramos que cualquiera pueda acceder.</p>
+            <h3>Específicar nuestros propios origenes &rarr; Access-Control-Allow-Origin: <strong class="ts-1">origen específico.</strong></h3>
+            <p>Como ya sabemos nosotros podemos específicar un origen en concreto, por ejemplo, el origen del cual nos brinda <strong class="ts-3">servor &rarr; </strong><code>http://localhost:8080   </code></p>
+            <figure> <img src="../../public/assets/images/cors/8.png" alt="example"/>
+            </figure>
+            <p>Lo que acabamos de hacer tambien solucionaria el error, ya que le estamos específicando el origen que nos da <strong class="ts-3">servor.</strong></p>
+            <figure> 
+              <figcaption>Como podemos ver tambien soluciona el error</figcaption><img src="../../public/assets/images/cors/7.png" alt="example"/>
+            </figure>
+            <p>Pero el problema es que no siempre sabemos el dominio que querrá acceder a nuestros recursos, no solo el dominio es importante sino que tambien el puerto es importante, ya que si cambiamos el puerto en lugar de 8080 que es el que nos da <strong class="ts-3">servor </strong>a 8081 el puerto ya es diferente y por ende ya no coincidira con el origen que está accediendo a nuestros recursos.</p>
+            <figure> 
+              <figcaption>Hemos cambiado el puerto del origen que le estamos dando permiso a 8081</figcaption><img src="../../public/assets/images/cors/9.png" alt="example"/>
+            </figure>
+            <figure> 
+              <figcaption>Como podemos de nuevo ya obtenemos el error y no podemos ver nada</figcaption><img src="../../public/assets/images/cors/10.png" alt="example"/>
+            </figure>
+            <p>Entonces algo que suele hacer es crear un array con los origenes que ya sabemos que pediran recursos a nuestra API.</p>
+            <p>Tambien necesitamos acceder a la cabecera <code>origin</code>  que nos envía la petición <strong class="ts-3">req.header('origin').</strong></p>
+            <div class="note"> 
+              <p>La cabecera <strong>req.header('origin') </strong>NO LA ENVIA EL NAVEGADOR CUANDO LA PETICIÓN ES DEL MISMO ORIGEN.</p>
+              <p>Es decir que no podemos obtener esta cabecera cuando el origen que quiere acceder a nuestros recursos es el mismo origen, sería algo ilógico.</p>
+              <p>Solo obtenemos la cabecera <strong>req.header('origin') </strong>cuando el origen que quiere acceder a nuestros recursos es diferente al de nuestro Servidor.</p>
+              <p>Esto no devolveria la cabecera origin ya que estamos haciendo una peticion del mismo origen</p>
+              <p> <strong> http://localhost:8080/ &rarr; http://localhost:8080/ = No devuelve cabecera origin</strong></p>
+              <p>Esto si devuelve la cabecera origin ya que estamos haciendo una peticion de un origen diferente.</p>
+              <p> <strong> http://localhost:1234/ &rarr; http://localhost:8080/ = Si devuelve la cabecera origin.</strong></p>
+            </div>
+            <p>Ahora si pasemos al código.                 </p>
+            <figure> <img src="../../public/assets/images/cors/11.png" alt="example"/>
+            </figure>
+            <p>Veamos el código sin comentarios.                 </p>
+            <figure> <img src="../../public/assets/images/cors/12.png" alt="example"/>
+            </figure>
+          </article>
+          <article id="5">
+            <h2>CORS pre-flight </h2>
+            <p>Hasta aquí todo parece estar bien, pero hay algo importante por ver aún, y resulta que el error de cors actua dependiendo de los métodos que quieren acceder a nuestro servidor, para eso vamos a clasificar los métodos.</p>
+            <p>  <strong class="ts-1">Métodos simples: </strong></p>
+            <ul class="ts-3">
+              <li>GET </li>
+              <li>HEAD</li>
+              <li>POST         </li>
+            </ul>
+            <p>  <strong class="ts-1">Métodos complejos: </strong></p>
+            <ul class="ts-3">
+              <li>PUT </li>
+              <li>PATCH</li>
+              <li>DELETE </li>
+            </ul>
+            <p>Ahora sabiendo esto, nuestra solución que tenemos hasta ahora, funciona bien porque se encuentra dentro de los métodos simples, pero cuando hacemos una solicitud con algún método complejo son consideradas "no simples" y desencadenan una solicitud      <strong class="ts-3">pre-flight OPTIONS</strong>. </p>
+            <div>
+              <p> <strong class="ts-1">Pre-flight OPTIONS</strong>: Cuando el navegador detecta que una solicitud no es simple (es decir, que involucra un método no simple o ciertos encabezados personalizados), <strong class="ts-2">enviará primero una solicitud OPTIONS al servidor antes de la solicitud real</strong>. </p>
+              <p>Es como hacer una request previa, antés de que se ejecute la request original. </p>
+              <p>
+                   Esta solicitud OPTIONS incluye información sobre el método y los encabezados que se usarán en la solicitud real. El servidor debe responder a esta solicitud OPTIONS con los encabezados adecuados para permitir o denegar la solicitud real.</p>
+            </div>
+            <p><strong class="ts-1">¿Qué son las OPTIONS?</strong>: Es un método de solicitud HTTP. Al igual que GET, POST, PUT, DELETE, etc., <strong class="ts-3">OPTIONS es un método específico que se utiliza para preguntar al servidor qué métodos y recursos son permitidos en el servidor</strong>. El navegador envía esta solicitud OPTIONS como parte del proceso de CORS pre-flight para obtener permisos antes de enviar la solicitud real.        </p>
+            <p>Por lo tanto, cuando hablamos del error de <strong class="ts-3">CORS pre-flight</strong>, nos referimos a un problema que surge cuando el servidor no está configurado adecuadamente para responder a la solicitud <strong class="ts-2">OPTIONS</strong>, lo que provoca que el navegador bloquee la solicitud real debido a las políticas de seguridad de CORS.</p>
+            <p>En pocas palabras si no específicamos en nuestro backend las OPTIONS para solicitudes complejas, con PUT,PATCH,DELETE, obtendremos el error de CORS pre-flight </p>
+            <p>Lo que haremos ahora para poder ver este error, es crear la funcionalidad eliminar película en nuestro frontend.</p>
+            <figure> 
+              <figcaption>Agregamos un escuchador en toda la pagina y cuando se de click al botón eliminar hacemos la petición con el método DELETE para proceder a eliminar la película.</figcaption><img src="../../public/assets/images/cors/13.png" alt="example"/>
+            </figure>
+            <figure> 
+              <figcaption>En nuestro archivo movies.routes.js agregamos la funcionalidad para eliminar.</figcaption><img src="../../public/assets/images/cors/14.png" alt="example"/>
+            </figure>
+            <figure> 
+              <figcaption>Queremos eliminar la película The Dark Knight</figcaption><img src="../../public/assets/images/cors/15.png" alt="example"/>
+            </figure>
+            <figure> 
+              <figcaption>Como podemos observar apesar de tener la solución de CORS que habiamos estado trabajando, aun seguimos teniendo un error de CORS pero ahora es el error CORS pre-flight, que ya sabemos que es por no definir las OPTIONS cuando recibimos una request compleja como PUT, PATCH, DELETE.</figcaption><img src="../../public/assets/images/cors/16.png" alt="example"/>
+            </figure>
+          </article>
+          <article id="6"> 
+            <h2>Solución de CORS pre-flight </h2>
+            <p>Para poder solucionar el CORS pre-flight tenemos que específicar las OPTIONS, y ya sabemos que OPTIONS es un método HTTP.</p>
+            <p>Como nuestra aplicación está enrutada, el lugar donde especifiquemos nuestras OPTIONS, no es tán importante ya que express las maneja en el orden correcto.</p>
+            <p>Nosotros hemos decidio especificarlas hasta el final de los endpoints, pero daria igual si las pusieramos al incio de los endpoints.    </p>
+            <figure> 
+              <figcaption>Especificación de las OPTIONS al final del archivo movies.routes.js.</figcaption><img src="../../public/assets/images/cors/17.png" alt="example"/>
+            </figure>
+            <p>Ahora si, si intenamos eliminar la película The Dark Knight, ya podriamos eliminarla, ya que ahora sí hemos especificado las OPTIONS diciendole que métodos tienen nuestro permiso.</p>
+            <figure> 
+              <figcaption>Damos click a eliminar The Dark Knight</figcaption><img src="../../public/assets/images/cors/15.png" alt="example"/>
+            </figure>
+            <figure> 
+              <figcaption>Como podemos ver ya está eliminada y en su lugar aparece la película Inception.</figcaption><img src="../../public/assets/images/cors/18.png" alt="example"/>
+            </figure>
+          </article>
+          <article id="7"> 
+            <h2>Solución de CORS con módulo cors    </h2>
+            <p>Otra manera de solucionar el error de CORS incluyendo el Cors pre-flight, es utilizando un middleware del módulo cors.</p>
+            <p>El comando para instalar el módulo cors es el siguiente: </p><code>npm i cors -E</code>
+            <p>Una vez instalado procedemos a utilizar el middleware, y como nuestra app está enrutada los midlewares los ocupamos en el archivo app.js </p>
+            <figure> 
+              <figcaption>Uso middleware cors</figcaption><img src="../../public/assets/images/cors/19.png" alt="example"/>
+            </figure>
+            <p>A continuación la explicación del código.</p>
+            <ul> 
+              <li> <strong class="ts-3">origin: </strong>Es una función que se llama para determinar si el origen de la solicitud (origin) es permitido o no. Toma dos argumentos: origin y callback. origin es el origen de la solicitud HTTP (el valor del encabezado Origin). callback es una función que debes llamar con dos argumentos: el primero es un error si ocurre, o null si no hay error, y el segundo es un booleano que indica si el origen es permitido (true) o no (false).
+                <ul> 
+                  <li>La función primero verifica si el origen está incluido en la lista de orígenes aceptados (ACCEPTED_ORIGINS). Si es así, llama a callback(null, true) para indicar que el origen es permitido.</li>
+                  <li>Luego, verifica si el origen es nulo (!origin). Esto puede suceder si la solicitud no incluye un encabezado Origin. Si es nulo, también permite la solicitud llamando a callback(null, true).</li>
+                  <li>Si el origen no está en la lista de orígenes aceptados y no es nulo, llama a callback(new Error('Not allowed by CORS')) para indicar que el origen no está permitido.</li>
+                </ul>
+              </li>
+            </ul>
+            <p>En resumen, este código está configurando el middleware CORS para permitir solicitudes solo desde ciertos orígenes específicos (ACCEPTED_ORIGINS). Si el origen de la solicitud está en la lista de orígenes aceptados o si el origen es nulo, la solicitud se permite. De lo contrario, se devuelve un error indicando que el origen no está permitido.</p>
+          </article>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

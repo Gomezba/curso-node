@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head></head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <title>Node renovado</title>
+  <script src="../js/scroll-linked-nav.js" defer> </script>
+  <body>       
+    <main class="layout">
+      <div>
+        <div class="sidebar">
+          <figure class="container-logo"> <a href="../../"><img class="logo" src="../assets/icons/nodejs.png" alt="logo"></a></figure>
+          <nav class="nav">
+                        <ul class="menu">
+                          <li class="menu__item"><a class="menu__link" href="./que-es-node.html">¿Qué es node?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./primeros-pasos.html">Primeros pasos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./package-json.html">¿Qué es el package-json?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./global-vs-window.html">Global vs window</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./cjs.html">Sistema de módulos CJS</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./esm.html">Sistema de módulos ESM</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./modulos-nativos.html">Modúlos nativos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./url.html">¿URL?, parámetros, módulo URL</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./dependencias.html">¿Qué son las dependencias?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./node-modules.html">¿Qué es node modules?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./npx.html">Comando npx</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./scripts.html">Scripts personalizados</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./info-impo.html">Conceptos importantes</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./servidor-web.html">Primer servidor web con HTTP (API)</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./express-init.html">Primeros pasos con Express</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./express-parameters.html">Parameters-req-y-res</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./middleware.html">Middleware</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./routers.html">Routers</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./validaciones-zod.html">Validaciones con Zod</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./diferencias.html">Diferencias post,put,patch</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./cors.html">Solución error de cors</a></li>
+                          <li class="menu__item"><a class="active menu__link" href="./mvc.html">MVC</a></li>
+                        </ul>
+          </nav>
+        </div>
+      </div>
+      <section class="container-content">
+        <div class="container-title title-sticky">       
+          <h1>MVC</h1>
+        </div>
+        <section class="content">       
+          <nav class="container-submenu">
+            <ul class="submenu"> 
+              <li class="submenu__item"><a class="submenu__link" href="#1">Generando error de cors</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#2">¿Qué es el error de CORS?</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#3">Solución de CORS teórica</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#4">Solución de CORS práctica</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#5">CORS pre-flight</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#6">Solución de CORS pre-flight</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#7">Solución de CORS con módulo cors</a></li>
+            </ul>
+          </nav>
+          <article id="1"> 
+            <h2>Mejorando la estructura de nuestro proyecto.</h2>
+            <p>Antés de entrar de lleno a MVC, lo que haremos es separar aun más responsabilidades ya que en nuestro archivo app.js estamos juntando demasiadas funcionalidades, y lo más recomendable es tenerlo por separado, por ejemplo el middleware de cors.</p>
+            <p>Entonces lo que haremos es crear una carpeta llamada middlewares.</p>
+            <figure> <img src="../../public/assets/images/mvc/1.png" alt="example"/>
+            </figure>
+          </article>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

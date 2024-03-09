@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head></head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <title>Node renovado</title>
+  <script src="../js/scroll-linked-nav.js" defer> </script>
+  <body>       
+    <main class="layout">
+      <div>
+        <div class="sidebar">
+          <figure class="container-logo"> <a href="../../"><img class="logo" src="../assets/icons/nodejs.png" alt="logo"></a></figure>
+          <nav class="nav">
+                        <ul class="menu">
+                          <li class="menu__item"><a class="menu__link" href="./que-es-node.html">¿Qué es node?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./primeros-pasos.html">Primeros pasos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./package-json.html">¿Qué es el package-json?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./global-vs-window.html">Global vs window</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./cjs.html">Sistema de módulos CJS</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./esm.html">Sistema de módulos ESM</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./modulos-nativos.html">Modúlos nativos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./url.html">¿URL?, parámetros, módulo URL</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./dependencias.html">¿Qué son las dependencias?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./node-modules.html">¿Qué es node modules?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./npx.html">Comando npx</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./scripts.html">Scripts personalizados</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./info-impo.html">Conceptos importantes</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./servidor-web.html">Primer servidor web con HTTP (API)</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./express-init.html">Primeros pasos con Express</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./express-parameters.html">Parameters-req-y-res</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./middleware.html">Middleware</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./routers.html">Routers</a></li>
+                          <li class="menu__item"><a class="active menu__link" href="./validaciones-zod.html">Validaciones con Zod</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./diferencias.html">Diferencias post,put,patch</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./cors.html">Solución error de cors</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./mvc.html">MVC</a></li>
+                        </ul>
+          </nav>
+        </div>
+      </div>
+      <section class="container-content">
+        <div class="container-title title-sticky">       
+          <h1>Validaciones con Zod</h1>
+        </div>
+        <section class="content">       
+          <article> 
+            <h2>¿Qué es zod?</h2>
+            <p>Es una biblioteca de validación de esquemas para TypeScript y JavaScript. Permite definir <strong class="ts-1">esquemas de datos </strong>y validarlos fácilmente, asegurando que los datos recibidos en una aplicación cumplan con ciertas reglas y estructuras.</p>
+            <p>Para utilizar <strong class="ts-3">zod </strong>necesitamos instalarlo con el comando: </p><code>npm zod -E    </code>
+          </article>
+          <article>   
+            <h2>¿Qué es un schema?</h2>
+            <p>Un esquema en Zod es un conjunto de instrucciones declarativas que define las restricciones y las propiedades de los datos que deben ser cumplidas para satisfacer las necesidades de una aplicación. Estas instrucciones consisten en una combinación de tipos de datos, reglas de validación y operaciones de transformación que se aplican a las entradas de datos. El esquema actúa como un contrato entre los productores y consumidores de datos, garantizando que los datos cumplen con ciertas expectativas antes de ser procesados o almacenados. Además, los esquemas en Zod pueden ser compuestos y reutilizados, lo que permite una modularidad y extensibilidad en el diseño de aplicaciones, facilitando la validación y el manejo de datos en entornos complejos.</p>
+            <p class="ts-2">Sintáxis para declarar un schema</p>
+            <figure> <img src="../../public/assets/images/zod/1.png" alt="example"/>
+            </figure>
+            <ul>
+              <li><strong class="ts-1">z.<tipo de esquema>({ ... })</strong>: Aquí especificamos el tipo de esquema que estamos creando. Podemos usar diferentes tipos de esquemas dependiendo de nuestras necesidades, como object para objetos, string para cadenas de texto, number para números, etc.</li>
+              <li><strong class="ts-1">{ propiedad1: regla1, propiedad2: regla2, ... }</strong>: Esto define las propiedades del esquema y las reglas de validación asociadas a cada propiedad. Podemos incluir todas las propiedades y reglas que necesitemos para validar nuestros datos.</li>
+            </ul>
+            <h3>Ejemplo con un esquema para un objeto que representa un usuario</h3>
+            <figure> <img src="../../public/assets/images/zod/2.png" alt="example"/>
+            </figure>
+            <p>Por lo tanto, el esquema userSchema ahora especifica las siguientes reglas de validación:</p>
+            <ul> 
+              <li> <strong class="ts-1">username</strong>: El nombre de usuario debe tener al menos 3 caracteres y como máximo 20 caracteres.</li>
+              <li> <strong class="ts-1">email</strong>: El correo electrónico debe tener un formato válido.</li>
+              <li> <strong class="ts-1">age</strong>: La edad debe ser un número entero positivo y como máximo 120 años.</li>
+            </ul>
+            <p>Una vez que ya definimos las restricciones del esquema lo que queda es validar la información que recibimos del <strong class="ts-2">request.body </strong>para que verifique los datos del cliente con el schema.</p>
+            <p>Para esto ocupamos el método: </p><code>nombreEsquema.safeParse(datosAvalidar -> req.body)</code>
+            <p>Cuando nosotros creamos un esquema tiene varios métodos disponibles, como <strong class="ts-3">parse (síncrono)</strong>, <strong class="ts-3">safeParse</strong>,  <strong class="ts-3">parseAsync (asíncrono)</strong>, entre otros. Estos métodos son proporcionados por Zod y se utilizan para validar los datos según las reglas definidas en el esquema.    </p>
+            <p>Veamos la descripción de los métodos disponibles en los schemas de Zod.</p>
+            <ul> 
+              <li> <strong class="ts-3">parse</strong>: Este método generalmente se utiliza para analizar los datos enviados en una solicitud HTTP, como el cuerpo de una solicitud POST. Convierte los datos en un objeto JavaScript utilizable.</li>
+              <li> <strong class="ts-3">parseAsync</strong>: Una versión asincrónica de parse, útil cuando se trabaja con datos que pueden tardar en estar disponibles. No bloquea el hilo principal mientras espera que se complete la operación de análisis.</li>
+              <li> <strong class="ts-3">safeParse</strong>: Similar a parse, pero se enfoca en asegurar que los datos analizados sean seguros y válidos antes de convertirlos en un objeto. Esto puede incluir validación de datos para evitar ataques de inyección de código u otros problemas de seguridad.
+                <p>Si tiene éxito, devuelve un objeto con dos partes:</p>
+                <ul> 
+                  <li><strong class="ts-2">success</strong>, que indica si el análisis fue exitoso.</li>
+                  <li> <strong class="ts-2">data</strong>, que contiene el valor analizado si el análisis fue exitoso.</li>
+                </ul>
+                <p>Si el análisis falla, devuelve un objeto con:</p>
+                <ul> 
+                  <li> <strong class="ts-2">success </strong>establecido en false.</li>
+                  <li>   <strong class="ts-2">error</strong>, que contiene información sobre el error encontrado durante la validación.</li>
+                </ul>
+              </li>
+              <li> <strong class="ts-3">safeParseAsync</strong>: Similar a safeParse, este método es una versión asincrónica que se enfoca en garantizar que los datos analizados sean seguros y válidos antes de convertirlos en un objeto. Al ser asincrónico, no bloquea el hilo principal mientras realiza la operación de análisis. Esto es útil cuando se trabaja con datos que pueden tardar en estar disponibles y se desea validarlos de manera segura antes de procesarlos más a fondo.</li>
+              <li> <strong class="ts-3">serialize</strong>: Contrario a parse, este método convierte un objeto JavaScript en una cadena de texto, generalmente para enviarla como respuesta a una solicitud HTTP. Por ejemplo, podría serializar un objeto en formato JSON para enviarlo al cliente.</li>
+              <li> <strong class="ts-3">deserialize</strong>: Inverso a serialize, convierte una cadena de texto en un objeto JavaScript. Esto puede ser útil al recibir datos de una solicitud HTTP y convertirlos en un objeto utilizable en el servidor.</li>
+              <li> <strong class="ts-3">validate</strong>: Este método se utiliza para verificar si los datos cumplen con ciertos criterios o restricciones definidas en un esquema o en las reglas de validación de la aplicación. Es útil para garantizar la integridad y la seguridad de los datos antes de procesarlos más a fondo.</li>
+              <li> <strong class="ts-3">sanitize</strong>: A menudo utilizado en aplicaciones donde la seguridad es una preocupación, este método elimina cualquier contenido malicioso o no deseado de los datos, como scripts incrustados o caracteres especiales que podrían ser utilizados en ataques XSS (Cross-Site Scripting).    </li>
+              <p>Veamos como quedaria comple la validación en el siguiente ejemplo.    </p>
+            </ul>
+            <h4>Validación de usuario completo</h4>
+            <p>La forma de estructurar los datos es decir, el schema, la validación se pueden ordenar de diferentes maneras y esta es una, declarando el schema fuera de un endpoint para que sea reutilizable, pero hay otras formas que estructurar los datos y lo veremos en otro ejemplo.</p>
+            <figure> <img src="../../public/assets/images/zod/3.png" alt="example"/>
+            </figure>
+          </article>
+          <article> 
+            <h2>Schema práctico </h2>
+            <p>Ahora veamos un ejemplo prático simulando una base de datos de péliculas en un archivo.json </p>
+            <p>Pero primero veamos la estructura de nuestro proyecto </p>
+            <figure> 
+              <figcaption>Estructura del proyecto</figcaption><img src="../../public/assets/images/zod/6.png" alt="example"/>
+            </figure>
+            <figure> 
+              <figcaption>Archivo JSON Películas</figcaption><img src="../../public/assets/images/zod/4.png" alt="example"/>
+            </figure>
+            <figure> 
+              <figcaption>Archivo movies.schemas.js parte 1</figcaption><img src="../../public/assets/images/zod/5.png" alt="example"/>
+            </figure>
+            <figure> 
+              <figcaption>Archivo movies.schemas.js parte 2</figcaption><img src="../../public/assets/images/zod/7.png" alt="example"/>
+            </figure>
+            <figure> 
+              <figcaption>Archivo movies.routes.js</figcaption><img src="../../public/assets/images/zod/8.png" alt="example"/>
+            </figure>
+            <figure> 
+              <figcaption>Archivo app.js</figcaption><img src="../../public/assets/images/zod/9.png" alt="example"/>
+            </figure>
+            <p>Ahora solo queda poner a prueba nuestra app.</p>
+            <h3>Resultados</h3>
+            <figure> 
+              <figcaption>Resultado de ruta a /movies, que devuelve todas las películas de nuestra BD</figcaption><img src="../../public/assets/images/zod/10.png" alt="example"/>
+            </figure>
+            <figure> 
+              <figcaption>Resultado del filtrado de una pelicula en este ejemplo filtramos por el id c8a7d63f-3b04-44d3-9d95-8782fd7dcfaf que pertence a la película The Dark Knight</figcaption><img src="../../public/assets/images/zod/11.png" alt="example"/>
+            </figure>
+            <figure> 
+              <figcaption>Creamos la petición POST para crear una nueva película</figcaption><img src="../../public/assets/images/zod/12.png" alt="example"/>
+            </figure>
+            <figure> 
+              <figcaption>Ahora podemos ver que nuestra película ya se encuentra incluida con las demás</figcaption><img src="../../public/assets/images/zod/13.png" alt="example"/>
+            </figure>
+            <figure> 
+              <figcaption>Si enviamos la información de la película con datos incorrectos como el nombre, veremos el siguiente error que devuelve la validacion del esquema</figcaption><img src="../../public/assets/images/zod/14.png" alt="example"/>
+            </figure>
+          </article>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head></head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <title>Node renovado</title>
+  <script src="../js/scroll-linked-nav.js" defer> </script>
+  <body>       
+    <main class="layout">
+      <div>
+        <div class="sidebar">
+          <figure class="container-logo"> <a href="../../"><img class="logo" src="../assets/icons/nodejs.png" alt="logo"></a></figure>
+          <nav class="nav">
+                        <ul class="menu">
+                          <li class="menu__item"><a class="menu__link" href="./que-es-node.html">¿Qué es node?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./primeros-pasos.html">Primeros pasos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./package-json.html">¿Qué es el package-json?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./global-vs-window.html">Global vs window</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./cjs.html">Sistema de módulos CJS</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./esm.html">Sistema de módulos ESM</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./modulos-nativos.html">Modúlos nativos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./url.html">¿URL?, parámetros, módulo URL</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./dependencias.html">¿Qué son las dependencias?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./node-modules.html">¿Qué es node modules?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./npx.html">Comando npx</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./scripts.html">Scripts personalizados</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./info-impo.html">Conceptos importantes</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./servidor-web.html">Primer servidor web con HTTP (API)</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./express-init.html">Primeros pasos con Express</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./express-parameters.html">Parameters-req-y-res</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./middleware.html">Middleware</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./routers.html">Routers</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./validaciones-zod.html">Validaciones con Zod</a></li>
+                          <li class="menu__item"><a class="active menu__link" href="./diferencias.html">Diferencias post,put,patch</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./cors.html">Solución error de cors</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./mvc.html">MVC</a></li>
+                        </ul>
+          </nav>
+        </div>
+      </div>
+      <section class="container-content">
+        <div class="container-title title-sticky">       
+          <h1>Diferencias verbos</h1>
+        </div>
+        <section class="content">       
+          <article> 
+            <h2>Actualización con PATCH </h2>
+            <p>Antes de continuar con las diferencias de los verbos, lo que haremos es hacer una actualización de una película existente y posterior veremos las diferencias de los verbos.</p>
+            <p>Seguiremos ocupando la misma estructura de la sección anterior. </p>
+            <figure> <img src="../../public/assets/images/diferencias/1.png" alt="example"/>
+            </figure>
+            <figure> 
+              <figcaption>En el archivo movies.schema.js agregamos la siguiente función.</figcaption><img src="../../public/assets/images/diferencias/2.png" alt="example"/>
+            </figure>
+            <h3>¿Qué es el método partial() de zod?</h3>
+            <p>El método <strong class="ts-3">partial() </strong>en un esquema con Zod se utiliza para crear esquemas parciales de un esquema existente. Esto es útil cuando se desea trabajar con partes de un esquema sin necesidad de definir todo el esquema cada vez. Los esquemas parciales permiten reutilizar y combinar partes de esquemas definidos previamente, facilitando la reutilización de la lógica de validación y manteniendo el código más limpio y modular.</p>
+            <p>El término <strong class="ts-1">"parcial" </strong>en el contexto de Zod se refiere a la creación de esquemas donde todas las propiedades se vuelven opcionales. Esto se logra utilizando el método .partial() en un esquema de Zod. Este enfoque es particularmente útil cuando se desea trabajar con datos que pueden tener un conjunto de propiedades opcionales o cuando se quiere validar partes de un esquema sin necesidad de especificar todos los campos cada vez.</p>
+            <p>Este comportamiento es similar al tipo Partial en TypeScript, que crea un tipo donde todas las propiedades son opcionales.</p>
+            <p>Entonces lo que queremos hacer es actualiizar una pelicula, pero haciendo parcial sus propiedades es decir queremos hacer opcionales todas sus propiedades, aunque aquí varia dependendiendo de la situación, nosotros queremos suponer que todas las propiedades son opcionales.</p>
+            <figure> 
+              <figcaption>En el archivo movies.routes.js programamos la funcionalidad para poder actualizar una propiedad de la película o ambas propiedades al mismo tiempo.</figcaption><img src="../../public/assets/images/diferencias/3.png" alt="example"/>
+            </figure>
+            <h4>Pongamos a prueba nuestro código </h4>
+            <figure> 
+              <figcaption>Modificaremos el año de está película</figcaption><img src="../../public/assets/images/diferencias/4.png" alt="example"/>
+            </figure>
+            <p>Procemos entrar al endpoint con el ID de la película a modificar, el cual es el siguiente <code>dcdd0fad-a94c-4810-8acc-5f108d3b18c3</code></p>
+            <figure> 
+              <figcaption>Estamos modificando el año de la película</figcaption><img src="../../public/assets/images/diferencias/5.png" alt="example"/>
+            </figure>
+            <p>Lo interesante es que de la manera en que hemos programado esto, nosotros en realidad podemos enviar información inexistente y como en nuestro esquema no se encuentra siemplemente lo ignorará esto hace a nuestra Api más robusta y mantenible.</p>
+            <p>Ahora actualizaremos mas propiedades de la pélicula </p>
+            <figure> <img src="../../public/assets/images/diferencias/6.png" alt="example"/>
+            </figure>
+            <p>Si enviamos información que no existe simplemente la ignorará y no hara nada al respecto, esto hace muy robusta nuestra Api</p>
+            <figure> <img src="../../public/assets/images/diferencias/7.png" alt="example"/>
+            </figure>
+            <p>Y si enviamos información incorrecta se sigue validando gracias a que estamos reutilizando el schema que habiamos definido.</p>
+            <figure> <img src="../../public/assets/images/diferencias/8.png" alt="example"/>
+            </figure>
+          </article>
+          <article> 
+            <h2>Diferencias POST, PUT, PATCH </h2>
+            <p>Antes de ver la diferencias debemos conocer el termino <strong class="ts-2">idempotencia.</strong></p>
+            <h3>¿Qué es la idempotencia?   </h3>
+            <p>En el contexto de los métodos HTTP, la idempotencia se refiere a la propiedad de una operación que produce el mismo resultado, sin importar cuántas veces se repita. En otras palabras, realizar la misma solicitud varias veces no cambia el resultado final.</p>
+            <p>Por ejemplo las funciones que son puras son idempotentes, ya que si sumamos 2 + 2 siempre obtendremos el mismo resultado.</p>
+            <p>La idempotencia habla a también del estado interno, por lo tanto es importante este termino por que va ser diferentes en los diferentes métodos o verbos (post,put,patch).</p>
+            <ul> 
+              <li>                    <strong class="ts-1">POST</strong>: Se utiliza para enviar datos al servidor para su procesamiento. <strong class="ts-2">No es idempotente</strong>, ya que enviar la misma solicitud POST varias veces puede provocar la creación de recursos duplicados o cambios en el estado del servidor cada vez que se envía la solicitud.
+                <p>El endpoint para un método POST a menudo apunta a la colección de recursos en plural. Por ejemplo: <code>POST /api/users</code></p>
+              </li>
+              <li><strong class="ts-1">PUT</strong>: Este método se utiliza para actualizar o reemplazar completamente un recurso en el servidor con los datos proporcionados en la solicitud. <strong class="ts-2">Es idempotente</strong>, porque enviar la misma solicitud PUT varias veces producirá el mismo resultado: el recurso se actualizará con los mismos datos.
+                <p>El método PUT se usa comúnmente para actualizar un recurso existente en el servidor. Para identificar el recurso específico que se va a actualizar, es habitual incluir el identificador único del recurso en el endpoint. Por ejemplo: <code>PUT /api/users/</code><strong class="ts-3">{id}</strong></p>
+              </li>
+              <li>    <strong class="ts-1">PATCH</strong>: Similar a PUT, PATCH se utiliza para actualizar un recurso en el servidor, pero en lugar de reemplazar completamente el recurso, solo actualiza los campos específicos proporcionados en la solicitud. También <strong class="ts-2">es idempotente</strong>, ya que enviar la misma solicitud PATCH varias veces producirá el mismo resultado: solo los campos especificados se actualizarán, sin afectar otros campos del recurso.
+                <p>Al igual que PUT, PATCH se utiliza para actualizar un recurso existente. Sin embargo, PATCH suele utilizarse cuando solo se quieren modificar ciertos campos del recurso, en lugar de reemplazarlo por completo. Por lo tanto, el endpoint sigue siendo similar al de PUT, pero se utiliza para aplicar cambios parciales al recurso. Por ejemplo: <code>PATCH /api/users/</code><strong class="ts-3">{id}</strong></p>
+                <p>Al igual que con PUT,  <strong class="ts-3">{id} </strong>representa el identificador único del usuario que se desea actualizar, pero en este caso, la solicitud PATCH solo modificará los campos especificados en el cuerpo de la solicitud, en lugar de reemplazar todo el recurso.    </p>
+              </li>
+            </ul>
+            <figure> <img src="../../public/assets/images/diferencias/9.png" alt="example"/>
+            </figure>
+            <p>En resumen, mientras que el método POST generalmente apunta a la colección de recursos para agregar nuevos elementos, los métodos PUT y PATCH apuntan a recursos individuales identificados por su ID para actualizarlos, con PUT reemplazando el recurso completo y PATCH aplicando cambios parciales.</p>
+            <div class="note">
+              <p>He escuchado que hay algunas veces pero que es muy poco probable en que el put y patch depende si es idempotente ya que podemos tener algo como updateAT</p>
+              <p>Sí, eso es correcto. Aunque PUT y PATCH son generalmente considerados idempotentes, puede haber situaciones en las que su comportamiento no sea completamente idempotente, especialmente si el recurso que están actualizando incluye campos que cambian con el tiempo, como una marca de tiempo de "última actualización" (updatedAt), como mencionaste.</p>
+              <p>Por ejemplo, si un recurso tiene un campo updatedAt que se actualiza automáticamente cada vez que se modifica el recurso, entonces una solicitud PUT o PATCH podría cambiar este campo, lo que significa que cada solicitud modificaría el estado del recurso, incluso si los otros campos permanecen iguales. Esto hace que la solicitud no sea completamente idempotente.</p>
+              <p>En tales casos, los desarrolladores deben tener en cuenta el comportamiento específico de la aplicación y diseñar sus endpoints y operaciones en consecuencia. Siempre es importante comprender cómo se manejan los cambios en los recursos y cómo afectan la idempotencia de las solicitudes PUT y PATCH en el contexto de una aplicación específica.</p>
+            </div>
+          </article>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>
