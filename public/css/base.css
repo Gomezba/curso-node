@@ -29,12 +29,7 @@ article[id] {
 }
 
 article {
-	/* max-width: 58ch; */
 	padding-top: 2em;
-}
-
-article:not(article:last-child) {
-	border-bottom: 0.2188rem solid rgba(128, 128, 128, 0.288);
 }
 
 a {
@@ -74,6 +69,10 @@ h2 {
 	top: 2.9937rem;
 	font-weight: 700;
 	color: #33b3c1;
+}
+
+h2:has(code) {
+	max-width: 800px;
 }
 
 h3 {

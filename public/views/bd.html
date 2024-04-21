@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head></head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <title>Node renovado</title>
+  <script src="../js/scroll-linked-nav.js" defer> </script>
+  <script src="../../public/js/btn-code.js" defer> </script>
+  <body>       
+    <main class="layout">
+      <div>
+        <div class="sidebar">
+          <figure class="container-logo"> <a href="../../"><img class="logo" src="../assets/icons/nodejs.png" alt="logo"></a></figure>
+          <nav class="nav">
+                        <ul class="menu">
+                          <li class="menu__item"><a class="menu__link" href="./que-es-node.html">¿Qué es node?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./primeros-pasos.html">Primeros pasos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./package-json.html">¿Qué es el package-json?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./global-vs-window.html">Global vs window</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./cjs.html">Sistema de módulos CJS</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./esm.html">Sistema de módulos ESM</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./modulos-nativos.html">Modúlos nativos</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./url.html">¿URL?, parámetros, módulo URL</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./dependencias.html">¿Qué son las dependencias?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./node-modules.html">¿Qué es node modules?</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./npx.html">Comando npx</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./scripts.html">Scripts personalizados</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./info-impo.html">Conceptos importantes</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./servidor-web.html">Primer servidor web con HTTP (API)</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./express-init.html">Primeros pasos con Express</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./express-parameters.html">Parameters-req-y-res</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./middleware.html">Middleware</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./routers.html">Routers</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./validaciones-zod.html">Validaciones con Zod</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./diferencias.html">Diferencias post,put,patch</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./cors.html">Solución error de cors</a></li>
+                          <li class="menu__item"><a class="menu__link" href="./mvc.html">MVC</a></li>
+                          <li class="menu__item"><a class="active menu__link" href="./bd.html">BD</a></li>
+                        </ul>
+          </nav>
+        </div>
+      </div>
+      <section class="container-content">
+        <div class="container-title title-sticky">       
+          <h1>BD</h1>
+        </div>
+        <section class="content">       
+          <nav class="container-submenu">
+            <ul class="submenu"> 
+              <li class="submenu__item"><a class="submenu__link" href="#1">Creacion de la base de datos</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#2">Instalación de dependencias para la conexión de base de datos  </a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#3">Haciendo conexión</a></li>
+              <li class="submenu__item"><a class="submenu__link" href="#4">Inyección de dependencias</a></li>
+            </ul>
+          </nav>
+          <article id="1"> 
+            <h2>Creacion de la base de datos</h2>
+            <p>Crearemos nuestra base de datos para poder implementarla más adelante en nuestra API.</p>
+            <p>Utilizaremos <strong class="ts-3">MYSQL WORKWENCH</strong>.</p>
+            <p>Para poder entender algunas cosas de la base de datos es importante conocer las siguientes funciones que nos brinda MYSQL. </p>
+            <ul> 
+              <li> <strong class="ts-3">UUID():</strong>
+                <p>La función UUID() en MySQL genera un UUID (Identificador Único Universal) aleatorio según la versión 1 de RFC 4122. Este UUID se devuelve como una cadena de caracteres en formato hexadecimal de 36 caracteres (32 dígitos y 4 guiones).</p>
+                <p>Es útil cuando se necesita generar un UUID único para su uso en inserciones de datos o en operaciones de manipulación de datos.</p>
+              </li>
+              <li> <strong class="ts-3">BIN_TO_UUID(binario): </strong>
+                <p>Esta función toma un valor binario de 16 bytes (128 bits) como entrada y lo convierte en su representación de cadena de caracteres UUID (36 caracteres, incluyendo guiones).</p>
+                <p>Es útil cuando se almacenan UUID como datos binarios en la base de datos y se desea convertirlos para mostrarlos o para otros fines de manipulación de datos.</p>
+              </li>
+              <li> <strong class="ts-3">UUID_TO_BIN(string):</strong>
+                <p>Esta función toma un UUID como una cadena de caracteres (en formato estándar de 36 caracteres, incluyendo guiones) y lo convierte en su equivalente binario de 16 bytes.</p>
+                <p>Es útil cuando se necesitan insertar UUID en una base de datos MySQL que almacena UUID como datos binarios.</p>
+              </li>
+            </ul>
+            <p>Estas funciones son específicas de MySQL y no están disponibles en otros sistemas de gestión de bases de datos (DBMS) por defecto. Sin embargo, otros sistemas de bases de datos pueden proporcionar funciones similares para trabajar con UUID y datos binarios, aunque pueden tener nombres diferentes.    </p>
+            <div> <a class="btn-code" id="btn-code" target="_blank" rel="noreferer">Código     </a></div>
+            <figure> <img src="../../public/assets/images/bd/1.png" alt="example"/>
+            </figure>
+            <figure> <img src="../../public/assets/images/bd/2.png" alt="example"/>
+            </figure>
+          </article>
+          <article id="2"> 
+            <h2>Instalación de dependencias para la conexión de base de datos  </h2>
+            <p>Antes de instalar las dependencias necesitamos tener ya la estrucutura de nuestro modelo, siguiendo el ejemplo de los modelos anteriores.</p>
+            <figure> <img src="../../public/assets/images/bd/3.png" alt="example"/>
+            </figure>
+            <figure> <img src="../../public/assets/images/bd/4.png" alt="example"/>
+            </figure>
+            <p>Ahora si procedemos a instalar nuestra dependencia pero primero necesitamos instalar de manera global <strong class="ts-3">pnpm </strong>ya que para instalar nuestra dependencia para mysql utiliza <strong class="ts-3">pnpm.</strong></p>
+            <figure> <img src="../../public/assets/images/bd/5.png" alt="example"/>
+            </figure>
+            <p>Ahora si instalamos nuestra dependencia mysql2 con el comando</p><code>pnpm i --save mysql2 </code>
+            <figure> 
+              <figcaption>Instalación de mysql2</figcaption><img src="../../public/assets/images/bd/6.png" alt="example"/>
+            </figure>
+            <p>Esta es la dependencia más actualizada para trabajar con mysql.</p>
+          </article>
+          <article id="3"> 
+            <h2>Haciendo conexión </h2>
+            <p>Ahora en nuestro modelo importamos la dependencia y establecemos nuestra configuración para poder conectarnos a la base de datos.</p>
+            <figure> 
+              <figcaption>El password no lo hemos puesto por seguridad, pero es importante ponerlo.</figcaption><img src="../../public/assets/images/bd/7.png" alt="example"/>
+            </figure>
+            <p>Una vez creado la configuración para nuestra base datos, ahora crearemos la conexión.</p>
+            <figure> <img src="../../public/assets/images/bd/8.png" alt="example"/>
+            </figure>
+            <figure> 
+              <figcaption>Hasta el momento así quedaría nuestro archivo sin comentarios, solo agregamos un console.log(result) para que cuando provemos nuestra conexión veamos que devuelve.</figcaption><img src="../../public/assets/images/bd/9.png" alt="example"/>
+            </figure>
+            <p>Antes de provar nuestra conexión es importante que en nuestro controlador le indiquemos que modelo utilizará, le indicamos que utilize el modelo MovieModel de mysql.</p>
+            <figure> <img src="../../public/assets/images/bd/10.png" alt="example"/>
+            </figure>
+            <div>
+              <p>Solo con este cambio ya estamos cambiando de donde saca la información, si de mongodb, mysql o del archivo de la memoria, solo con el cambio de una línea de código.    </p>
+              <p>Normalmente mucha gente piensa que tenemos que hacer cambios en todos los sitios, que la migración es muy complicada, es por eso que es muy importante tener las responsabilidades separadas como lo hemos hecho nosotros, así la migración es muy fácil.</p>
+            </div>
+            <p>Ahora si, antes de levantar nuestra API no nos olvidemos de poner nuestra contraseña en la configuración, y otra cosa más, estaremos utilizado REST CLIENT para probar nuestra API, solo hemos creado un archivo api.http en la raiz y hemos agregado todos nuestros endpoints.    </p>
+            <figure> <img src="../../public/assets/images/bd/11.png" alt="example"/>
+            </figure>
+            <figure> <img src="../../public/assets/images/bd/12.png" alt="example"/>
+            </figure>
+            <h3>Método getAll()</h3>
+            <p>Ahora si procedemos a levantar nuestra API y ejecutamos nuestro endpoint en nuestro archivo api dando click a Send Request para recuperar todas las películas y poder ver en consola el valor el resultado que establecimos en el método getAll({genre}) del modelo para mysql.</p>
+            <figure> <img src="../../public/assets/images/bd/13.png" alt="example"/>
+            </figure>
+            <p class="selected">Como podemos ver lo que devuelve el resultado de nuestra consulta a la base de datos cuando hacemos: <br><strong>const result = await connection.query('SELECT *, BIN_TO_UUID(id) id FROM movie;')</strong><br>Es una <strong>tupla </strong>con la siguiente estructura <br><strong>[ [ Resultado de la consulta ] , [ Información de la tabla ] ]</strong><br>Donde en el primer array tenemos el resultado de la consulta, devuelta en objetos, cada objeto es una fila(registro) de la tabla: <br><strong>[ [ {fila 1}, {fila 2}, .... ], [ ] ]</strong><br>Ahora el segundo array es la estructura de la tabla de donde estamos sacando la información<br><strong>[ [ {fila 1}, {fila 2}, .... ], [ id string(16) not null, etc] ] </strong></p>
+            <p>Ahora que ya sabemos que el resultado nos lo devuelve en una <strong class="ts-1">tupla </strong>lo que haremos es ocupar la <strong class="ts-3">destructuración.</strong></p>
+            <p>Así quedaría nuestro método getAll() del modelo.</p>
+            <figure> <img src="../../public/assets/images/bd/14.png" alt="example"/>
+            </figure>
+            <p>Y nuestro archivo del modelo completo hasta el momento quedaría de la siguiente manera, ya sin comentarios.</p>
+            <figure> <img src="../../public/assets/images/bd/15.png" alt="example"/>
+            </figure>
+            <p>Como podemos ver ahora sí obtenemos una respuesta correcta, ya que anteriormente aunque no lo mostramos, la respuesta de la API daba un error ya que no estabamos retornando nada, pero en este caso ya estamos retornando las movies y podemos ver el resultado ya correcto.</p>
+            <figure> <img src="../../public/assets/images/bd/16.png" alt="example"/>
+            </figure>
+            <p>Ahora en nuestro mismo método solo nos falta la funcionalidad de devolver todas las peliculas que pertenezcan a un género en específico, y esto es cuando nos pasen un parámetro de consulta (query param).</p>
+            <p>Para hacer esa funcionalidad, hay varias opciones como, poner toda una consulta compleja en el método query como pueden ser subconsultas, o hacer varias consultas por separado para evitar las subconsultas, pero nosotros optamos por crear un store procedure en nuestra base de datos y que se encarge de la lógica para traer todas las películas que coincidan con el género que pasemos por parámetros en el store procedure que llamaremos <strong class="ts-3">SP_getAllMoviesGenre</strong></p>
+            <figure> <img src="../../public/assets/images/bd/17.png" alt="example"/>
+            </figure>
+            <p>Antes de continuar con la funcionalidad ocuparemos marcadores de posición (?) en consultas SQL para pasarles un parámetro o parámetros por separado. Este enfoque se conoce como <strong class="ts-2">consulta preparada </strong>o <strong class="ts-2">consulta parametrizada.</strong></p>
+            <div> 
+              <p>El uso de consultas preparadas, evita riesgos al separar claramente la consulta SQL de los datos proporcionados por el usuario. La librería de MySQL (en este caso mysql2) manejará adecuadamente la interpolación de los datos proporcionados, asegurando que no se puedan interpretar como parte de la estructura de la consulta SQL, sino que se traten como valores seguros. Esto protege tu aplicación contra inyecciones de SQL.    </p>
+            </div>
+            <p>Veamos como queda nuestro método getAll del módelo ya con la funcionalidad de filtrar péliculas por género.    </p>
+            <figure> <img src="../../public/assets/images/bd/18.png" alt="example"/>
+            </figure>
+            <p>Ahora si provemos el resultado de filtrar las películas por genéro por medio de un param query. </p>
+            <figure> <img src="../../public/assets/images/bd/19.png" alt="example"/>
+            </figure>
+            <p>Así quedaría nuestro método getAll() del modelo ya sin comentarios.</p>
+            <figure> <img src="../../public/assets/images/bd/20.png" alt="example"/>
+            </figure>
+            <h3>Método getById </h3>
+            <P>Así quedaria nuestro método getById    </P>
+            <figure> <img src="../../public/assets/images/bd/21.png" alt="example"/>
+            </figure>
+            <p>Veamos el resultado de filtrar por un id.</p>
+            <figure> <img src="../../public/assets/images/bd/23.png" alt="example"/>
+            </figure>
+            <p>Así queda nuestro método ya sin comentarios</p>
+            <figure> <img src="../../public/assets/images/bd/22.png" alt="example"/>
+            </figure>
+            <h3>Método create()</h3>
+            <p>Ya sabemos que en este método crearemos una nueva película para insertarla en la base de datos.</p>
+            <p>Es obvio que utilizaremos el método POST, así que veremos la respuesta que se generá cuando hacemos una insersión a la base de datos desde el backend.</p>
+            <p>Cuando insertamos, eliminamos o actualizamos en la base de datos desde el backend, obtenemos un objeto llamado <strong class="ts-3">resultSetHeader </strong>.</p>
+            <p>Este objeto generalmente contiene metadatos sobre el resultado de la consulta y puede variar en sus propiedades dependiendo del sistema de gestión de bases de datos (DBMS) y del cliente de base de datos que estés utilizando.    </p>
+            <div> 
+              <section> 
+                <p>ResultSetHeader <strong>{</strong></p>
+                <p>
+                  <pre style="line-height:0;">     fieldCount: 0,</pre>
+                </p>
+                <p>
+                  <pre style="line-height:0;">     affectedRows: 0,</pre>
+                </p>
+                <p>
+                  <pre style="line-height:0;">     insertId: 0,</pre>
+                </p>
+                <p>
+                  <pre style="line-height:0;">     info: '' </pre>
+                </p>
+                <p>
+                  <pre style="line-height:0;">     serverStatus: 2,</pre>
+                </p>
+                <p>
+                  <pre style="line-height:0;">     warningStatus: 0,</pre>
+                </p>
+                <p>
+                  <pre style="line-height:0;">     changedRows: 0 </pre>
+                </p>
+                <p>
+                  <pre style="line-height:1.4;"> }    </pre>
+                </p>
+              </section>
+            </div>
+            <ul>
+              <li><strong class="ts-1">fieldCount: </strong>Indica la cantidad de campos en el resultado de la consulta. En algunas operaciones, como las inserciones, este valor puede ser 0.</li>
+              <li><strong class="ts-1">affectedRows: </strong>Representa el número de filas afectadas por la operación realizada, como la cantidad de filas insertadas, actualizadas o eliminadas.</li>
+              <li><strong class="ts-1">insertId: </strong>Especifica el ID asignado a la fila recién insertada en el caso de una inserción exitosa. <strong class="ts-3">Esto es relevante para tablas que tienen una columna con una restricción de autoincremento, lo que quiere decir que solo devuelve el ID siempre y cuando el campo en la bd sea autoincrement de lo contrario devolverá 0 o null.</strong></li>
+              <li><strong class="ts-1">info: </strong>Proporciona información adicional relacionada con la operación realizada. Puede incluir mensajes de error, advertencias u otra información relevante devuelta por el servidor de la base de datos.</li>
+              <li><strong class="ts-1">serverStatus: </strong>Indica el estado del servidor de base de datos después de ejecutar la consulta. Por ejemplo, un valor de 2 generalmente indica que la operación se completó correctamente.</li>
+              <li><strong class="ts-1">warningStatus: </strong>Representa el estado de advertencia del servidor después de ejecutar la consulta. Un valor de 0 indica que no hay advertencias.</li>
+              <li><strong class="ts-1">changedRows: </strong>Indica el número de filas que se vieron afectadas por la última operación, como el número de filas actualizadas en una consulta de actualización.</li>
+            </ul>
+            <figure> 
+              <figcaption>Inserción en la base de datos sin un ID para que la misma BD le asigne un ID, pero ya sabemos que necesitamos el mismo contrato en el modelo por lo cual si no pasamos un ID, el objeto ResultSetHeader no nos devolverá el ID que la base de datos le puso por defecto, ya que sabemos que solo devuelve los ID autoincrementables.</figcaption><img src="../../public/assets/images/bd/24.png" alt="example"/>
+            </figure>
+            <figure> 
+              <figcaption>Como podemos ver el resultado de la inserción no nos devuele el ID, y lo necesitamos por que el modelo debe tener el mismo contrato.</figcaption><img src="../../public/assets/images/bd/25.png" alt="example"/>
+            </figure>
+            <p>Para solucionar esto, lo que podemos hacer, es hacer una consulta a la base de datos para que nos genere un ID ya ya después insertarlo de manera explícita en nuestra query, tambien podemos ocupar el módulo crypto para generar un UUID, pero lo haremos consultando a la base de datos. </p>
+            <figure> <img src="../../public/assets/images/bd/26.png" alt="example"/>
+            </figure>
+            <p>Hasta este punto nuestro código sin comentarios quedaría así.</p>
+            <figure> <img src="../../public/assets/images/bd/27.png" alt="example"/>
+            </figure>
+            <p>Ahora solo falta agregar a nuestra tabla movie_genres los generos de la película que acabamos de insertar, la tabla movie_genres nos pide el id de la película y el genéro.</p>
+            <figure> <img src="../../public/assets/images/bd/28.png" alt="example"/>
+            </figure>
+            <p>Así quedaría el código sin comentarios.</p>
+            <figure> 
+              <figcaption>Cometimos un pequeño error solo hemos cambiado el nombre de genero a genres para que sea correcto de acuerdo a nuestra schema.</figcaption><img src="../../public/assets/images/bd/29.png" alt="example"/>
+            </figure>
+            <p>Resultado de nuestra inserción.</p>
+            <figure> <img src="../../public/assets/images/bd/30.png" alt="example"/>
+            </figure>
+            <p>Comprobaciones de los registros insetados en nuestra base de datos.</p>
+            <figure> 
+              <figcaption>Tabla movie, podemos ver nuestra película la nueva jerusalen.</figcaption><img src="../../public/assets/images/bd/31.png" alt="example"/>
+            </figure>
+            <figure> 
+              <figcaption>Tabla movie_genres, podemos ver los géneros insertados relacionados con la película.</figcaption><img src="../../public/assets/images/bd/32.png" alt="example"/>
+            </figure>
+            <figure> 
+              <figcaption>Desde nuestra base de datos podemos hacer un join multiple para juntar los registros de la tabla.</figcaption><img src="../../public/assets/images/bd/33.png" alt="example"/>
+            </figure>
+            <h3>Método delete()</h3>
+            <figure> <img src="../../public/assets/images/bd/34.png" alt="example"/>
+            </figure>
+            <figure> <img src="../../public/assets/images/bd/35.png" alt="example"/>
+            </figure>
+            <h3>Método update()</h3>
+            <p>Para actualizar los datos, tenemos que checar la estructura de nuestra tabla movie_genres, ya que cuando actualizamos información de una película podemos cambiar los géneros, y estos géneros nosotros en nuestra bd los manejamos en una tabla aparte donde está ligado con el id de la película y el id del género, veamos la estructura:</p>
+            <figure> <img src="../../public/assets/images/bd/36.png" alt="example"/>
+            </figure>
+            <p>Veamos los registros que tenemos actualmente en esa tabla</p>
+            <figure> <img src="../../public/assets/images/bd/37.png" alt="example"/>
+            </figure>
+            <p>Para actualizar por ejemplo un género de una película en dicha tabla, se nos puede ocurrir lo siguiente que es lo más obvio que hariamos.</p>
+            <figure> <img src="../../public/assets/images/bd/38.png" alt="example"/>
+            </figure>
+            <p>Pero obtenemos el siguiente error.</p>
+            <p class="ts-2">Error Code: 1062. Duplicate entry ':\xAC\x14\xD3\xE65\x11\xEE\xB14\x84\x13\xD3\xE7\x0C\x86-3' for key 'movie_genres.PRIMARY'</p>
+            <p>Nos dice que ya tenemos un registro con los mismos datos, con el mismo id de película y id de genero, lo cual sabemos que no es así, sino que el error en realidad se debe a lo siguiente.</p>
+            <div> 
+              <p>Tenemos una clave primaria compuesta formada por las columnas movie_id y genre_id, entonces no podremos modificar directamente ninguno de estos valores, ya que la combinación de ambos forma una clave única para cada registro en la tabla.</p>
+              <p>La razón por la que estamos recibiendo el error es porque al intentar actualizar el genre_id para un movie_id específico, estamos esencialmente intentando cambiar la clave primaria de ese registro. Sin embargo, hay que recordar que las claves primarias (compuestas o no) están diseñadas para ser identificadores únicos e inmutables de las filas en una tabla, por lo que no pueden modificarse directamente.</p>
+            </div>
+            <p>Para solucionar eso, lo que debemos hacer es eliminar primero el registro de la tabla movie_genres de la película Inception con el género Action en este caso.</p>
+            <figure> <img src="../../public/assets/images/bd/39.png" alt="example"/>
+            </figure>
+            <p>Una vez hecho esto lo que haremos es insertar ahora el nuevo registro de la misma película pero con un género diferente, en este caso estamos agregando el genre_id con id 3 que pertenece al género Crime.</p>
+            <figure> <img src="../../public/assets/images/bd/40.png" alt="example"/>
+            </figure>
+            <p>Ahora veamos como hacerlo en código desde Express.</p>
+            <figure> <img src="../../public/assets/images/bd/41.png" alt="example"/>
+            </figure>
+            <figure> <img src="../../public/assets/images/bd/42.png" alt="example"/>
+            </figure>
+          </article>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>
